@@ -1,0 +1,1 @@
+- Añadir las carpetas de graficos, audio, etc.

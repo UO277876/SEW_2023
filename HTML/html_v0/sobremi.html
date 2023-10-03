@@ -3,11 +3,14 @@
 <head>
     <!-- Datos que describen el documento -->
     <meta charset="UTF-8" />
+    
     <title>Escritorio Virtual - Sobre mi</title>
 
     <meta name ="author" content ="Andrea Auñón" />
     <meta name ="description" content ="Documento con la información personal del autor" />
-    <meta name ="keywords" content ="Personal,Informacion,Temperaturas" />
+    <meta name ="keywords" content ="Personal,Informacion,Aficiones,Temperaturas" />
+
+    <!-- Para la adaptabilidad -->
     <meta name ="viewport" content ="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
@@ -39,6 +42,16 @@
         <!-- Version 2 -->
         Para contactarme dejo mi <a href="mailto:uo277876@uniovi.es">email</a>.
     </p>
+
+    <!-- Contenedor de imagen personal, en diferentes tamaños -->
+    <picture>
+        <source media="(max-width:465px)" srcset="multimedia/graficos/yo-465w.jpg">
+        <source media="(max-width:799px)" srcset="multimedia/graficos/yo-799w.jpg">
+        <source media="(min-width:800px)" srcset="multimedia/graficos/yo-800w.jpg">
+
+        <img src="multimedia/graficos/yo-800w.jpg" alt="Imagen personal de Andrea Auñón Antúnez" />
+    </picture>
+    
 
     <!-- Uso de listas y listas enlazadas -->
     <h2> Aficiones </h2>
