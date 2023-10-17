@@ -1,1 +1,122 @@
-/* datos personales Andrea Auñón Antúnez UO277876*/
+/* Andrea Auñón Antúnez UO277876 */
+
+/*
+Carafe: #5F423A
+Cognac: #b99a87
+white: #ebebe1
+Coffe: #291E19
+Coffe (links): #553f35
+*/
+
+/* Especifidad: 001 */
+body{
+    font-family: Arial, Verdana, sans-serif;
+    background-color:#ebebe1; 
+}
+
+/* Especifidad: 001 */
+header  {
+    background-color:#5F423A; 
+    color: #ebebe1; 
+}
+
+/* Hereda el color de las letras y de fondo de su elemento padre, header */
+/*Especificidad: 001*/
+h1 {
+    font-family: "Times New Roman", Georgia, Serif;
+    font-size: 3.0em;  
+}
+  
+/*Especificidad: 001*/
+h2 {
+    font-family: "Times New Roman", Georgia, Serif;
+    font-size: 2.0em;  
+    background-color:#b99a87; 
+    color: #291E19;
+}
+
+/* Hereda el color del fondo de su elemento padre, body */
+/*Especificidad: 001*/
+h3 {
+    font-family: "Times New Roman", Georgia, Serif;
+    font-size: 1.5em;  
+    color: #291E19;
+}
+
+/* ------------- ENLACES Y BARRA DE NAVEGACIÓN ------------- */
+/* Especifidad: 001 */
+nav {
+    text-align: right;
+}
+
+/* Hereda el color del fondo de su elemento padre, header */
+/* Especifidad: 002 */
+nav > a {
+    color: #ebebe1;
+}
+
+/* Especifidad: 012 */
+p > a:link {
+    color: #553f35;
+}
+
+/* ------------- LISTAS ------------- */
+/* Especifidad: 001 */
+ul {
+    list-style-type: square;
+    color: #291E19;
+}
+
+/* Especifidad: 001 */
+ol {
+    list-style-type: upper-roman;
+    color: #5F423A
+}
+
+/* Especifidad: 003 */
+ol > li > ul {
+    list-style-type: disc;
+    color: #5F423A;
+    font-family: "Times New Roman", Georgia, Serif;
+}
+
+/* Tercer elemento de la lista no ordenada */
+/* Especifidad: 012 */
+ol > li:nth-child(4n-1){
+    color: #700f03;
+}
+
+/* Especifidad: 001 */
+dt {
+    color: #5F423A; 
+    font-size: 1.3em;  
+    font-weight: bold;
+}
+
+/* Especifidad: 001 */
+dd {
+    font-size: 1.0em;  
+    margin-bottom: 1em;
+}
+
+/* ------------- TABLA ------------- */
+/* Especifidad: 001 */
+th,tr,td {
+    border: 0.1em solid black;
+}
+
+/*Especificidad: 001*/
+caption {
+    font-size: 1.5em; 
+    color: #ebebe1;
+    background-color:#5F423A; 
+    border: 0.15em solid black;
+}
+  
+/*Especificidad: 001*/
+th  {
+    font-size: 1.3em; 
+    background-color:#ebebe1; 
+    color: #5F423A;
+}
+
