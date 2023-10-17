@@ -1,2 +1,0 @@
-- Añadir las carpetas de graficos, audio, etc.
-- Con address + a para el tema del email
