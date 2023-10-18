@@ -12,6 +12,7 @@ Coffe (links): #553f35
 body{
     font-family: Arial, Verdana, sans-serif;
     background-color:#ebebe1; 
+    color: #000000;
 }
 
 /* Especifidad: 001 */
@@ -24,7 +25,8 @@ header  {
 /*Especificidad: 001*/
 h1 {
     font-family: "Times New Roman", Georgia, Serif;
-    font-size: 3.0em;  
+    font-size: 3.0em;
+    text-align: center;
 }
   
 /*Especificidad: 001*/
@@ -33,6 +35,7 @@ h2 {
     font-size: 2.0em;  
     background-color:#b99a87; 
     color: #291E19;
+    border: 0.15em solid black;
 }
 
 /* Hereda el color del fondo de su elemento padre, body */
@@ -55,24 +58,28 @@ nav > a {
     color: #ebebe1;
 }
 
+/* Hereda el color del fondo de su elemento padre, body */
 /* Especifidad: 012 */
 p > a:link {
     color: #553f35;
 }
 
 /* ------------- LISTAS ------------- */
+/* Hereda el color del fondo de su elemento padre, body */
 /* Especifidad: 001 */
 ul {
     list-style-type: square;
     color: #291E19;
 }
 
+/* Hereda el color del fondo de su elemento padre, body */
 /* Especifidad: 001 */
 ol {
     list-style-type: upper-roman;
     color: #5F423A
 }
 
+/* Hereda el color del fondo de su elemento padre, body */
 /* Especifidad: 003 */
 ol > li > ul {
     list-style-type: disc;
@@ -80,12 +87,14 @@ ol > li > ul {
     font-family: "Times New Roman", Georgia, Serif;
 }
 
+/* Hereda el color del fondo de su elemento padre, body */
 /* Tercer elemento de la lista no ordenada */
 /* Especifidad: 012 */
 ol > li:nth-child(4n-1){
     color: #700f03;
 }
 
+/* Hereda el color del fondo de su elemento padre, body */
 /* Especifidad: 001 */
 dt {
     color: #5F423A; 
@@ -120,3 +129,21 @@ th  {
     color: #5F423A;
 }
 
+/* ------------- ELEMENTOS MULTIMEDIA ------------- */
+/*Especificidad: 001*/
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/*Especificidad: 001*/
+video {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Especificidad: 001*/
+audio{
+    max-width: 100%; 
+    height: auto;
+}
