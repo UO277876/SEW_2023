@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rutas SYSTEM "rutas.dtd">
+<rutas>
+    <ruta>
+        <nombre>Travesía de Apaneca</nombre>
+        <tipoRuta>Senderismo</tipoRuta>
+        <mtransporte>A pie</mtransporte>
+        <duracion>7 horas y 24 minutos</duracion>
+        <agencia>Federación Salvadoreña de Montañismo y Escalada</agencia>
+        <descripcion>Va por Cerro Grande de Apaneca, Laguna de las Ninfas y Laguna verde</descripcion>
+        <padmitidas>Personas con buena forma física</padmitidas>
+        <linicio>Cerro Grande de Apaneca</linicio>
+        <dinicio>Cerro Grande de Apaneca</dinicio>
+        <coordenadas longitud="-89.7986111" latitud="13.8413889" altitud="1.831"></coordenadas>
+        <bibliografia>
+            <referencia>Referencia 1: https://es.wikiloc.com/rutas-senderismo/travesia-de-apaneca-cerro-grande-de-apaneca-laguna-de-las-ninfas-y-laguna-verde-113755632</referencia>
+            <referencia>Referencia 2: https://m.facebook.com/FSME.SV/posts/6117128581637022/?locale=ms_MY</referencia>
+            <referencia>Referencia 3: https://es.wikiloc.com/rutas-senderismo/travesia-cerro-de-apaneca-cerro-las-ninfas-cerro-laguna-verde-cerro-cuyanausul-y-cerro-cachio-47103227</referencia>
+        </bibliografia>
+        <recomendacion>7</recomendacion>
+        <hitos>
+            <hito>
+                <hnombre>Portón de acceso</hnombre>
+                <hdescripcion>Se ha llegado al punto de acceso (Portón de acceso)</hdescripcion>
+                <hcoordenadas longitud="-89.7986111" latitud="13.8413889" altitud="1.840"></hcoordenadas>
+                <distancia>0</distancia>
+                <galeria-fotografias>
+                    <fotografia>Apaneca1</fotografia>
+                    <fotografia>Apaneca2</fotografia>
+                </galeria-fotografias>
+            </hito>
+
+            <hito>
+                <hnombre>Vista a Apaneca desde ascenso a Cerro Grande de Apaneca</hnombre>
+                <hdescripcion>Se ha llegado a ver Apaeca desde el Cerro Grande de Apaneca</hdescripcion>
+                <hcoordenadas longitud="-89.7986111" latitud="13.8413889" altitud="1.831"></hcoordenadas>
+                <distancia>50</distancia>
+                <galeria-fotografias>
+                    <fotografia>Apaneca3</fotografia>
+                </galeria-fotografias>
+            </hito>
+
+            <hito>
+                <hnombre>Llegada a Laguna de las Ninfas</hnombre>
+                <hdescripcion>Se ha llegado a la laguna de las Ninfas</hdescripcion>
+                <hcoordenadas longitud="-89.7986111" latitud="13.8413889" altitud="1.831"></hcoordenadas>
+                <distancia>100</distancia>
+                <galeria-fotografias>
+                    <fotografia>Apaneca4</fotografia>
+                </galeria-fotografias>
+            </hito>
+        </hitos>
+    </ruta>
+</rutas>
