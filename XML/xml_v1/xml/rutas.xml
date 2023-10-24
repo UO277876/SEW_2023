@@ -3,7 +3,7 @@
 <rutas>
     <ruta>
         <nombre>Travesía de Apaneca</nombre>
-        <tipoRuta>Senderismo</tipoRuta>
+        <tiporuta>Senderismo</tiporuta>
         <mtransporte>A pie</mtransporte>
         <duracion>7 horas y 24 minutos</duracion>
         <agencia>Federación Salvadoreña de Montañismo y Escalada</agencia>

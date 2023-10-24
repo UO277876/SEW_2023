@@ -1,1 +1,35 @@
-Failed to save 'rutas2.dtd': Unable to write file 'c:\Users\infer\Desktop\universidad\SEW\practicas\entornoDeTrabajo\SEW_2023\XML\xml_v1\xml\rutas2.dtd' (Unknown (FileSystemError): Error: EBUSY: resource busy or locked, open 'c:\Users\infer\Desktop\universidad\SEW\practicas\entornoDeTrabajo\SEW_2023\XML\xml_v1\xml\rutas2.dtd')
+<!ELEMENT rutas (ruta+)>
+<!ELEMENT ruta (nombre,tiporuta,mtransporte,fincio?,hinicio?,duracion,agencia,descripcion,padmitidas,linicio,dinicio,coordenadas,bibliografia,recomendacion,hitos)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT tiporuta (#PCDATA)>
+<!ELEMENT mtransporte (#PCDATA)>
+<!ELEMENT finicio (#PCDATA)>
+<!ELEMENT hinicio (#PCDATA)>
+<!ELEMENT duracion (#PCDATA)>
+<!ELEMENT agencia (#PCDATA)>
+<!ELEMENT descripcion (#PCDATA)>
+<!ELEMENT padmitidas (#PCDATA)>
+<!ELEMENT linicio (#PCDATA)>
+<!ELEMENT dinicio (#PCDATA)>
+<!ELEMENT coordenadas (#PCDATA)>
+<!ATTLIST coordenadas
+    longitud CDATA #REQUIRED
+    latitud CDATA #REQUIRED
+    altitud CDATA #REQUIRED>
+<!ELEMENT bibliografia (referencia,referencia,referencia+)>
+<!ELEMENT referencia (#PCDATA)>
+<!ELEMENT recomendacion (#PCDATA)>
+<!ELEMENT hitos (hito,hito,hito+)>
+<!ELEMENT hito (hnombre,hdescripcion,hcoordenadas,distancia,galeria-fotografias,galeria-videos?)>
+<!ELEMENT hnombre (#PCDATA)>
+<!ELEMENT hdescripcion (#PCDATA)>
+<!ELEMENT hcoordenadas (#PCDATA)>
+<!ATTLIST hcoordenadas
+    longitud CDATA #REQUIRED
+    latitud CDATA #REQUIRED
+    altitud CDATA #REQUIRED>
+<!ELEMENT distancia (#PCDATA)>
+<!ELEMENT galeria-fotografias (fotografia,fotografia?,fotografia?,fotografia?,fotografia?)>
+<!ELEMENT fotografia (#PCDATA)>
+<!ELEMENT galeria-videos (video?,video?,video?)>
+<!ELEMENT video (#PCDATA)>
