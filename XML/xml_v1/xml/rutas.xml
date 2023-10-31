@@ -3,23 +3,23 @@
 <rutas>
     <ruta>
         <nombre>Travesía de Apaneca</nombre>
-        <tiporuta>Senderismo</tiporuta>
+        <tipoRuta>Senderismo</tipoRuta>
         <mtransporte>A pie</mtransporte>
-        <duracion>7 horas y 24 minutos</duracion>
+        <duracion>8 horas y 24 minutos</duracion>
         <agencia>Federación Salvadoreña de Montañismo y Escalada</agencia>
         <descripcion>Va por Cerro Grande de Apaneca, Laguna de las Ninfas y Laguna verde</descripcion>
-        <padmitidas>Personas con buena forma física</padmitidas>
-        <linicio>Cerro Grande de Apaneca</linicio>
-        <dinicio>Cerro Grande de Apaneca</dinicio>
+        <perAdmitidas>Personas con buena forma física</perAdmitidas>
+        <linicio>Centro Escolar Colonia San Pedro</linicio>
+        <dinicio>Apaneca, El Salvador</dinicio>
         <coordenadas>
-             <longitud>89.798611</longitud>
-             <latitud>13.828547</latitud> 
-             <altitud>1.826</altitud>
+             <longitud>-89.799348</longitud>
+             <latitud>13.848899</latitud> 
+             <altitud>1.506</altitud>
         </coordenadas>
         <bibliografia>
             <referencia>Referencia 1: https://es.wikiloc.com/rutas-senderismo/travesia-de-apaneca-cerro-grande-de-apaneca-laguna-de-las-ninfas-y-laguna-verde-113755632</referencia>
-            <referencia>Referencia 2: https://m.facebook.com/FSME.SV/posts/6117128581637022/?locale=ms_MY</referencia>
-            <referencia>Referencia 3: https://es.wikiloc.com/rutas-senderismo/travesia-cerro-de-apaneca-cerro-las-ninfas-cerro-laguna-verde-cerro-cuyanausul-y-cerro-cachio-47103227</referencia>
+            <referencia>Referencia 2: https://www.tripadvisor.es/Attraction_Review-g297533-d7313044-Reviews-Laguna_las_Ninfas-Puerto_Ayora_Santa_Cruz_Galapagos_Islands.html</referencia>
+            <referencia>Referencia 3: https://elsalvador.travel/experience/la-laguna-verde/</referencia>
         </bibliografia>
         <recomendacion>7</recomendacion>
         <hitos>
@@ -27,8 +27,8 @@
                 <hnombre>Cerro Grande de Apaneca</hnombre>
                 <hdescripcion>Se ha llegado al punto de acceso (Portón de acceso)</hdescripcion>
                 <coordenadas>
-                    <longitud>89.798611</longitud>
-                    <latitud>13.828547</latitud> 
+                    <longitud>-89.798611</longitud>
+                    <latitud>13.841389</latitud> 
                     <altitud>1.826</altitud>
                 </coordenadas> 
                 <distancia unidades="metros"></distancia>
@@ -42,8 +42,8 @@
                 <hnombre>Laguna de las Ninfas</hnombre>
                 <hdescripcion>Se ha llegado a ver Apaeca desde el Cerro Grande de Apaneca</hdescripcion>
                 <coordenadas>
-                    <longitud>89.796667</longitud>
-                    <latitud>3.900000</latitud>
+                    <longitud>-89.796667</longitud>
+                    <latitud>13.878889</latitud>
                     <altitud>1.696</altitud>
                 </coordenadas> 
                 <distancia unidades="metros">394</distancia>
@@ -56,9 +56,9 @@
                 <hnombre>Laguna Verde</hnombre>
                 <hdescripcion>Se ha llegado a la laguna de las Ninfas</hdescripcion>
                 <coordenadas>
-                    <longitud>89.783333</longitud>
-                    <latitud>13.900000</latitud>
-                    <altitud>1.394</altitud>
+                    <longitud>-89.785556</longitud>
+                    <latitud>13.891389</latitud>
+                    <altitud>1.693</altitud>
                 </coordenadas> 
                 <distancia unidades="metros">300</distancia>
                 <fotografias>
@@ -70,16 +70,16 @@
 
     <ruta>
         <nombre>Recorrido por la ciudad de San Salvador</nombre>
-        <tiporuta>Monumentos</tiporuta>
+        <tipoRuta>Monumentos</tipoRuta>
         <mtransporte>A pie</mtransporte>
         <duracion>4 horas</duracion>
         <agencia>Sin agencia</agencia>
         <descripcion>Ruta de los lugares históricos destacados de la cultura de San Salvador</descripcion>
-        <padmitidas>Personas con una condición física media</padmitidas>
+        <perAdmitidas>Personas con una condición física media</perAdmitidas>
         <linicio>Hotel Real InterContinental San Salvador</linicio>
         <dinicio>Boulevard de los Heroes Y Avenue Sisimiles</dinicio>
         <coordenadas>
-             <longitud>89,20916667</longitud>
+             <longitud>-89,20916667</longitud>
              <latitud>13,70944444</latitud> 
              <altitud>693</altitud>
         </coordenadas>
@@ -95,7 +95,7 @@
                 <hnombre>Catedral Metropolitana</hnombre>
                 <hdescripcion>Visita por la majestuosa Catedral Metropolitana</hdescripcion>
                 <coordenadas>
-                    <longitud>89.191094</longitud>
+                    <longitud>-89.191094</longitud>
                     <latitud>13.698325</latitud>
                     <altitud>653</altitud>
                 </coordenadas> 
@@ -109,7 +109,7 @@
                 <hnombre>Iglesia El Rosario</hnombre>
                 <hdescripcion>Visite una de las iglesidas más hermosas de El Salvador</hdescripcion>
                 <coordenadas>
-                    <longitud>89.188454</longitud>
+                    <longitud>-89.188454</longitud>
                     <latitud>13.697362</latitud>
                     <altitud>650</altitud>
                 </coordenadas> 
@@ -123,7 +123,7 @@
                 <hnombre>National Theater San Salvador</hnombre>
                 <hdescripcion>Admire el hermoso Palacio Nacional declarado monumento nacional en 1979</hdescripcion>
                 <coordenadas>
-                    <longitud>89.190406</longitud>
+                    <longitud>-89.190406</longitud>
                     <latitud>13.698562</latitud>
                     <altitud>651</altitud>
                 </coordenadas> 
@@ -141,16 +141,16 @@
 
     <ruta>
         <nombre>Día completo Ruta de las Flores que visita cuatro pueblos coloniales y cafetaleros</nombre>
-        <tiporuta>Gastronómica y de monumentos</tiporuta>
+        <tipoRuta>Gastronómica y de monumentos</tipoRuta>
         <mtransporte>A pie</mtransporte>
         <duracion>8 horas</duracion>
         <agencia>Sin agencia</agencia>
         <descripcion>Experimente todos los aspectos más destacados de la Ruta de las Flores en un día</descripcion>
-        <padmitidas>Se pueden llevar </padmitidas>
+        <perAdmitidas>Se pueden llevar </perAdmitidas>
         <linicio>Hotel Mediterraneo Plaza</linicio>
         <dinicio>15 Calle Poniente No 4319 Colonia Escalón</dinicio>
         <coordenadas>
-             <longitud>89.238270</longitud>
+             <longitud>-89.238270</longitud>
              <latitud>13.710488</latitud> 
              <altitud>818</altitud>
         </coordenadas>
@@ -165,7 +165,7 @@
                 <hnombre>Mercado Municipal</hnombre>
                 <hdescripcion>El mejor mercado de productos frescos de la zona</hdescripcion>
                 <coordenadas>
-                    <longitud>89.738066</longitud>
+                    <longitud>-89.738066</longitud>
                     <latitud>13.780545</latitud>
                     <altitud>554</altitud>
                 </coordenadas> 
@@ -179,7 +179,7 @@
                 <hnombre>Concepcion de Ataco</hnombre>
                 <hdescripcion>Mejor festival gastronómico los fines de semana</hdescripcion>
                 <coordenadas>
-                    <longitud>89.849695</longitud>
+                    <longitud>-89.849695</longitud>
                     <latitud>13.868383</latitud>
                     <altitud>1.252</altitud>
                 </coordenadas> 
@@ -193,7 +193,7 @@
                 <hnombre>Juayua</hnombre>
                 <hdescripcion>Mejor ciudad colonial</hdescripcion>
                 <coordenadas>
-                    <longitud>89.744812</longitud>
+                    <longitud>-89.744812</longitud>
                     <latitud>13.843192</latitud>
                     <altitud>1.036</altitud>
                 </coordenadas> 
