@@ -11,7 +11,11 @@
         <padmitidas>Personas con buena forma física</padmitidas>
         <linicio>Cerro Grande de Apaneca</linicio>
         <dinicio>Cerro Grande de Apaneca</dinicio>
-        <coordenadas longitud="-89.7986111" latitud="13.8413889" altitud="1.831"></coordenadas>
+        <coordenadas>
+             <longitud>89.798611</longitud>
+             <latitud>13.828547</latitud> 
+             <altitud>1.826</altitud>
+        </coordenadas>
         <bibliografia>
             <referencia>Referencia 1: https://es.wikiloc.com/rutas-senderismo/travesia-de-apaneca-cerro-grande-de-apaneca-laguna-de-las-ninfas-y-laguna-verde-113755632</referencia>
             <referencia>Referencia 2: https://m.facebook.com/FSME.SV/posts/6117128581637022/?locale=ms_MY</referencia>
@@ -20,34 +24,183 @@
         <recomendacion>7</recomendacion>
         <hitos>
             <hito>
-                <hnombre>Portón de acceso</hnombre>
+                <hnombre>Cerro Grande de Apaneca</hnombre>
                 <hdescripcion>Se ha llegado al punto de acceso (Portón de acceso)</hdescripcion>
-                <hcoordenadas longitud="-89.7986111" latitud="13.8413889" altitud="1.840"></hcoordenadas>
-                <distancia>0</distancia>
-                <galeria-fotografias>
-                    <fotografia>Apaneca1</fotografia>
-                    <fotografia>Apaneca2</fotografia>
-                </galeria-fotografias>
+                <coordenadas>
+                    <longitud>89.798611</longitud>
+                    <latitud>13.828547</latitud> 
+                    <altitud>1.826</altitud>
+                </coordenadas> 
+                <distancia unidades="metros"></distancia>
+                <fotografias>
+                    <fotografia>apaneca1.jpg</fotografia>
+                    <fotografia>apaneca2.jpg</fotografia>
+                </fotografias>
             </hito>
 
             <hito>
-                <hnombre>Vista a Apaneca desde ascenso a Cerro Grande de Apaneca</hnombre>
+                <hnombre>Laguna de las Ninfas</hnombre>
                 <hdescripcion>Se ha llegado a ver Apaeca desde el Cerro Grande de Apaneca</hdescripcion>
-                <hcoordenadas longitud="-89.7986111" latitud="13.8413889" altitud="1.831"></hcoordenadas>
-                <distancia>50</distancia>
-                <galeria-fotografias>
-                    <fotografia>Apaneca3</fotografia>
-                </galeria-fotografias>
+                <coordenadas>
+                    <longitud>89.796667</longitud>
+                    <latitud>3.900000</latitud>
+                    <altitud>1.696</altitud>
+                </coordenadas> 
+                <distancia unidades="metros">394</distancia>
+                <fotografias>
+                    <fotografia>apaneca3.jpg</fotografia>
+                </fotografias>
             </hito>
 
             <hito>
-                <hnombre>Llegada a Laguna de las Ninfas</hnombre>
+                <hnombre>Laguna Verde</hnombre>
                 <hdescripcion>Se ha llegado a la laguna de las Ninfas</hdescripcion>
-                <hcoordenadas longitud="-89.7986111" latitud="13.8413889" altitud="1.831"></hcoordenadas>
-                <distancia>100</distancia>
-                <galeria-fotografias>
-                    <fotografia>Apaneca4</fotografia>
-                </galeria-fotografias>
+                <coordenadas>
+                    <longitud>89.783333</longitud>
+                    <latitud>13.900000</latitud>
+                    <altitud>1.394</altitud>
+                </coordenadas> 
+                <distancia unidades="metros">300</distancia>
+                <fotografias>
+                    <fotografia>apaneca4.jpg</fotografia>
+                </fotografias>
+            </hito>
+        </hitos>
+    </ruta>
+
+    <ruta>
+        <nombre>Recorrido por la ciudad de San Salvador</nombre>
+        <tiporuta>Monumentos</tiporuta>
+        <mtransporte>A pie</mtransporte>
+        <duracion>4 horas</duracion>
+        <agencia>Sin agencia</agencia>
+        <descripcion>Ruta de los lugares históricos destacados de la cultura de San Salvador</descripcion>
+        <padmitidas>Personas con una condición física media</padmitidas>
+        <linicio>Hotel Real InterContinental San Salvador</linicio>
+        <dinicio>Boulevard de los Heroes Y Avenue Sisimiles</dinicio>
+        <coordenadas>
+             <longitud>89,20916667</longitud>
+             <latitud>13,70944444</latitud> 
+             <altitud>693</altitud>
+        </coordenadas>
+        <bibliografia>
+            <referencia>Referencia 1: https://www.viator.com/es-ES/tours/San-Salvador/San-Salvador-4hrs-City-Tour-Shared/d5585-6699P36</referencia>
+            <referencia>Referencia 2: https://es.wikipedia.org/wiki/Catedral_Metropolitana_de_San_Salvador</referencia>
+            <referencia>Referencia 3: https://elsalvador.travel/destination/el-rosario-church//referencia</referencia>
+            <referencia>Referencia 4: https://www.cultura.gob.sv/teatro-nacional-de-san-salvador/</referencia>
+        </bibliografia>
+        <recomendacion>9</recomendacion>
+        <hitos>
+            <hito>
+                <hnombre>Catedral Metropolitana</hnombre>
+                <hdescripcion>Visita por la majestuosa Catedral Metropolitana</hdescripcion>
+                <coordenadas>
+                    <longitud>89.191094</longitud>
+                    <latitud>13.698325</latitud>
+                    <altitud>653</altitud>
+                </coordenadas> 
+                <distancia unidades="minutos">20</distancia>
+                <fotografias>
+                    <fotografia>monumento1.jpg</fotografia>
+                </fotografias>
+            </hito>
+
+            <hito>
+                <hnombre>Iglesia El Rosario</hnombre>
+                <hdescripcion>Visite una de las iglesidas más hermosas de El Salvador</hdescripcion>
+                <coordenadas>
+                    <longitud>89.188454</longitud>
+                    <latitud>13.697362</latitud>
+                    <altitud>650</altitud>
+                </coordenadas> 
+                <distancia unidades="minutos">20</distancia>
+                <fotografias>
+                    <fotografia>monumento2.jpg</fotografia>
+                </fotografias>
+            </hito>
+
+            <hito>
+                <hnombre>National Theater San Salvador</hnombre>
+                <hdescripcion>Admire el hermoso Palacio Nacional declarado monumento nacional en 1979</hdescripcion>
+                <coordenadas>
+                    <longitud>89.190406</longitud>
+                    <latitud>13.698562</latitud>
+                    <altitud>651</altitud>
+                </coordenadas> 
+                <distancia unidades="minutos">25</distancia>
+                <fotografias>
+                    <fotografia>monumento3.jpg</fotografia>
+                    <fotografia>monumento4.jpg</fotografia>
+                </fotografias>
+                <videos>
+                    <video>https://www.youtube.com/watch?v=zb3i2la24V0</video>
+                </videos>
+            </hito>
+        </hitos>
+    </ruta>
+
+    <ruta>
+        <nombre>Día completo Ruta de las Flores que visita cuatro pueblos coloniales y cafetaleros</nombre>
+        <tiporuta>Gastronómica y de monumentos</tiporuta>
+        <mtransporte>A pie</mtransporte>
+        <duracion>8 horas</duracion>
+        <agencia>Sin agencia</agencia>
+        <descripcion>Experimente todos los aspectos más destacados de la Ruta de las Flores en un día</descripcion>
+        <padmitidas>Se pueden llevar </padmitidas>
+        <linicio>Hotel Mediterraneo Plaza</linicio>
+        <dinicio>15 Calle Poniente No 4319 Colonia Escalón</dinicio>
+        <coordenadas>
+             <longitud>89.238270</longitud>
+             <latitud>13.710488</latitud> 
+             <altitud>818</altitud>
+        </coordenadas>
+        <bibliografia>
+            <referencia>Referencia 1: https://www.tripadvisor.es/AttractionProductReview-g294476-d17799947-Full_Day_Ruta_de_Las_Flores_visit_four_Colonial_Towns_and_Coffee_Farm-San_Salvador.html</referencia>
+            <referencia>Referencia 2: https://www.visitcentroamerica.com/visitar/juayua/</referencia>
+            <referencia>Referencia 3: https://es.wikipedia.org/wiki/Juay%C3%BAa</referencia>
+        </bibliografia>
+        <recomendacion>8</recomendacion>
+        <hitos>
+            <hito>
+                <hnombre>Mercado Municipal</hnombre>
+                <hdescripcion>El mejor mercado de productos frescos de la zona</hdescripcion>
+                <coordenadas>
+                    <longitud>89.738066</longitud>
+                    <latitud>13.780545</latitud>
+                    <altitud>554</altitud>
+                </coordenadas> 
+                <distancia unidades="horas">1</distancia>
+                <fotografias>
+                    <fotografia>gastro1.jpg</fotografia>
+                </fotografias>
+            </hito>
+
+            <hito>
+                <hnombre>Concepcion de Ataco</hnombre>
+                <hdescripcion>Mejor festival gastronómico los fines de semana</hdescripcion>
+                <coordenadas>
+                    <longitud>89.849695</longitud>
+                    <latitud>13.868383</latitud>
+                    <altitud>1.252</altitud>
+                </coordenadas> 
+                <distancia unidades="horas">1</distancia>
+                <fotografias>
+                    <fotografia>gastro2.jpg</fotografia>
+                </fotografias>
+            </hito>
+
+            <hito>
+                <hnombre>Juayua</hnombre>
+                <hdescripcion>Mejor ciudad colonial</hdescripcion>
+                <coordenadas>
+                    <longitud>89.744812</longitud>
+                    <latitud>13.843192</latitud>
+                    <altitud>1.036</altitud>
+                </coordenadas> 
+                <distancia unidades="horas">1</distancia>
+                <fotografias>
+                    <fotografia>gastro3.jpg</fotografia>
+                </fotografias>
             </hito>
         </hitos>
     </ruta>

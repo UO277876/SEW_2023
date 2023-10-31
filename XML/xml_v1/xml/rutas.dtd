@@ -11,25 +11,21 @@
 <!ELEMENT padmitidas (#PCDATA)>
 <!ELEMENT linicio (#PCDATA)>
 <!ELEMENT dinicio (#PCDATA)>
-<!ELEMENT coordenadas (#PCDATA)>
-<!ATTLIST coordenadas
-    longitud CDATA #REQUIRED
-    latitud CDATA #REQUIRED
-    altitud CDATA #REQUIRED>
+<!ELEMENT coordenadas (longitud, latitud, altitud)>
+<!ELEMENT longitud (#PCDATA)>
+<!ELEMENT latitud (#PCDATA)>
+<!ELEMENT altitud (#PCDATA)>
 <!ELEMENT bibliografia (referencia,referencia,referencia+)>
 <!ELEMENT referencia (#PCDATA)>
 <!ELEMENT recomendacion (#PCDATA)>
 <!ELEMENT hitos (hito,hito,hito+)>
-<!ELEMENT hito (hnombre,hdescripcion,hcoordenadas,distancia,galeria-fotografias,galeria-videos?)>
+<!ELEMENT hito (hnombre,hdescripcion,coordenadas,distancia,fotografias,videos?)>
 <!ELEMENT hnombre (#PCDATA)>
 <!ELEMENT hdescripcion (#PCDATA)>
-<!ELEMENT hcoordenadas (#PCDATA)>
-<!ATTLIST hcoordenadas
-    longitud CDATA #REQUIRED
-    latitud CDATA #REQUIRED
-    altitud CDATA #REQUIRED>
 <!ELEMENT distancia (#PCDATA)>
-<!ELEMENT galeria-fotografias (fotografia,fotografia?,fotografia?,fotografia?,fotografia?)>
+<!ATTLIST distancia 
+    unidades CDATA #REQUIRED>
+<!ELEMENT fotografias (fotografia,fotografia?,fotografia?,fotografia?,fotografia?)>
 <!ELEMENT fotografia (#PCDATA)>
-<!ELEMENT galeria-videos (video?,video?,video?)>
+<!ELEMENT videos (video?,video?,video?)>
 <!ELEMENT video (#PCDATA)>
