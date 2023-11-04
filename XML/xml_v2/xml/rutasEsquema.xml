@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE rutas SYSTEM "rutas.dtd">
-<rutas>
+<rutas xsi:schemaLocation="http://www.uniovi.es rutas.xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.uniovi.es">
+
     <ruta>
         <nombre>Travesía de Apaneca</nombre>
         <tipoRuta>Senderismo</tipoRuta>
         <mtransporte>A pie</mtransporte>
-        <duracion>8 horas y 24 minutos</duracion>
+        <duracion>PT8H24M</duracion>
         <agencia>Federación Salvadoreña de Montañismo y Escalada</agencia>
         <descripcion>Va por Cerro Grande de Apaneca, Laguna de las Ninfas y Laguna verde</descripcion>
         <perAdmitidas>Personas con buena forma física</perAdmitidas>
@@ -72,7 +74,7 @@
         <nombre>Recorrido por la ciudad de San Salvador</nombre>
         <tipoRuta>Monumentos</tipoRuta>
         <mtransporte>A pie</mtransporte>
-        <duracion>4 horas</duracion>
+        <duracion>PT4H</duracion>
         <agencia>Sin agencia</agencia>
         <descripcion>Ruta de los lugares históricos destacados de la cultura de San Salvador</descripcion>
         <perAdmitidas>Personas con una condición física media</perAdmitidas>
@@ -143,7 +145,7 @@
         <nombre>Día completo Ruta de las Flores que visita cuatro pueblos coloniales y cafetaleros</nombre>
         <tipoRuta>Gastronómica y de monumentos</tipoRuta>
         <mtransporte>A pie</mtransporte>
-        <duracion>8 horas</duracion>
+        <duracion>PT8H</duracion>
         <agencia>Sin agencia</agencia>
         <descripcion>Experimente todos los aspectos más destacados de la Ruta de las Flores en un día</descripcion>
         <perAdmitidas>Se pueden llevar </perAdmitidas>

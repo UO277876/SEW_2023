@@ -1,2 +1,3 @@
 - En CSS el layout, si hace falta haacer las mediaQuerys
 - En el xsd y dtd el atributo de unidades si es obligatorio
+- El tipo de las coordenadas para el .xsd
