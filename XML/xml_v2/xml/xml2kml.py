@@ -1,43 +1,5 @@
 import xml.etree.ElementTree as ET
 
-def process_xml(xml_node: ET.Element):
-    # Prologo kml
-    kml = '<?xml version="1.0" encoding="UTF-8"?>\n'
-    kml += '<kml xmlns="http://www.opengis.net/kml/2.2">\n'
-    kml += "<Document>\n"
-
-    # Escritura de coordenadas
-    kml += "<Placemark>\n"
-    kml += "<name>\n"
-    kml += xml_node.find("nombre").text.strip('\n')
-    kml += "</name>\n"
-
-    kml += "<Point>\n"
-    kml += "<coordinates>\n"
-    kml += xml_node.find("longitud") + "," + xml_node.find("altitud") + "," + xml_node.find("latitud")
-    kml += "</coordinates>\n"
-    kml += "</Point>\n"
-    kml += "</Placemark>\n"
-
-    for hito in xml_node.findall('{http://www.uniovi.es}hito'):
-        kml += "<Placemark>\n"
-        kml += "<name>\n"
-        kml += hito.find("hnombre").text.strip('\n')
-        kml += "</name>\n"
-
-        kml += "<Point>\n"
-        kml += "<coordinates>\n"
-        kml += hito.find("longitud") + "," + hito.find("altitud") + "," + hito.find("latitud")
-        kml += "</coordinates>\n"
-        kml += "</Point>\n"
-        kml += "</Placemark>\n"
-
-    # Epilogo
-    kml += "</Document>\n"
-    kml += "</kml>"
-
-    return kml
-
 def main():
     nombreXML = input('Introduzca un archivo XML = ')
 
@@ -55,7 +17,7 @@ def main():
 
     # Escribir los 3 kml
     index = 1
-    for ruta in root.findall('.//'):
+    for ruta in root.findall('.//{http://www.uniovi.es}ruta'):
         # Prologo kml
         kml = '<?xml version="1.0" encoding="UTF-8"?>\n'
         kml += '<kml xmlns="http://www.opengis.net/kml/2.2">\n'
@@ -63,26 +25,30 @@ def main():
 
         # Escritura de coordenadas
         kml += "<Placemark>\n"
-        kml += "<name>\n"
-        kml += ruta.find("nombre").text.strip('\n')
+        kml += "<name>"
+        kml += ruta.find("{http://www.uniovi.es}nombre").text
         kml += "</name>\n"
 
         kml += "<Point>\n"
-        kml += "<coordinates>\n"
-        kml += ruta.find("longitud") + "," + ruta.find("altitud") + "," + ruta.find("latitud")
+        kml += "<coordinates>"
+        kml += ruta.find("{http://www.uniovi.es}coordenadas/{http://www.uniovi.es}longitud").text.strip('\n')
+        kml += ","
+        kml += ruta.find("{http://www.uniovi.es}coordenadas/{http://www.uniovi.es}latitud").text
         kml += "</coordinates>\n"
         kml += "</Point>\n"
         kml += "</Placemark>\n"
 
-        for hito in ruta.findall('{http://www.uniovi.es}hito'):
+        for hito in ruta.findall('{http://www.uniovi.es}hitos/{http://www.uniovi.es}hito'):
             kml += "<Placemark>\n"
-            kml += "<name>\n"
-            kml += hito.find("hnombre").text.strip('\n')
+            kml += "<name>"
+            kml += hito.find("{http://www.uniovi.es}hnombre").text
             kml += "</name>\n"
 
             kml += "<Point>\n"
-            kml += "<coordinates>\n"
-            kml += hito.find("longitud") + "," + hito.find("altitud") + "," + hito.find("latitud")
+            kml += "<coordinates>"
+            kml += ruta.find("{http://www.uniovi.es}coordenadas/{http://www.uniovi.es}longitud").text.strip('\n')
+            kml += ","
+            kml += ruta.find("{http://www.uniovi.es}coordenadas/{http://www.uniovi.es}latitud").text
             kml += "</coordinates>\n"
             kml += "</Point>\n"
             kml += "</Placemark>\n"
@@ -91,12 +57,12 @@ def main():
         kml += "</Document>\n"
         kml += "</kml>"
 
-        with open("ruta" + index, 'w', encoding='UTF-8') as file:
+        with open("ruta" + str(index) + ".kml", 'w', encoding='UTF-8') as file:
             file.write(kml)
-            print("escrito kml" + index)
+            print("escrito kml " + str(index))
         index += 1
 
-    print("done")
+    print("Done")
 
 if __name__ == "__main__":
     main()

@@ -87,11 +87,11 @@ ol > li > ul {
     font-family: "Times New Roman", Georgia, Serif;
 }
 
-/* Hereda el color del fondo de su elemento padre, body */
 /* Tercer elemento de la lista no ordenada */
-/* Especifidad: 012 */
-ol > li:nth-child(4n-1){
-    color: #700f03;
+/* Hereda el color del fondo de su elemento padre, body */
+/* Especifidad: 013 */
+p + ul > li:nth-child(4n-1){
+    color: #001aff;
 }
 
 /* Hereda el color del fondo de su elemento padre, body */

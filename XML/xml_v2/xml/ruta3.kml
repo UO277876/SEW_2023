@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+<Placemark>
+<name>Día completo Ruta de las Flores que visita cuatro pueblos coloniales y cafetaleros</name>
+<Point>
+<coordinates>-89.238270,13.710488</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Mercado Municipal</name>
+<Point>
+<coordinates>-89.238270,13.710488</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Concepcion de Ataco</name>
+<Point>
+<coordinates>-89.238270,13.710488</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Juayua</name>
+<Point>
+<coordinates>-89.238270,13.710488</coordinates>
+</Point>
+</Placemark>
+</Document>
+</kml>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+<Placemark>
+<name>Recorrido por la ciudad de San Salvador</name>
+<Point>
+<coordinates>-89.20916667,13.70944444</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Catedral Metropolitana</name>
+<Point>
+<coordinates>-89.20916667,13.70944444</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Iglesia El Rosario</name>
+<Point>
+<coordinates>-89.20916667,13.70944444</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>National Theater San Salvador</name>
+<Point>
+<coordinates>-89.20916667,13.70944444</coordinates>
+</Point>
+</Placemark>
+</Document>
+</kml>

@@ -12,12 +12,15 @@ header {
 nav {
     display: flex;
     justify-content: space-around;
-    margin: 1.0em;
     flex-wrap: wrap;
+    align-content: center;
+    row-gap: 3em;
+    flex-basis: 3em;
 }
 
 /*Especificidad: 002*/
-nav > a {
-    margin-left: 1.0em;
-    margin-top: 1.0em;
+@media screen and (max-width: 600px) {
+    nav {
+        flex-direction: column;
+    }
 }

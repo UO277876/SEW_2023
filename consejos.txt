@@ -1,0 +1,3 @@
+- Factor de escala para el svg para la x y la y (no tienen porque ser iguales)
+- La x se acumula
+- Para la y hay que poner un valor mínimoy  maximo a la altitud
