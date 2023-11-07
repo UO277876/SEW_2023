@@ -7,7 +7,7 @@
         <nombre>Travesía de Apaneca</nombre>
         <tipoRuta>Senderismo</tipoRuta>
         <mtransporte>A pie</mtransporte>
-        <duracion>PT8H24M</duracion>
+        <duracion>PT10H24M</duracion>
         <agencia>Federación Salvadoreña de Montañismo y Escalada</agencia>
         <descripcion>Va por Cerro Grande de Apaneca, Laguna de las Ninfas y Laguna verde</descripcion>
         <perAdmitidas>Personas con buena forma física</perAdmitidas>
@@ -33,7 +33,7 @@
                     <latitud>13.841389</latitud> 
                     <altitud>1.826</altitud>
                 </coordenadas> 
-                <distancia unidades="metros"></distancia>
+                <distancia unidades="metros">1.6</distancia>
                 <fotografias>
                     <fotografia>apaneca1.jpg</fotografia>
                     <fotografia>apaneca2.jpg</fotografia>
@@ -48,7 +48,7 @@
                     <latitud>13.878889</latitud>
                     <altitud>1.696</altitud>
                 </coordenadas> 
-                <distancia unidades="metros">394</distancia>
+                <distancia unidades="metros">9.8</distancia>
                 <fotografias>
                     <fotografia>apaneca3.jpg</fotografia>
                 </fotografias>
@@ -62,7 +62,7 @@
                     <latitud>13.891389</latitud>
                     <altitud>1.693</altitud>
                 </coordenadas> 
-                <distancia unidades="metros">300</distancia>
+                <distancia unidades="metros">3.3</distancia>
                 <fotografias>
                     <fotografia>apaneca4.jpg</fotografia>
                 </fotografias>
@@ -101,7 +101,7 @@
                     <latitud>13.698325</latitud>
                     <altitud>653</altitud>
                 </coordenadas> 
-                <distancia unidades="minutos">20</distancia>
+                <distancia unidades="metros">3100</distancia>
                 <fotografias>
                     <fotografia>monumento1.jpg</fotografia>
                 </fotografias>
@@ -115,7 +115,7 @@
                     <latitud>13.697362</latitud>
                     <altitud>650</altitud>
                 </coordenadas> 
-                <distancia unidades="minutos">20</distancia>
+                <distancia unidades="metros">400</distancia>
                 <fotografias>
                     <fotografia>monumento2.jpg</fotografia>
                 </fotografias>
@@ -129,7 +129,7 @@
                     <latitud>13.698562</latitud>
                     <altitud>651</altitud>
                 </coordenadas> 
-                <distancia unidades="minutos">25</distancia>
+                <distancia unidades="metros">400</distancia>
                 <fotografias>
                     <fotografia>monumento3.jpg</fotografia>
                     <fotografia>monumento4.jpg</fotografia>
@@ -171,7 +171,7 @@
                     <latitud>13.780545</latitud>
                     <altitud>554</altitud>
                 </coordenadas> 
-                <distancia unidades="horas">1</distancia>
+                <distancia unidades="kilometros">84.4</distancia>
                 <fotografias>
                     <fotografia>gastro1.jpg</fotografia>
                 </fotografias>
@@ -185,7 +185,7 @@
                     <latitud>13.868383</latitud>
                     <altitud>1.252</altitud>
                 </coordenadas> 
-                <distancia unidades="horas">1</distancia>
+                <distancia unidades="kilometros">24.6</distancia>
                 <fotografias>
                     <fotografia>gastro2.jpg</fotografia>
                 </fotografias>
@@ -199,7 +199,7 @@
                     <latitud>13.843192</latitud>
                     <altitud>1.036</altitud>
                 </coordenadas> 
-                <distancia unidades="horas">1</distancia>
+                <distancia unidades="kilometros">18.4</distancia>
                 <fotografias>
                     <fotografia>gastro3.jpg</fotografia>
                 </fotografias>

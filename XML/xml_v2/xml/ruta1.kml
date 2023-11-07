@@ -3,27 +3,20 @@
 <Document>
 <Placemark>
 <name>Travesía de Apaneca</name>
-<Point>
-<coordinates>-89.799348,13.848899</coordinates>
-</Point>
-</Placemark>
-<Placemark>
-<name>Cerro Grande de Apaneca</name>
-<Point>
-<coordinates>-89.799348,13.848899</coordinates>
-</Point>
-</Placemark>
-<Placemark>
-<name>Laguna de las Ninfas</name>
-<Point>
-<coordinates>-89.799348,13.848899</coordinates>
-</Point>
-</Placemark>
-<Placemark>
-<name>Laguna Verde</name>
-<Point>
-<coordinates>-89.799348,13.848899</coordinates>
-</Point>
+<LineString>
+<coordinates>
+-89.799348,13.848899,1.506
+-89.798611,13.841389,1.826
+-89.796667,13.878889,1.696
+-89.785556,13.891389,1.693
+</coordinates>
+</LineString>
+<Style> id='lineaAmarilla'>
+<LineStyle>
+<color>#ff2DE0ff</color>
+<width>5</width>
+</LineStyle>
+</Style>
 </Placemark>
 </Document>
 </kml>

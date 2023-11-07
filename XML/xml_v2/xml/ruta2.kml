@@ -3,27 +3,20 @@
 <Document>
 <Placemark>
 <name>Recorrido por la ciudad de San Salvador</name>
-<Point>
-<coordinates>-89.20916667,13.70944444</coordinates>
-</Point>
-</Placemark>
-<Placemark>
-<name>Catedral Metropolitana</name>
-<Point>
-<coordinates>-89.20916667,13.70944444</coordinates>
-</Point>
-</Placemark>
-<Placemark>
-<name>Iglesia El Rosario</name>
-<Point>
-<coordinates>-89.20916667,13.70944444</coordinates>
-</Point>
-</Placemark>
-<Placemark>
-<name>National Theater San Salvador</name>
-<Point>
-<coordinates>-89.20916667,13.70944444</coordinates>
-</Point>
+<LineString>
+<coordinates>
+-89.20916667,13.70944444,693
+-89.191094,13.698325,653
+-89.188454,13.697362,650
+-89.190406,13.698562,651
+</coordinates>
+</LineString>
+<Style> id='lineaAmarilla'>
+<LineStyle>
+<color>#ff2DE0ff</color>
+<width>5</width>
+</LineStyle>
+</Style>
 </Placemark>
 </Document>
 </kml>

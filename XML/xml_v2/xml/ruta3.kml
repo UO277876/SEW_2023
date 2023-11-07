@@ -3,27 +3,20 @@
 <Document>
 <Placemark>
 <name>Día completo Ruta de las Flores que visita cuatro pueblos coloniales y cafetaleros</name>
-<Point>
-<coordinates>-89.238270,13.710488</coordinates>
-</Point>
-</Placemark>
-<Placemark>
-<name>Mercado Municipal</name>
-<Point>
-<coordinates>-89.238270,13.710488</coordinates>
-</Point>
-</Placemark>
-<Placemark>
-<name>Concepcion de Ataco</name>
-<Point>
-<coordinates>-89.238270,13.710488</coordinates>
-</Point>
-</Placemark>
-<Placemark>
-<name>Juayua</name>
-<Point>
-<coordinates>-89.238270,13.710488</coordinates>
-</Point>
+<LineString>
+<coordinates>
+-89.238270,13.710488,818
+-89.738066,13.780545,554
+-89.849695,13.868383,1.252
+-89.744812,13.843192,1.036
+</coordinates>
+</LineString>
+<Style> id='lineaAmarilla'>
+<LineStyle>
+<color>#ff2DE0ff</color>
+<width>5</width>
+</LineStyle>
+</Style>
 </Placemark>
 </Document>
 </kml>
