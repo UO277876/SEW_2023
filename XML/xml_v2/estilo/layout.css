@@ -11,11 +11,10 @@ header {
 /*Especificidad: 001*/
 nav {
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
-    align-content: center;
     flex-basis: 3em;
     gap: 2em;
+    padding: 1em;
 }
 
 /*Especificidad: 002*/

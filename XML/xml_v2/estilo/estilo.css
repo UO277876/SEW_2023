@@ -21,7 +21,6 @@ header  {
     color: #ebebe1; 
 }
 
-/* Hereda el color de las letras y de fondo de su elemento padre, header */
 /*Especificidad: 001*/
 h1 {
     font-family: "Times New Roman", Georgia, Serif;
@@ -56,6 +55,7 @@ nav {
 /* Especifidad: 002 */
 nav > a {
     color: #ebebe1;
+    font-size: 1.2em; 
 }
 
 /* Hereda el color del fondo de su elemento padre, body */

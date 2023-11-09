@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="2.0">
+<polyline points=
+"0.0,1.506
+1.6,1.826
+11.4,1.696
+14.7,1.693
+"
+style="fill:white;stroke:red;stroke-width:4" />
+<text x="0.0" y="1.506" style="writing-mode: tb; glyph-orientation-vertical: 0;">
+Travesía de Apaneca
+</text>
+<text x="1.6" y="1.826" style="writing-mode: tb; glyph-orientation-vertical: 0;">
+Cerro Grande de Apaneca
+</text>
+<text x="11.4" y="1.696" style="writing-mode: tb; glyph-orientation-vertical: 0;">
+Laguna de las Ninfas
+</text>
+<text x="14.7" y="1.693" style="writing-mode: tb; glyph-orientation-vertical: 0;">
+Laguna Verde
+</text>
+</svg>
