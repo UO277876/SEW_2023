@@ -1,14 +1,5 @@
 import xml.etree.ElementTree as ET
 
-def obtener_coordenadas(kml: str, xml_node: ET.Element):
-    kml += xml_node.find("{http://www.uniovi.es}coordenadas/{http://www.uniovi.es}longitud").text.strip('\n')
-    kml += ","
-    kml += xml_node.find("{http://www.uniovi.es}coordenadas/{http://www.uniovi.es}latitud").text.strip('\n')
-    kml += ","
-    kml += xml_node.find("{http://www.uniovi.es}coordenadas/{http://www.uniovi.es}altitud").text.strip('\n')
-    kml += "\n"
-    return kml
-
 def main():
     nombreXML = input('Introduzca un archivo XML = ')
 
@@ -27,45 +18,18 @@ def main():
     # Para escribir el nombre de archivo de los kml uso index
     index = 1
     for ruta in root.findall('.//{http://www.uniovi.es}ruta'):
-        # Prologo kml
-        kml = '<?xml version="1.0" encoding="UTF-8"?>\n'
-        kml += '<kml xmlns="http://www.opengis.net/kml/2.2">\n'
-        kml += "<Document>\n"
+        # Prologo svg
+        svg = '<?xml version="1.0" encoding="utf-8"?>\n'
+        svg += '<svg width="4000" height="auto" style="overflow:visible " version="1.1" xmlns="http://www.w3.org/2000/svg">\n'
 
-        # Escritura de coordenadas
-        kml += "<Placemark>\n"
-        kml += "<name>"
-        kml += ruta.find("{http://www.uniovi.es}nombre").text
-        kml += "</name>\n"
-
-        # Para poner la línea que une los puntos de los hitos
-        kml += "<LineString>\n"
-        kml += "<coordinates>\n"
-        kml = obtener_coordenadas(kml,ruta)
-
-        for hito in ruta.findall('{http://www.uniovi.es}hitos/{http://www.uniovi.es}hito'):
-            kml = obtener_coordenadas(kml,hito)
-
-        kml += "</coordinates>\n"
-        kml += "</LineString>\n"
-
-        # Para estilizar la línea de las rutas
-        kml += "<Style> id='lineaAmarilla'>\n"
-        kml += "<LineStyle>\n"
-        kml += "<color>#ff2DE0ff</color>\n"
-        kml += "<width>5</width>\n"
-        kml += "</LineStyle>\n"
-        kml += "</Style>\n"
-
-        kml += "</Placemark>\n"
+       
 
         # Epilogo
-        kml += "</Document>\n"
-        kml += "</kml>"
+        svg += "</svg>"
 
         # Creacion del archivo de salida
-        with open("ruta" + str(index) + ".kml", 'w', encoding='UTF-8') as file:
-            file.write(kml)
+        with open("perfil" + str(index) + ".svg", 'w', encoding='UTF-8') as file:
+            file.write(svg)
         index += 1
 
     print("Done")

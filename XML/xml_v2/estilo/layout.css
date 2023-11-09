@@ -14,8 +14,8 @@ nav {
     justify-content: space-around;
     flex-wrap: wrap;
     align-content: center;
-    row-gap: 3em;
     flex-basis: 3em;
+    gap: 2em;
 }
 
 /*Especificidad: 002*/
