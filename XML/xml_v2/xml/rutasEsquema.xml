@@ -33,7 +33,7 @@
                     <latitud>13.841389</latitud> 
                     <altitud>1.826</altitud>
                 </coordenadas> 
-                <distancia unidades="metros">1.6</distancia>
+                <distancia unidades="metros">1600</distancia>
                 <fotografias>
                     <fotografia>apaneca1.jpg</fotografia>
                     <fotografia>apaneca2.jpg</fotografia>
@@ -48,7 +48,7 @@
                     <latitud>13.878889</latitud>
                     <altitud>1.696</altitud>
                 </coordenadas> 
-                <distancia unidades="metros">9.8</distancia>
+                <distancia unidades="metros">9800</distancia>
                 <fotografias>
                     <fotografia>apaneca3.jpg</fotografia>
                 </fotografias>
@@ -62,7 +62,7 @@
                     <latitud>13.891389</latitud>
                     <altitud>1.693</altitud>
                 </coordenadas> 
-                <distancia unidades="metros">3.3</distancia>
+                <distancia unidades="metros">3300</distancia>
                 <fotografias>
                     <fotografia>apaneca4.jpg</fotografia>
                 </fotografias>
@@ -171,7 +171,7 @@
                     <latitud>13.780545</latitud>
                     <altitud>554</altitud>
                 </coordenadas> 
-                <distancia unidades="kilometros">84.4</distancia>
+                <distancia unidades="metros">84400</distancia>
                 <fotografias>
                     <fotografia>gastro1.jpg</fotografia>
                 </fotografias>
@@ -185,7 +185,7 @@
                     <latitud>13.868383</latitud>
                     <altitud>1.252</altitud>
                 </coordenadas> 
-                <distancia unidades="kilometros">24.6</distancia>
+                <distancia unidades="metros">24600</distancia>
                 <fotografias>
                     <fotografia>gastro2.jpg</fotografia>
                 </fotografias>
@@ -199,7 +199,7 @@
                     <latitud>13.843192</latitud>
                     <altitud>1.036</altitud>
                 </coordenadas> 
-                <distancia unidades="kilometros">18.4</distancia>
+                <distancia unidades="metros">18400</distancia>
                 <fotografias>
                     <fotografia>gastro3.jpg</fotografia>
                 </fotografias>

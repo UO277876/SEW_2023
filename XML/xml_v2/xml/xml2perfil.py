@@ -1,5 +1,15 @@
 import xml.etree.ElementTree as ET
 
+def comprobacion_altura(altura: float):
+    if(altura < 2):
+        return altura * 1000
+    return altura
+
+def comprobacion_distancia(distancia: float):
+    if(distancia > 1000):
+        return distancia/1000
+    return distancia
+
 def main():
     nombreXML = input('Introduzca un archivo XML = ')
 
@@ -20,7 +30,7 @@ def main():
 
     for ruta in root.findall('.//{http://www.uniovi.es}ruta'):
         distancia = 0.0
-        altura = 0
+        altura = 0.0
         coordx = []
         coordy = []
         nombres = []
@@ -31,19 +41,19 @@ def main():
         svg += '<polyline points=\n'
 
         # (distancia,altura)
-        altura = ruta.find("{http://www.uniovi.es}coordenadas/{http://www.uniovi.es}altitud").text
-        coordx.append(str(distancia))
-        coordy.append(str(altura))
+        altura = comprobacion_altura(float(ruta.find("{http://www.uniovi.es}coordenadas/{http://www.uniovi.es}altitud").text))
+        coordx.append(str(comprobacion_distancia(distancia)))
+        coordy.append(str(altura/2))
         nombres.append(ruta.find("{http://www.uniovi.es}nombre").text)
-        svg += '"' + str(distancia) + "," + str(altura) + '\n'
+        svg += '"' + str(comprobacion_distancia(distancia)) + "," + str(altura/2) + '\n'
 
         for hito in ruta.findall('{http://www.uniovi.es}hitos/{http://www.uniovi.es}hito'):
             distancia += float(hito.find("{http://www.uniovi.es}distancia").text)
-            altura = hito.find("{http://www.uniovi.es}coordenadas/{http://www.uniovi.es}altitud").text
-            coordx.append(str(distancia))
-            coordy.append(str(altura))
+            altura = comprobacion_altura(float(hito.find("{http://www.uniovi.es}coordenadas/{http://www.uniovi.es}altitud").text))
+            coordx.append(str(comprobacion_distancia(distancia)))
+            coordy.append(str(altura/2))
             nombres.append(hito.find("{http://www.uniovi.es}hnombre").text)
-            svg += str(distancia) + "," + str(altura) + '\n'
+            svg += str(comprobacion_distancia(distancia)) + "," + str(altura/2) + '\n'
 
         svg += '"\n'
         # Fin coordenadas
@@ -52,7 +62,7 @@ def main():
         # Texts
         for i in range(len(coordx)):
             svg += '<text x="' + coordx[i] + '" y="' + coordy[i] + '" style="writing-mode: tb; glyph-orientation-vertical: 0;">\n'
-            svg += nombres[i] + "\n"
+            svg += "\t" + nombres[i] + "\n"
             svg += "</text>\n"
 
         # Epilogo svg

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" version="2.0">
 <polyline points=
-"0.0,693
-3100.0,653
-3500.0,650
-3900.0,651
+"0.0,346.5
+3.1,326.5
+3.5,325.0
+3.9,325.5
 "
 style="fill:white;stroke:red;stroke-width:4" />
-<text x="0.0" y="693" style="writing-mode: tb; glyph-orientation-vertical: 0;">
-Recorrido por la ciudad de San Salvador
+<text x="0.0" y="346.5" style="writing-mode: tb; glyph-orientation-horizontal: 0;">
+	Recorrido por la ciudad de San Salvador
 </text>
-<text x="3100.0" y="653" style="writing-mode: tb; glyph-orientation-vertical: 0;">
-Catedral Metropolitana
+<text x="3.1" y="326.5" style="writing-mode: tb; glyph-orientation-horizontal: 0;">
+	Catedral Metropolitana
 </text>
-<text x="3500.0" y="650" style="writing-mode: tb; glyph-orientation-vertical: 0;">
-Iglesia El Rosario
+<text x="3.5" y="325.0" style="writing-mode: tb; glyph-orientation-horizontal: 0;">
+	Iglesia El Rosario
 </text>
-<text x="3900.0" y="651" style="writing-mode: tb; glyph-orientation-vertical: 0;">
-National Theater San Salvador
+<text x="3.9" y="325.5" style="writing-mode: tb; glyph-orientation-horizontal: 0;">
+	National Theater San Salvador
 </text>
 </svg>

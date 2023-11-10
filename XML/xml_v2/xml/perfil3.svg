@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" version="2.0">
 <polyline points=
-"0.0,818
-84.4,554
-109.0,1.252
-127.4,1.036
+"0.0,409.0
+84.4,277.0
+109.0,626.0
+127.4,518.0
 "
 style="fill:white;stroke:red;stroke-width:4" />
-<text x="0.0" y="818" style="writing-mode: tb; glyph-orientation-vertical: 0;">
-Día completo Ruta de las Flores que visita cuatro pueblos coloniales y cafetaleros
+<text x="0.0" y="409.0" style="writing-mode: tb; glyph-orientation-horizontal: 0;">
+	Día completo Ruta de las Flores que visita cuatro pueblos coloniales y cafetaleros
 </text>
-<text x="84.4" y="554" style="writing-mode: tb; glyph-orientation-vertical: 0;">
-Mercado Municipal
+<text x="84.4" y="277.0" style="writing-mode: tb; glyph-orientation-horizontal: 0;">
+	Mercado Municipal
 </text>
-<text x="109.0" y="1.252" style="writing-mode: tb; glyph-orientation-vertical: 0;">
-Concepcion de Ataco
+<text x="109.0" y="626.0" style="writing-mode: tb; glyph-orientation-horizontal: 0;">
+	Concepcion de Ataco
 </text>
-<text x="127.4" y="1.036" style="writing-mode: tb; glyph-orientation-vertical: 0;">
-Juayua
+<text x="127.4" y="518.0" style="writing-mode: tb; glyph-orientation-horizontal: 0;">
+	Juayua
 </text>
 </svg>
