@@ -2,13 +2,13 @@
 <kml xmlns="http://www.opengis.net/kml/2.2">
 <Document>
 <Placemark>
-<name>Recorrido por la ciudad de San Salvador</name>
+<name>Excursión al volcán Santa Ana</name>
 <LineString>
 <coordinates>
--89.20916667,13.70944444,693
--89.191094,13.698325,653
--89.188454,13.697362,650
--89.190406,13.698562,651
+-89.572534,13.809522,1793
+-89.631248,13.833110,1849
+-89.629444,13.850000,1995
+-89.570975,13.859722,1500
 </coordinates>
 </LineString>
 <Style> id='lineaAmarilla'>

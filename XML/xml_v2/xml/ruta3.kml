@@ -2,13 +2,13 @@
 <kml xmlns="http://www.opengis.net/kml/2.2">
 <Document>
 <Placemark>
-<name>Día completo Ruta de las Flores que visita cuatro pueblos coloniales y cafetaleros</name>
+<name>Tour combinado de día completo</name>
 <LineString>
 <coordinates>
--89.238270,13.710488,818
--89.738066,13.780545,554
--89.849695,13.868383,1.252
--89.744812,13.843192,1.036
+-89.588733,13.976494,1007
+-89.674497,13.980412,1100
+-89.620072,13.869254,1190
+-89.543218,13.976973,950
 </coordinates>
 </LineString>
 <Style> id='lineaAmarilla'>

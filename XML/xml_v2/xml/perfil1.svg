@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" version="2.0">
 <polyline points=
-"0.0,753.0
-1.6,913.0
-11.4,848.0
-14.7,846.5
-"
-style="fill:white;stroke:red;stroke-width:4" />
-<text x="0.0" y="753.0" style="writing-mode: tb; glyph-orientation-horizontal: 0;">
+"10.0,320.0
+26.0,0.0
+124.0,130.0
+157.0,133.0
+157.0,320.0"
+style="fill:white;stroke:blue;stroke-width:4" />
+<text x="10.0" y="325.0" style="writing-mode: tb; glyph-orientation-horizontal: 0;">
 	Travesía de Apaneca
 </text>
-<text x="1.6" y="913.0" style="writing-mode: tb; glyph-orientation-horizontal: 0;">
+<text x="26.0" y="325.0" style="writing-mode: tb; glyph-orientation-horizontal: 0;">
 	Cerro Grande de Apaneca
 </text>
-<text x="11.4" y="848.0" style="writing-mode: tb; glyph-orientation-horizontal: 0;">
+<text x="124.0" y="325.0" style="writing-mode: tb; glyph-orientation-horizontal: 0;">
 	Laguna de las Ninfas
 </text>
-<text x="14.7" y="846.5" style="writing-mode: tb; glyph-orientation-horizontal: 0;">
+<text x="157.0" y="325.0" style="writing-mode: tb; glyph-orientation-horizontal: 0;">
 	Laguna Verde
+</text>
+<text x="157.0" y="325.0" style="writing-mode: tb; glyph-orientation-horizontal: 0;">
+	
 </text>
 </svg>
