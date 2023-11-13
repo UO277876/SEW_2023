@@ -5,7 +5,7 @@
 26.0,0.0
 124.0,130.0
 157.0,133.0
-157.0,320.0"
+10,320.0"
 style="fill:white;stroke:blue;stroke-width:4" />
 <text x="10.0" y="325.0" style="writing-mode: tb; glyph-orientation-horizontal: 0;">
 	Travesía de Apaneca
@@ -19,7 +19,7 @@ style="fill:white;stroke:blue;stroke-width:4" />
 <text x="157.0" y="325.0" style="writing-mode: tb; glyph-orientation-horizontal: 0;">
 	Laguna Verde
 </text>
-<text x="157.0" y="325.0" style="writing-mode: tb; glyph-orientation-horizontal: 0;">
+<text x="10" y="325.0" style="writing-mode: tb; glyph-orientation-horizontal: 0;">
 	
 </text>
 </svg>

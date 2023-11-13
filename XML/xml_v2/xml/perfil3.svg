@@ -5,7 +5,7 @@
 99.9,90.0
 209.9,0.0
 297.91,240.0
-297.91,240.0"
+10,240.0"
 style="fill:white;stroke:blue;stroke-width:4" />
 <text x="10.0" y="245.0" style="writing-mode: tb; glyph-orientation-horizontal: 0;">
 	Tour combinado de día completo
@@ -19,7 +19,7 @@ style="fill:white;stroke:blue;stroke-width:4" />
 <text x="297.91" y="245.0" style="writing-mode: tb; glyph-orientation-horizontal: 0;">
 	Iglesia Catolica San Judas
 </text>
-<text x="297.91" y="245.0" style="writing-mode: tb; glyph-orientation-horizontal: 0;">
+<text x="10" y="245.0" style="writing-mode: tb; glyph-orientation-horizontal: 0;">
 	
 </text>
 </svg>

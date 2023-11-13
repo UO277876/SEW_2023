@@ -58,7 +58,7 @@ def main():
                 altura = coordy[i]
 
         # Punto final, para cerrar. Sumo 10 para que quede un poco mas centrado
-        coordx.append(str(comprobacion_distancia(distancia) + 10))
+        coordx.append("10")
         coordy.append(altura)
         nombres.append("")
 
