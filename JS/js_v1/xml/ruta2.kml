@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+<Placemark>
+<name>Excursión al volcán Santa Ana</name>
+<LineString>
+<coordinates>
+-89.572534,13.809522,1793
+-89.631248,13.833110,1849
+-89.629444,13.850000,1995
+-89.570975,13.859722,1500
+</coordinates>
+</LineString>
+<Style> id='lineaAmarilla'>
+<LineStyle>
+<color>#ff2DE0ff</color>
+<width>5</width>
+</LineStyle>
+</Style>
+</Placemark>
+</Document>
+</kml>
