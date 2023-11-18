@@ -19,6 +19,8 @@ class Pais{
         return "Capital: " + this.capital;
     }
 
+    // Para obtener la informacion de la poblacion + gobierno + religion en forma
+    // de lista desordenada
     getInfo(){
         return "<ul><li> Población: " + this.poblacion + "</li>\n"
             + "<li> Forma de gobierno: " + this.gobierno + "</li>\n"

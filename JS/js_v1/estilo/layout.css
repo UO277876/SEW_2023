@@ -15,6 +15,7 @@ nav {
     flex-basis: 3em;
     gap: 2em;
     padding: 1em;
+    justify-content: center;
 }
 
 /*Especificidad: 002*/

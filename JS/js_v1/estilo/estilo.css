@@ -48,7 +48,8 @@ h3 {
 /* ------------- ENLACES Y BARRA DE NAVEGACIÓN ------------- */
 /* Especifidad: 001 */
 nav {
-    text-align: right;
+    background-color:#5F423A; 
+    text-align: center;
 }
 
 /* Hereda el color del fondo de su elemento padre, header */
