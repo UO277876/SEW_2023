@@ -91,11 +91,12 @@ class Memoria {
     unflipCards(){
         this.lockBoard = true;
 
-        for (var i=0; i < elements.length; i++) {
-            var article = document.querySelector("article.dataset.flip");
-        }
+        setTimeout(this.firstCard.classList.remove('flip'),2500);
+        this.firstCard.dataset.state = "initial";
+        setTimeout(this.secondCard.classList.remove('flip'),2500);
+        this.secondCard.dataset.state = "initial";
 
-        resetBoard();
+        this.resetBoard();
     }
 
     /**
@@ -113,11 +114,8 @@ class Memoria {
      * disableCards() si no a unflipCards()
      */
     checkForMatch(){
-        if(this.firstCard === this.secondCard){
-            disableCards();
-        } else {
-            unflipCards();
-        }
+        this.firstCard.dataset.element == this.secondCard.dataset.element
+         ? this.disableCards() :  setTimeout(this.unflipCards(),5000);
     }
 
     /**
@@ -125,15 +123,10 @@ class Memoria {
      * que ya han sido emparejadas
      */
     disableCards(){
-        for (var i=0; i < this.elements.length; i++) {
-            var card = document.querySelector("article:nth-child(" + i + ")");
+        this.firstCard.dataset.state = "revealed";
+        this.secondCard.dataset.state = "revealed";
 
-            if(card.dataset.state = "flip"){
-                card.dataset.state = "revealed";
-            }
-        }
-        
-        resetBoard();
+        this.resetBoard();
     }
 
     /**
@@ -141,7 +134,7 @@ class Memoria {
      */
     createElements(){
         for (var i=0; i < this.elements.length; i++) {
-            document.write("<article " + "data-element=" + this.elements[i] + " data-state=initial>");
+            document.write("<article " + "data-element=" + this.elements[i].nombre + " data-state=initial>");
             document.write("<h3>Tarjeta de memoria</h3>");
             document.write("<img src=" + this.elements[i].source +
             " alt=" + this.elements[i].nombre + "/>");
@@ -154,10 +147,11 @@ class Memoria {
      * provoca una llamada al método flipCard
      */
     addEventListeners(){
-        for (var i=0; i < this.elements.length; i++) {
-            var card = document.querySelector("article[data-element='+" + this.elements[i] + "']");
+        var cards = document.querySelectorAll("article");
 
-            card.setAttribute('onClick','flipCard');
+        for (var i=0; i < cards.length; i++) {
+            var card = cards[i];
+            card.addEventListener('click', this.flipCard.bind(card, this));
         }
     }
 
@@ -165,16 +159,19 @@ class Memoria {
      * Da la vuelta a las tarjetas
      */
     flipCard(game){
-        if(card.dataset.state == "revealed" || game.lockBoard){
+        if(this.dataset.state == "revealed" || game.lockBoard || game.firstCard === this){
             return;
         }
 
-        card.dataset.state = "flip" 
+        this.dataset.state = "flip"
+
         if(game.hasFlippedCard){
             game.secondCard = this;
-            checkForMatch();
+            this.classList.add('flip');
+            game.checkForMatch();
         } else {
             game.hasFlippedCard = true;
+            this.classList.add('flip');
             game.firstCard = this;
         }
     }
