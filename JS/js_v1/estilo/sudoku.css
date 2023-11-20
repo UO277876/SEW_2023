@@ -1,3 +1,31 @@
 /* Andrea Auñón Antúnez UO277876 */
 
 /* ------------- JUEGO SUDOKU ------------- */
+/*Especificidad: 001*/
+main{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+/*Especificidad: 001*/
+h2{
+    flex: 100%;
+}
+
+/*Especificidad: 002*/
+main > section{
+    display: grid;
+    grid-template-columns: repeat(9, 1fr); /* 9 columnas iguales en el tablero */
+    grid-template-rows: repeat(9, 1fr); /* 9 filas en el tablero */
+    width: 50%;
+}
+
+/*Especificidad: 001*/
+p {
+    padding: 0.25em;
+    margin: 0;
+    text-align: center;
+    border: 0.1em solid #b99a87;
+  }

@@ -18,8 +18,8 @@ nav {
     justify-content: center;
 }
 
-/*Especificidad: 002*/
 @media screen and (max-width: 600px) {
+    /*Especificidad: 001*/
     nav {
         flex-direction: column;
     }

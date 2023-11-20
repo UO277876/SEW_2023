@@ -3,7 +3,7 @@ class Memoria {
     /**
      * hasFlippedCard - Indica si hay uan carta dada la vuelta
      * lockBoard - Indica si el tablero esta bloquado
-     * Primera carta en dar la vuelta
+     * firstCard - Primera carta en dar la vuelta
      * secondCard - Segunda carta en dar la vuelta
      */
     constructor(){
@@ -91,12 +91,15 @@ class Memoria {
     unflipCards(){
         this.lockBoard = true;
 
-        setTimeout(this.firstCard.classList.remove('flip'),2500);
-        this.firstCard.dataset.state = "initial";
-        setTimeout(this.secondCard.classList.remove('flip'),2500);
-        this.secondCard.dataset.state = "initial";
-
-        this.resetBoard();
+        function unflip(){
+            this.firstCard.classList.remove('flip');
+            this.firstCard.dataset.state = "initial";
+            this.secondCard.classList.remove('flip');
+            this.secondCard.dataset.state = "initial";
+            this.resetBoard();
+        }
+          
+        setTimeout(unflip.bind(this), 2500);
     }
 
     /**
@@ -115,7 +118,7 @@ class Memoria {
      */
     checkForMatch(){
         this.firstCard.dataset.element == this.secondCard.dataset.element
-         ? this.disableCards() :  setTimeout(this.unflipCards(),5000);
+         ? this.disableCards() :  this.unflipCards();
     }
 
     /**
