@@ -1,0 +1,25 @@
+/* Andrea Auñón Antúnez UO277876 */
+
+/*Especificidad: 001*/
+main{
+    flex: 50%;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr); /* 9 columnas iguales en el tablero */
+    grid-template-rows: repeat(9, 1fr); /* 9 filas en el tablero */
+    gap: 0;
+    padding: 1em;
+}
+
+/*Especificidad: 001*/
+p {
+    padding: 0.9em;
+    margin: 0;
+    text-align: center;
+    border: 0.1em solid #291E19;
+}
+
+/*Especificidad: 011*/
+p[data-state='blocked']{
+    background-color: #b99a87;
+    font-weight: bold;
+}

@@ -1,0 +1,64 @@
+/* Andrea Auñón Antúnez UO277876 */
+
+/* ------------- JUEGO MEMORIA ------------- */
+/*Especificidad: 001*/
+section {
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+/*Especificidad: 001*/
+h2{
+    flex: 100%;
+}
+
+/*Especificidad: 001*/
+article {
+    flex: 1 0 20%;
+    width: 3em;
+    height: 10em;
+    transform: scale(1);
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform .5s;
+}
+
+/*Especificidad: 011*/
+article[data-state='flip'] {
+    transform: rotateY(180deg);
+}
+
+/*Especificidad: 002*/
+article h3,
+article img {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 0.5em;
+    background: #b99a87;
+    backface-visibility: hidden;
+}
+
+/*Especificidad: 002*/
+article h3 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: #291E19;
+}
+
+/*Especificidad: 002*/
+article img {
+    transform: rotateY(180deg);
+}
+
+@media screen and (max-width: 600px) {
+    /*Especificidad: 001*/
+    h3{
+        font-size: 1.25em;
+    }
+}
