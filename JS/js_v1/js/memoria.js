@@ -91,6 +91,7 @@ class Memoria {
     unflipCards(){
         this.lockBoard = true;
 
+        // Al unflip le meto un delay para que la segunda carta tarde un poco en voltearse
         function unflip(){
             this.firstCard.classList.remove('flip');
             this.firstCard.dataset.state = "initial";
