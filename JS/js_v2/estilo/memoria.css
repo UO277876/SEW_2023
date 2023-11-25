@@ -26,7 +26,8 @@ article {
 }
 
 /*Especificidad: 011*/
-article[data-state='flip'] {
+article[data-state='flip'],
+article[data-state='revealed'] {
     transform: rotateY(180deg);
 }
 

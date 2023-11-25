@@ -14,51 +14,51 @@ class Memoria {
         
         this.elements = 
             [{
-                "nombre": "HTML5",
+                "element": "HTML5",
                 "source": "https://upload.wikimedia.org/wikipedia/commons/3/38/HTML5_Badge.svg"
             },
             {
-                "nombre": "CSS3",
+                "element": "CSS3",
                 "source": "https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg"
             },
             {
-                "nombre": "JS",
+                "element": "JS",
                 "source": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Javascript_badge.svg"
             },
             {
-                "nombre": "PHP",
+                "element": "PHP",
                 "source": "https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg"
             },
             {
-                "nombre": "SVG",
+                "element": "SVG",
                 "source": "https://upload.wikimedia.org/wikipedia/commons/4/4f/SVG_Logo.svg"
             },
             {
-                "nombre": "W3C",
+                "element": "W3C",
                 "source": "https://upload.wikimedia.org/wikipedia/commons/5/5e/W3C_icon.svg"
             },
             {
-                "nombre": "HTML5",
+                "element": "HTML5",
                 "source": "https://upload.wikimedia.org/wikipedia/commons/3/38/HTML5_Badge.svg"
             },
             {
-                "nombre": "CSS3",
+                "element": "CSS3",
                 "source": "https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg"
             },
             {
-                "nombre": "JS",
+                "element": "JS",
                 "source": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Javascript_badge.svg"
             },
             {
-                "nombre": "PHP",
+                "element": "PHP",
                 "source": "https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg"
             },
             {
-                "nombre": "SVG",
+                "element": "SVG",
                 "source": "https://upload.wikimedia.org/wikipedia/commons/4/4f/SVG_Logo.svg"
             },
             {
-                "nombre": "W3C",
+                "element": "W3C",
                 "source": "https://upload.wikimedia.org/wikipedia/commons/5/5e/W3C_icon.svg"
             }];
 
@@ -136,10 +136,10 @@ class Memoria {
      */
     createElements(){
         for (var i=0; i < this.elements.length; i++) {
-            document.write("<article " + "data-element=" + this.elements[i].nombre + " data-state=initial>");
+            document.write("<article " + "data-element=" + this.elements[i].element + " data-state=initial>");
             document.write("<h3>Tarjeta de memoria</h3>");
-            document.write("<img src=" + this.elements[i].source +
-            " alt=" + this.elements[i].nombre + "/>");
+            document.write('<img src=' + this.elements[i].source +
+            ' alt=' + this.elements[i].element + ' />');
             document.write("</article>");
         }
     }
