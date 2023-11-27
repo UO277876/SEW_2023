@@ -8,7 +8,7 @@
     <!-- Metadatos-->
     <meta name ="author" content ="Andrea Auñón" />
     <meta name ="description" content ="En desarrollo" />
-    <meta name ="keywords" content ="Meteorologia,Pais" />
+    <meta name ="keywords" content ="Meteorologia,Pais,DatosMeteorologicos,SanSalvador,ElSalvador" />
     <!-- Para la adaptibilidad -->
     <meta name ="viewport" content ="width=device-width, initial-scale=1.0" />
 
@@ -18,6 +18,11 @@
 
     <!-- Icono para las pestañas del navegador -->
     <link rel="icon" href="multimedia/imagenes/favicon_48.ico" />
+
+        <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" 
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="js/pais.js"></script>
 </head>
 
 <body>
@@ -37,9 +42,21 @@
         </nav>
     </header>
 
-    <section>
-        <h2> Meteorologia </h2>
-        <script src="js/pais.js"></script>
-    </section>
+    <main>
+        <article>
+            <h2> Meteorologia </h2>
+            <script>
+                document.write("<p>" + pais.getNombre() + "</p>");
+                document.write("<p>" + pais.getCapital() + "</p>");
+                document.write("<p> Información secundaria:</p>" + pais.getInfo());
+                pais.getCoordenadas();
+            </script>
+        </article>
+
+        <section>
+            <button onclick="pais.cargarDatos()">Obtener</button>
+            
+        </section>
+    </main>
 </body>
 </html>
