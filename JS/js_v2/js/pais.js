@@ -50,10 +50,13 @@ class Pais{
             url: url,
             method: 'GET',
             success: function(datos){
-                var stringDatos = "<h2>" + datos.city.name + "</h2>"
+                var stringDatos = "<h2> Tiempo en " + datos.city.name + "</h2>"
 
                 $.each(datos.list, function(i,item ) {
+                    // se obtiene la hora de cada item a traves de .split (divide fecha - hora)
                     var time = item.dt_txt.split(" ")
+                    
+                    // Se comprueba que coja el tiempo de las 12:00:00 de cada día
                     if(time[1] == "12:00:00"){
                         //Presentacion de los datos contenidos en JSON
                         stringDatos += "<article data-state=meteo>"
@@ -90,7 +93,7 @@ class Pais{
 //            $(article).attr("data-state=meteo");
 //        });
 
-        // Para deshabilitar el botón de obtener tiempo
+        // Para deshabilitar el botón de obtener tiempo una vez se ha obtenido la información
         $("button").attr("disabled", "disabled");
     }
 }
