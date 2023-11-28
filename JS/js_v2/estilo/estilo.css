@@ -46,6 +46,7 @@ h3 {
 }
 
 /* ------------- ENLACES Y BARRA DE NAVEGACIÓN ------------- */
+/* Hereda el color de texto de su elemento padre, header */
 /* Especifidad: 001 */
 nav {
     background-color:#5F423A; 
@@ -150,3 +151,34 @@ audio{
 }
 
 /* ------------- METEOROLOGIA ------------- */
+/* Hereda el color de texto de su elemento padre, body*/
+/* Especificidad: 011*/
+article[data-state='meteo'] {
+    display: flex;
+    background-color: #b99a87;
+    font-size: 1.1em;
+    justify-content: center;
+    border: 0.15em solid black;
+    margin: 1em;
+}
+
+/* Especificidad: 012*/
+article[data-state='meteo'] > img {
+    width: 6em;
+}
+
+/* Especificidad: 001*/
+button{
+    background-color: #5F423A;
+    color: #ebebe1;
+    padding:1em;
+	border-radius: 1em;
+	font-size: 1em;
+}
+
+/* Especificidad: 011*/
+button:hover{
+    background-color: #b99a87;
+    color: #291E19;
+}
+

@@ -1,5 +1,4 @@
 "use strict";
-import Fondo from "./fondo.js";
 
 class Pais{
     constructor(nombre, capital, poblacion){
@@ -14,7 +13,6 @@ class Pais{
         this.coordenadas = coordenadas;
         this.religion = religion;
 
-        this.fondo= new Fondo(this.nombre,this.capital,this.coordenadas);
     }
 
     getNombre(){
@@ -37,36 +35,65 @@ class Pais{
         document.write("<p> Coordenadas: " + this.coordenadas + "</p>");
     }
 
+    /**
+     * Obtiene los datos meteorológicos de San Salvador a las 00:00:00 de los 5 días siguientes a la 
+     * fecha actual
+     */
     getMeteo(){
         var api_key= "1e81407ed3ba1fb3db96fb8ede324525";
         var coordAux = this.coordenadas.split(',');
-        var url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + coordAux[0] + "&lon=" + coordAux[1] + "&appid=" + api_key;
+        var url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + coordAux[0] + 
+            "&lon=" + coordAux[1] + "&appid=" + api_key;
 
         $.ajax({
             dataType: "json",
             url: url,
             method: 'GET',
             success: function(datos){
-                    //Presentacion de los datos contenidos en JSON
-                    var stringDatos = "<h3>"+datos.name+"</h3>"
-                        stringDatos += "<img src=http://openweathermap.org/img/wn/" + datos.weather[0].icon + "@2x.png alt=\"Icono del tiempo\"/>";
-                        stringDatos += "<ul><li>Temperatura máxima: " + datos.list.temp_max + "</li>";
-                        stringDatos += "<li>Temperatura mínima: " + datos.list.temp_min + "</li>";
-                        stringDatos += "<li>Porcentaje de humedad: " + datos.list.humidity + "%</li>";
-                        stringDatos += "<li>Cantidad de lluvia al día: " + datos.clouds.all + "</li></ul>";
-                    
-                    $("section").html(stringDatos);
-                    $("section").prepend();
+                var stringDatos = "<h2>" + datos.city.name + "</h2>"
+
+                $.each(datos.list, function(i,item ) {
+                    var time = item.dt_txt.split(" ")
+                    if(time[1] == "12:00:00"){
+                        //Presentacion de los datos contenidos en JSON
+                        stringDatos += "<article data-state=meteo>"
+                        stringDatos += "<h3> Tiempo del día " + time[0]  + "</h3>"
+                        stringDatos += "<img src=http://openweathermap.org/img/wn/" + item.weather[0].icon 
+                            + "@2x.png alt=\"Icono del tiempo\"/>";
+                        stringDatos += "<ul><li>Temperatura máxima: " + item.main.temp_max + "</li>";
+                        stringDatos += "<li>Temperatura mínima: " + item.main.temp_min + "</li>";
+                        stringDatos += "<li>Porcentaje de humedad: " + item.main.humidity + "%</li>";
+                        stringDatos += "<li>Nubosidad: " + item.clouds.all + "%</li></ul>";
+                        stringDatos += "</article>"
+
+                        $("section").html(stringDatos);
+                        $("section").prepend();
+                    }
+                });
                 },
+
             error:function(){
                 $("section").html("¡Tenemos problemas! No puedo obtener JSON de <a href='http://openweathermap.org'>OpenWeatherMap</a>"); 
                 $("section").remove();
             }
         });
     }
+
+    /**
+     * Llama al getMeteo() 
+     */
+    obtenerDatos(){
+        this.getMeteo();
+
+        // Para poner a cada article creado el data-state 
+//        $("section").each(article,function() {
+//            $(article).attr("data-state=meteo");
+//        });
+
+        // Para deshabilitar el botón de obtener tiempo
+        $("button").attr("disabled", "disabled");
+    }
 }
 
 var pais = new Pais("El Salvador","San Salvador","6,314 millones");
-pais.setInfo("Democracia","13.794185,-88.89653,600","Católica");
-
-pais.getMeteo();
+pais.setInfo("Democracia","13.698964,-89.191428,600","Católica");

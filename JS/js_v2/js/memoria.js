@@ -6,6 +6,7 @@ class Memoria {
      * lockBoard - Indica si el tablero esta bloquado
      * firstCard - Primera carta en dar la vuelta
      * secondCard - Segunda carta en dar la vuelta
+     * elements - JSON con la información de cada tarjeta
      */
     constructor(){
         this.hasFlippedCard = false;
