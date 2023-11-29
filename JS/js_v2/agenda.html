@@ -7,7 +7,7 @@
 
     <!-- Metadatos-->
     <meta name ="author" content ="Andrea Auñón" />
-    <meta name ="description" content ="En desarrollo" />
+    <meta name ="description" content ="Agenda con las últimas carreras de la Formula 1 2023 " />
     <meta name ="keywords" content ="Agenda,Formula1,Carreras,Temporada2023" />
     <!-- Para la adaptibilidad -->
     <meta name ="viewport" content ="width=device-width, initial-scale=1.0" />
@@ -15,6 +15,7 @@
     <!-- Hojas de estilo -->
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/agenda.css" />
 
     <!-- Icono para las pestañas del navegador -->
     <link rel="icon" href="multimedia/imagenes/favicon_48.ico" />
@@ -41,6 +42,12 @@
             <a accesskey="o" tabindex="7" href="juegos.html">Juegos</a>
         </nav>
     </header>
-    <p> En desarrollo. </p>
+
+    <main>
+        <section>
+            <h2>Información de las carreras de la temporada 2023</h2>
+            <button onclick="agenda.getInformation()">Obtener carreras</button>
+        </section>
+    </main>
 </body>
 </html>

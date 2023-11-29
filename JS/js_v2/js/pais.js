@@ -42,8 +42,9 @@ class Pais{
     getMeteo(){
         var api_key= "1e81407ed3ba1fb3db96fb8ede324525";
         var coordAux = this.coordenadas.split(',');
+        // Metric se usa para que devuelva la información en Celsius
         var url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + coordAux[0] + 
-            "&lon=" + coordAux[1] + "&appid=" + api_key;
+            "&lon=" + coordAux[1] + "&appid=" + api_key + "&units=metric";
 
         $.ajax({
             dataType: "json",
@@ -63,21 +64,27 @@ class Pais{
                         stringDatos += "<h3> Tiempo del día " + time[0]  + "</h3>"
                         stringDatos += "<img src=http://openweathermap.org/img/wn/" + item.weather[0].icon 
                             + "@2x.png alt=\"Icono del tiempo\"/>";
-                        stringDatos += "<ul><li>Temperatura máxima: " + item.main.temp_max + "</li>";
-                        stringDatos += "<li>Temperatura mínima: " + item.main.temp_min + "</li>";
+                        stringDatos += "<ul><li>Temperatura máxima: " + item.main.temp_max + "°C</li>";
+                        stringDatos += "<li>Temperatura mínima: " + item.main.temp_min + "°C</li>";
                         stringDatos += "<li>Porcentaje de humedad: " + item.main.humidity + "%</li>";
-                        stringDatos += "<li>Nubosidad: " + item.clouds.all + "%</li></ul>";
+
+                        // Si hay lluvia aparece la cantidad si no la nubosidad
+                        if(item.hasOwnProperty("rain")){
+                            stringDatos += "<li>Cantidad de lluvia: " + item.rain["3h"] + " mm</li></ul>";
+                        } else {
+                            stringDatos += "<li>Nubosidad: " + item.clouds.all + "%</li></ul>";
+                        }
                         stringDatos += "</article>"
 
                         $("section").html(stringDatos);
                         $("section").prepend();
                     }
                 });
-                },
+            },
 
             error:function(){
                 $("section").html("¡Tenemos problemas! No puedo obtener JSON de <a href='http://openweathermap.org'>OpenWeatherMap</a>"); 
-                $("section").remove();
+                $("h2").remove();
             }
         });
     }
@@ -87,11 +94,6 @@ class Pais{
      */
     obtenerDatos(){
         this.getMeteo();
-
-        // Para poner a cada article creado el data-state 
-//        $("section").each(article,function() {
-//            $(article).attr("data-state=meteo");
-//        });
 
         // Para deshabilitar el botón de obtener tiempo una vez se ha obtenido la información
         $("button").attr("disabled", "disabled");

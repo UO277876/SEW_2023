@@ -30,7 +30,7 @@ class Fondo{
                     format: "json"
                 })
             .done(function(data) {
-                $.each(data.items, function(i,item ) {
+                $.each(data.items, function(i,item) {
                     if(i == 1){                
                         // Primero se obtiene la url de la imagen
                         var url = item.media.m;
