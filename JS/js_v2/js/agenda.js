@@ -11,6 +11,9 @@ class Agenda{
         this.url = url;
         this.last_api_call = null;
         this.last_api_result = null;
+
+        this.datos = null;
+        this.isReceived = false;
     }
 
     /**
@@ -26,14 +29,15 @@ class Agenda{
         var tiemStampAct = fecha_actual.getTime();
 
         // 5 * 60 * 1000 representa 5 minutos en milisegundos
-        if((tiemStampAct - tiemStampCall) >= 5 * 60 * 1000){
+        if((tiemStampAct - tiemStampCall) >= 5 * 60 * 1000 || this.last_api_result == null){
             $.ajax({
                 dataType: "xml",
                 url: this.url,
                 method: 'GET',
-                success: function(datos){
+                success: function(data){
+                    this.datos = data;
                     this.last_api_result = new Date(); 
-                    return datos;
+                    this.isReceived = true;
                 },
                 error:function(){
                     this.last_api_result = new Date(); 
@@ -41,7 +45,7 @@ class Agenda{
                 }
             }); 
         } else {
-            return this.last_api_result;
+            this.isReceived = false;
         }
     }
 
@@ -52,21 +56,17 @@ class Agenda{
      */
     getInformation(){
         this.last_api_call = new Date();
-    
-        var datos = this.getCarreras();
 
-        if(datos != this.last_api_result){
+        if(this.isReceived){
             //Presentacion del archivo XML en modo texto
-            $("main").text((new XMLSerializer()).serializeToString(datos));
-    
-            for (race in $('Race',datos)){
+            for (race in $('Race',this.datos)){
                 //Extracción de los datos contenidos en el XML
-                var nombre_carrera = $('RaceName',datos).text;
-                var nombre_circuito =  $('CircuitName',datos).text;
-                var coord_lat = $('Location',datos).attr("lat");
-                var coord_long = $('Location',datos).attr("long");
-                var fecha = $('Time',datos).text;
-                var hora =  $('Date',datos).text;              
+                var nombre_carrera = $('RaceName',this.datos).text;
+                var nombre_circuito =  $('CircuitName',this.datos).text;
+                var coord_lat = $('Location',this.datos).attr("lat");
+                var coord_long = $('Location',this.datos).attr("long");
+                var fecha = $('Time',this.datos).text;
+                var hora =  $('Date',this.datos).text;              
                         
                 // Colocar los datos del XML en el HTML
                 var stringDatos = "<article>";

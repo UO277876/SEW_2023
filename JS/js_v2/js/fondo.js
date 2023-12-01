@@ -17,30 +17,30 @@ class Fondo{
      * Obtiene la imagen que será el fondo
      */
     getImagen(){
-        var coordAux = this.coordenadas.split(',');
-        var flickrAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
-        var key_api= "9d61c740301a658bb4f4f8f7bd99076b";
-
-        $.getJSON(flickrAPI, 
-                {
-                    api_key: key_api,
-                    lat: coordAux[0],
-                    lon: coordAux[1],
-                    method: "flickr.photos.search",
-                    format: "json"
+        var api_key = "4511ac14f92ab9c9b89346ed14799e6c";
+        var coord = this.coordenadas.split(",");
+        var lat = coord[0];
+        var lon = coord[1];
+        var method = "flickr.photos.search";
+        var flickrAPI = 
+            "https://www.flickr.com/services/rest/?method=" + method +
+                "&api_key=" + api_key + "&lat=" + lat + "&lon=" + lon 
+                + "&format=json&nojsoncallback=1&api_sig=fd8e4ba83164aa4de51cce3da62f7648"
+        $.getJSON({
+                    url: flickrAPI
                 })
             .done(function(data) {
-                $.each(data.items, function(i,item) {
-                    if(i == 1){                
-                        // Primero se obtiene la url de la imagen
-                        var url = item.media.m;
-                        url = url.replace("_m","_b");
+                // Sacmos una posicion random en el json
+                var pos = Math.round(Math.random() * 99);
+                var ruta = data.photos;
 
-                        // Para cambiar el fondo de body
-                        $('body').css("background-image","url(" + url + ")");
-                        $('body').css("background-size","cover");
-                    }
-                });
+                // Primero se obtiene la url de la imagen concatenando server + id + 
+                var url = "https://live.staticflickr.com/" + ruta.photo[pos].server + "/" + ruta.photo[pos].id 
+                    + "_" + ruta.photo[pos].secret + "_b.jpg";   
+                
+                // Para cambiar el fondo de body
+                $('body').css("background-image","url(" + url + ")");
+                $('body').css("background-size","cover");                
         });
     }
 }

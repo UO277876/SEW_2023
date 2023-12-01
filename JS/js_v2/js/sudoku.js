@@ -120,21 +120,28 @@ class Sudoku {
             cells[aux].removeEventListener('click',this.cellClick);
 
             // Comprobacion de si esta completo
-            var casillasCompletadas = 0;
+            this.comprobacionFinal();
+        }
 
-            for (let i=0; i < this.filas; i++) {
-                for (let j=0; j < this.columnas; j++) {
-                    if(this.tablero[i][j] != "0"){
-                        casillasCompletadas++;
-                    }
+    }
+
+    /**
+     * Comprueba que el tablero esta completo
+     */
+    comprobacionFinal(){
+        var casillasCompletadas = 0;
+
+        for (let i=0; i < this.filas; i++) {
+            for (let j=0; j < this.columnas; j++) {
+                if(this.tablero[i][j] != "0"){
+                    casillasCompletadas++;
                 }
-            }
-
-            if(casillasCompletadas == 81){
-                alert("Tablero completado")
             }
         }
 
+        if(casillasCompletadas == 81){
+            alert("Tablero completado")
+        }
     }
 
     /**

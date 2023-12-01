@@ -1,0 +1,32 @@
+/* Andrea Auñón Antúnez UO277876 */
+
+/*Especificidad: 001*/
+main{
+    display: grid;
+    grid-template-columns: repeat(9, 1fr); /* 9 columnas iguales en el tablero */
+    grid-template-rows: repeat(11, 1fr); /* 11 filas en el tablero */
+    margin: 1em;
+    font-size: 1.4em;
+}
+
+/*Especificidad: 001*/
+p {
+    padding: 0.6em;
+    margin: 0;
+    text-align: center;
+    border: 0.05em solid black;
+}
+
+/* Celdas con un -1 o # */
+/* Hereda el color de letra de su elemento padre, body */
+/*Especificidad: 011*/
+p[data-state='empty']{
+    background-color: #000000;
+}
+
+/* Celdas con un valor predefinido */
+/* Hereda el color de letra de su elemento padre, body */
+/*Especificidad: 011*/
+p[data-state='blocked']{
+    font-weight: bold;
+}

@@ -2,25 +2,29 @@
 
 /*Especificidad: 001*/
 main{
-    flex: 50%;
     display: grid;
     grid-template-columns: repeat(9, 1fr); /* 9 columnas iguales en el tablero */
     grid-template-rows: repeat(9, 1fr); /* 9 filas en el tablero */
-    gap: 0;
-    padding: 1em;
+    border: 0.3em solid black;
+    width: 50%;
+    height: auto;
+    margin: 1em;
+    font-size: 1.2em;
 }
 
 /*Especificidad: 001*/
 p {
-    padding: 0.9em;
+    padding: 2.5em;
     margin: 0;
     text-align: center;
     border: 0.1em solid #291E19;
 }
 
-/* Hereda el color del fondo de su elemento padre, body */
+/* Hereda el color de letra de su elemento padre, body */
 /*Especificidad: 011*/
 p[data-state='blocked']{
     background-color: #b99a87;
     font-weight: bold;
 }
+
+

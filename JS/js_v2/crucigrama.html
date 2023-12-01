@@ -3,19 +3,20 @@
 <head>
     <!-- Datos que describen el documento -->
     <meta charset="UTF-8" />
-    <title>Escritorio virtual - Agenda</title>
+    <!-- Icono para las pestañas del navegador -->
+    <link rel="icon" href="multimedia/imagenes/favicon_48.ico" />
+    <title>Escritorio virtual - Crucigrama</title>
 
-    <!-- Metadatos-->
     <meta name ="author" content ="Andrea Auñón" />
-    <meta name ="description" content ="Agenda con las últimas carreras de la Formula 1 2023 " />
-    <meta name ="keywords" content ="Agenda,Formula1,Carreras,Temporada2023" />
+    <meta name ="description" content ="Crucigrama online" />
+    <meta name ="keywords" content ="Juego,Crucigrama,Matematicas" />
     <!-- Para la adaptibilidad -->
     <meta name ="viewport" content ="width=device-width, initial-scale=1.0" />
 
     <!-- Hojas de estilo -->
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
-    <link rel="stylesheet" type="text/css" href="estilo/agenda.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/crucigrama.css" />
 
     <!-- Icono para las pestañas del navegador -->
     <link rel="icon" href="multimedia/imagenes/favicon_48.ico" />
@@ -23,7 +24,7 @@
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" 
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="js/agenda.js"></script>
+    <script src="js/crucigrama.js"></script>
 </head>
 
 <body>
@@ -43,11 +44,19 @@
         </nav>
     </header>
 
+    <section>
+        <h2> Juegos </h2>
+        <!-- Barra de navegación hacia todos los juegos -->
+        <nav>
+            <a accesskey="m" tabindex="1" href="memoria.html">Memoria</a>
+            <a accesskey="s" tabindex="2" href="sudoku.html">Sudoku</a>
+            <a accesskey="c" tabindex="3" href="crucigrama.html">Crucigrama</a>
+        </nav>
+    </section>
+
     <main>
-        <section>
-            <h2>Información de las carreras de la temporada 2023</h2>
-            <button onclick="agenda.getInformation()">Obtener carreras</button>
-        </section>
+        
     </main>
+
 </body>
 </html>
