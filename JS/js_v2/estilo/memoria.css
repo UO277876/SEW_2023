@@ -1,8 +1,8 @@
 /* Andrea Auñón Antúnez UO277876 */
 
 /* ------------- JUEGO MEMORIA ------------- */
-/*Especificidad: 001*/
-section {
+/*Especificidad: 002*/
+main > section {
     display:flex;
     justify-content: center;
     flex-wrap: wrap;

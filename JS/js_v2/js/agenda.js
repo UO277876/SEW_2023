@@ -13,7 +13,6 @@ class Agenda{
         this.last_api_result = null;
 
         this.datos = null;
-        this.isReceived = false;
     }
 
     /**
@@ -25,28 +24,31 @@ class Agenda{
     getCarreras(){
         // Deben pasar 10 minutos entre llamadas
         var fecha_actual = new Date();
-        var tiemStampCall = this.last_api_call.getTime();
-        var tiemStampAct = fecha_actual.getTime();
+        var countTime = fecha_actual - this.last_api_call;
 
-        // 5 * 60 * 1000 representa 5 minutos en milisegundos
-        if((tiemStampAct - tiemStampCall) >= 5 * 60 * 1000 || this.last_api_result == null){
+        // 10 * 60 * 1000 representa 10 minutos en milisegundos
+        if(countTime >= 10 * 60 * 1000 || this.last_api_result == null){
+            var agenda = this;
+
             $.ajax({
                 dataType: "xml",
                 url: this.url,
                 method: 'GET',
                 success: function(data){
-                    this.datos = data;
-                    this.last_api_result = new Date(); 
-                    this.isReceived = true;
+                    agenda.datos = data;
+                    agenda.last_api_result = new Date(); 
+                    agenda.isReceived = true;
                 },
                 error:function(){
-                    this.last_api_result = new Date(); 
+                    agenda.last_api_result = new Date(); 
                     $("section").html("¡Tenemos problemas! No puedo obtener XML de <a href='http://ergast.com'>Ergast</a>"); 
                 }
-            }); 
-        } else {
-            this.isReceived = false;
+            });
+            
+            return this.last_api_call;
         }
+
+        return this.last_api_result;
     }
 
     /**
@@ -56,17 +58,20 @@ class Agenda{
      */
     getInformation(){
         this.last_api_call = new Date();
+        this.getCarreras();
 
-        if(this.isReceived){
+        if(this.datos != null){
             //Presentacion del archivo XML en modo texto
-            for (race in $('Race',this.datos)){
+            $("<h3>Información</h3>").appendTo($("section[data-element='information']")); 
+
+            $.each($("Race",this.datos), function(i,race ) {
                 //Extracción de los datos contenidos en el XML
-                var nombre_carrera = $('RaceName',this.datos).text;
-                var nombre_circuito =  $('CircuitName',this.datos).text;
-                var coord_lat = $('Location',this.datos).attr("lat");
-                var coord_long = $('Location',this.datos).attr("long");
-                var fecha = $('Time',this.datos).text;
-                var hora =  $('Date',this.datos).text;              
+                var nombre_carrera = $('RaceName',race).text();
+                var nombre_circuito =  $('CircuitName',race).text();
+                var coord_lat = $('Location',race).attr("lat");
+                var coord_long = $('Location',race).attr("long");
+                var fecha = $('Time',race).text();
+                var hora =  $('Date',race).text();              
                         
                 // Colocar los datos del XML en el HTML
                 var stringDatos = "<article>";
@@ -77,8 +82,10 @@ class Agenda{
                 stringDatos += "<li> Hora: " + hora + "</li></ul>";
                 stringDatos += "</article>";
     
-                $("section").html(stringDatos);  
-            }  
+                //$("section[data-element='information']").html(stringDatos);  
+                $(stringDatos).appendTo($("section[data-element='information']"));  
+                //$("section[data-element='information']").prepend();          
+            });
         }             
     }
 }

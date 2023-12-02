@@ -43,8 +43,8 @@ class Sudoku {
      * Crea en el HTML los párrafos que representan las celdas del sudoku
      */
     createStructure() {
-        for (let i=0; i < this.tablero.length; i++) {
-            for (let j=0; j < this.tablero[i].length; j++) {
+        for (let i=0; i < this.filas; i++) {
+            for (let j=0; j < this.columnas; j++) {
                 // Se crean inicialmente vacios
                 document.write("<p></p>");
             }
@@ -59,8 +59,8 @@ class Sudoku {
         var cells = document.querySelectorAll("p");
         var aux = 0;
 
-        for (let i=0; i < this.tablero.length; i++) {
-            for (let j=0; j < this.tablero[i].length; j++) {
+        for (let i=0; i < this.filas; i++) {
+            for (let j=0; j < this.columnas; j++) {
 
                 if(this.tablero[i][j] == 0){
                     // Evento que pulsa una casilla y cambia su estado a clicked
@@ -89,8 +89,8 @@ class Sudoku {
         var cellFound = false;
 
         // Se saca la fila y columna del p que esta en state clicked
-        for (let i=0; i < this.tablero.length; i++) {
-            for (let j=0; j < this.tablero[i].length; j++) {
+        for (let i=0; i < this.filas; i++) {
+            for (let j=0; j < this.columnas; j++) {
                 if(cells[aux].dataset.state == "clicked"){
                     row = i;
                     column = j;
@@ -129,17 +129,17 @@ class Sudoku {
      * Comprueba que el tablero esta completo
      */
     comprobacionFinal(){
-        var casillasCompletadas = 0;
+        var casillasACero = 0;
 
         for (let i=0; i < this.filas; i++) {
             for (let j=0; j < this.columnas; j++) {
-                if(this.tablero[i][j] != "0"){
-                    casillasCompletadas++;
+                if(this.tablero[i][j] == "0"){
+                    casillasACero++;
                 }
             }
         }
 
-        if(casillasCompletadas == 81){
+        if(casillasACero == 0){
             alert("Tablero completado")
         }
     }
@@ -202,23 +202,4 @@ class Sudoku {
 }
 
 var game = new Sudoku();
-game.paintSudoku();
-
-document.addEventListener('keydown', function(e) {
-    var cellClicked = document.querySelector("p[data-state='clicked']");
-
-    // Comprueba si hay alguna casilla seleccionada
-    if(cellClicked == null){
-        alert("Debe pulsar una casilla antes de continuar")
-    } else {
-        // Comprueba si la casilla seleccionada esta en estado clicked (por si acaso)
-        if(cellClicked.dataset.state == "clicked"){
-            if(e.key >= "1" && e.key <= "9"){
-                game.introduceNumber(e.key);
-            } else {
-                alert("La tecla seleccionada no es correcta")
-            }
-        }
-    }
-});
 

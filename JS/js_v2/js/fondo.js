@@ -17,7 +17,7 @@ class Fondo{
      * Obtiene la imagen que será el fondo
      */
     getImagen(){
-        var api_key = "4511ac14f92ab9c9b89346ed14799e6c";
+        var api_key = "9d61c740301a658bb4f4f8f7bd99076b";
         var coord = this.coordenadas.split(",");
         var lat = coord[0];
         var lon = coord[1];
@@ -25,7 +25,8 @@ class Fondo{
         var flickrAPI = 
             "https://www.flickr.com/services/rest/?method=" + method +
                 "&api_key=" + api_key + "&lat=" + lat + "&lon=" + lon 
-                + "&format=json&nojsoncallback=1&api_sig=fd8e4ba83164aa4de51cce3da62f7648"
+                + "&format=json&nojsoncallback=1";
+
         $.getJSON({
                     url: flickrAPI
                 })
@@ -34,7 +35,7 @@ class Fondo{
                 var pos = Math.round(Math.random() * 99);
                 var ruta = data.photos;
 
-                // Primero se obtiene la url de la imagen concatenando server + id + 
+                // Primero se obtiene la url de la imagen concatenando server + id + secret + _b.jpg
                 var url = "https://live.staticflickr.com/" + ruta.photo[pos].server + "/" + ruta.photo[pos].id 
                     + "_" + ruta.photo[pos].secret + "_b.jpg";   
                 
