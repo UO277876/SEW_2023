@@ -14,30 +14,6 @@ class Viajes {
         this.velocidad        = posicion.coords.speed;       
     }
 
-    getLongitud(){
-        return this.longitud;
-    }
-
-    getLatitud(){
-        return this.latitud;
-    }
-
-    getAltitud(){
-        return this.altitud;
-    }
-
-    verTodo(){
-        var datos=''; 
-        datos+='<p>Longitud: '+ this.longitud +' grados</p>'; 
-        datos+='<p>Latitud: '+ this.latitud +' grados</p>';
-        datos+='<p>Precisión de la latitud y longitud: '+ this.precision +' metros</p>';
-        datos+='<p>Altitud: '+ this.altitude +' metros</p>';
-        datos+='<p>Precisión de la altitud: '+ this.precisionAltitud +' metros</p>'; 
-        datos+='<p>Rumbo: '+ this.rumbo +' grados</p>'; 
-        datos+='<p>Velocidad: '+ this.velocidad +' metros/segundo</p>';
-        $("section:first").after(datos);
-    }
-
     verErrores(error){
         switch(error.code) {
         case error.PERMISSION_DENIED:
@@ -93,7 +69,7 @@ class Viajes {
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });
             
-        infoWindow = new google.maps.InfoWindow;
+        var infoWindow = new google.maps.InfoWindow;
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
             var pos = {
@@ -123,9 +99,62 @@ class Viajes {
     }       
 
     getMapaDinamicoGoogle(){
-        miMapa.initMap = initMap;
+        viajes.initMap = initMap();
     }
     
+    
+    /**
+     * Se encarga de realizar la lectura de un fichero xml
+     */
+    readInputXML(files){
+        var archivo = files[0];
+
+        var tipoTexto = /text.*/;
+        if (archivo.type.match(tipoTexto)) {
+            var lector = new FileReader();
+
+            //El evento "onload" se lleva a cabo cada vez que se completa con éxito una operación de lectura
+            //La propiedad "result" es donde se almacena el contenido del archivo
+            //Esta propiedad solamente es válida cuando se termina la operación de lectura
+            lector.onload = function (event) {
+                //$("p[data-element='xml']").text(lector.result);
+                var areaVisualizacion = document.querySelector("p[data-element='xml']");
+                areaVisualizacion.innerText = lector.result;
+
+                $("input").attr("disabled", "disabled");
+            };     
+
+            lector.readAsText(archivo);
+        } else {
+            errorArchivo.innerText = "Error : ¡¡¡ Archivo no válido !!!";
+        }     
+    }
+
+    /**
+     * Se encarga de realizar la lectura de los ficheros kml
+     */
+        readInputXML(files){
+            for(let i=0; i < files.length; i++){
+                var archivo = files[i];
+    
+                var tipoTexto = /text.*/;
+                if (archivo.type.match(tipoTexto)) {
+                    var lector = new FileReader();
+        
+                    //El evento "onload" se lleva a cabo cada vez que se completa con éxito una operación de lectura
+                    //La propiedad "result" es donde se almacena el contenido del archivo
+                    //Esta propiedad solamente es válida cuando se termina la operación de lectura
+                    lector.onload = function (event) {
+                        
+                    };     
+        
+                    lector.readAsText(archivo);
+                } else {
+                    errorArchivo.innerText = "Error : ¡¡¡ Archivo no válido !!!";
+                }
+            }     
+        }
+
 }
 
 var viajes = new Viajes();

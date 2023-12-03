@@ -33,6 +33,11 @@ p[data-state='blocked']{
     font-weight: bold;
 }
 
+/*Especificidad: 001*/
+section[data-type="botonera"]{
+    display: none;
+}
+
 @media screen and (max-width: 600px) {
     /* Estilos para una mediaquery
     que muestre la botonera en tablet y móvil */

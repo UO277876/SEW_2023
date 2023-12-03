@@ -1,2 +1,3 @@
-- Timeout en el juego de la memoria (unflipCard concretamente)
-- El tema del flip y remove.flip si esta bien o hay que cambiar el .flip del CSS
+- El tema de los ids en el formulario de Noticias
+- La redimensión del sudoku y el crucigrama
+- El tema de la botonera del crucigrama si es accesible usando display:none
