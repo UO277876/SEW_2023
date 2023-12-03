@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html lang="es">
+<head>
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8" />
+    <!-- Icono para las pestañas del navegador -->
+    <link rel="icon" href="multimedia/imagenes/favicon_48.ico" />
+    <title>Escritorio virtual - Sudoku</title>
+
+    <meta name ="author" content ="Andrea Auñón" />
+    <meta name ="description" content ="Juego de sudoku online" />
+    <meta name ="keywords" content ="Juego,Sudoku" />
+    <!-- Para la adaptibilidad -->
+    <meta name ="viewport" content ="width=device-width, initial-scale=1.0" />
+
+    <!-- Hojas de estilo -->
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/sudoku.css" />
+
+    <!-- Icono para las pestañas del navegador -->
+    <link rel="icon" href="multimedia/imagenes/favicon_48.ico" />
+
+    <!-- Scripts -->
+    <script src="js/sudoku.js"></script>
+</head>
+
+<body>
+    <header>
+        <!-- Encabezado principal -->
+        <h1> Escritorio virtual </h1>
+
+        <!-- Barra de navegación hacia todos los documentos del sitio web -->
+        <nav>
+            <a accesskey="c" tabindex="1" href="index.html">Inicio</a>
+            <a accesskey="r" tabindex="2" href="sobremi.html">Sobre mi</a>
+            <a accesskey="n" tabindex="3" href="noticias.html">Noticias</a>
+            <a accesskey="g" tabindex="4" href="agenda.html">Agenda</a>
+            <a accesskey="l" tabindex="5" href="meteorologia.html">Meteorología</a>
+            <a accesskey="j" tabindex="6" href="viajes.html">Viajes</a>
+            <a accesskey="o" tabindex="7" href="juegos.html">Juegos</a>
+        </nav>
+    </header>
+
+    <article>
+        <h2> Juegos </h2>
+        <!-- Barra de navegación hacia todos los juegos -->
+        <nav>
+            <a accesskey="m" tabindex="1" href="memoria.html">Memoria</a>
+            <a accesskey="s" tabindex="2" href="sudoku.html">Sudoku</a>
+            <a accesskey="c" tabindex="3" href="crucigrama.html">Crucigrama</a>
+        </nav>
+    </article>
+
+    <main>
+        <script>
+            game.paintSudoku();
+
+            document.addEventListener('keydown', function(e) {
+                var cellClicked = document.querySelector("p[data-state='clicked']");
+
+                // Comprueba si hay alguna casilla seleccionada
+                if(cellClicked == null){
+                    alert("Debe pulsar una casilla antes de continuar")
+                } else {
+                    // Comprueba si la casilla seleccionada esta en estado clicked (por si acaso)
+                    if(cellClicked.dataset.state == "clicked"){
+                        if(e.key >= "1" && e.key <= "9"){
+                            game.introduceNumber(e.key);
+                        } else {
+                            alert("La tecla seleccionada no es correcta")
+                        }
+                    }
+                }
+            });
+        </script>
+    </main>
+
+</body>
+</html>

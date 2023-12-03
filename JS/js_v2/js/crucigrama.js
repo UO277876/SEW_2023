@@ -293,8 +293,8 @@ class Crucigrama {
     }
 }
 
-var game = new Crucigrama();
-game.paintMathword();
+var crucigrama = new Crucigrama();
+crucigrama.paintMathword();
 
 document.addEventListener('keydown', function(e) {
     var cellClicked = document.querySelector("p[data-state='clicked']");
@@ -307,7 +307,7 @@ document.addEventListener('keydown', function(e) {
         if(cellClicked.dataset.state == "clicked"){
             if((e.key >= "1" && e.key) <= "9" || 
                 (e.key == "+" || e.key == "-" || e.key == "*" || e.key == "/")){
-                    game.introduceElement(e.key);
+                    crucigrama.introduceElement(e.key);
             } else {
                 alert("La tecla seleccionada no es correcta")
             }

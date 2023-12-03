@@ -13,6 +13,9 @@ class Agenda{
         this.last_api_result = null;
 
         this.datos = null;
+        // Este atributo vigila las llamadas cada 10 minutos, evitando que el html se
+        // actualice si no se ha obtenido una llamada de la api
+        this.isReceived = true;
     }
 
     /**
@@ -45,6 +48,7 @@ class Agenda{
                 }
             });
             
+            this.isReceived = false;
             return this.last_api_call;
         }
 
@@ -60,7 +64,7 @@ class Agenda{
         this.last_api_call = new Date();
         this.getCarreras();
 
-        if(this.datos != null){
+        if(this.datos != null && this.isReceived){
             //Presentacion del archivo XML en modo texto
             $("<h3>Información</h3>").appendTo($("section[data-element='information']")); 
 
@@ -70,8 +74,8 @@ class Agenda{
                 var nombre_circuito =  $('CircuitName',race).text();
                 var coord_lat = $('Location',race).attr("lat");
                 var coord_long = $('Location',race).attr("long");
-                var fecha = $('Time',race).text();
-                var hora =  $('Date',race).text();              
+                var hora = $('Time',race).first().text();
+                var fecha =  $('Date',race).first().text();              
                         
                 // Colocar los datos del XML en el HTML
                 var stringDatos = "<article>";
@@ -82,9 +86,8 @@ class Agenda{
                 stringDatos += "<li> Hora: " + hora + "</li></ul>";
                 stringDatos += "</article>";
     
-                //$("section[data-element='information']").html(stringDatos);  
                 $(stringDatos).appendTo($("section[data-element='information']"));  
-                //$("section[data-element='information']").prepend();          
+                agenda.isReceived = false;
             });
         }             
     }

@@ -1,0 +1,13 @@
+/* Andrea Auñón Antúnez UO277876 */
+
+/*Especificidad: 001*/
+article{
+	background-color: #F8CECC;
+	/*Advertencia CSS, hay color de fondo establecido, pero no color de primer plano*/
+	/*Color de primer plano se hereda del contenedor padre y en cascada*/
+	box-sizing: border-box;
+	padding: 1.5em;
+	
+	width:100%; 
+    height:50vw; 
+}

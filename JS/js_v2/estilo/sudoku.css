@@ -27,4 +27,10 @@ p[data-state='blocked']{
     font-weight: bold;
 }
 
+@media screen and (max-width: 600px) {
+    /*Especificidad: 001*/
+    main{
+        width: 90%;
+    }
+}
 

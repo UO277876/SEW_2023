@@ -1,0 +1,220 @@
+<!DOCTYPE HTML>
+<html lang="es">
+<head>
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8" />
+    <title>Escritorio virtual - Sobre mi</title>
+
+    <!-- Metadatos-->
+    <meta name ="author" content ="Andrea Auñón" />
+    <meta name ="description" content ="Documento con la información personal del autor" />
+    <meta name ="keywords" content ="Informacion,Personal,Aficiones,Temperaturas,Oviedo" />
+    <!-- Para la adaptibilidad -->
+    <meta name ="viewport" content ="width=device-width, initial-scale=1.0" />
+
+    <!-- Hojas de estilo -->
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
+
+    <!-- Icono para las pestañas del navegador -->
+    <link rel="icon" href="multimedia/imagenes/favicon_48.ico" />
+</head>
+
+<body>
+    <header>
+        <!-- Encabezado principal -->
+        <h1> Escritorio virtual </h1>
+
+        <!-- Barra de navegación hacia todos los documentos del sitio web -->
+        <nav>
+            <a accesskey="c" tabindex="1" href="index.html">Inicio</a>
+            <a accesskey="r" tabindex="2" href="sobremi.html">Sobre mi</a>
+            <a accesskey="n" tabindex="3" href="noticias.html">Noticias</a>
+            <a accesskey="g" tabindex="4" href="agenda.html">Agenda</a>
+            <a accesskey="l" tabindex="5" href="meteorologia.html">Meteorología</a>
+            <a accesskey="j" tabindex="6" href="viajes.html">Viajes</a>
+            <a accesskey="o" tabindex="7" href="juegos.html">Juegos</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <!-- Datos personales con uso de address. Se usa section porque todos los elementos tienen sentido en conjunto
+            ya que todo son datos personales, pero no se ve que se vaya a reutilizar a otro sitio. -->
+            <h2> Sobre mi </h2>
+                <p> 
+                    ¡Buenas! Mi nombre es Andrea Auñón Antúnez (UO277876). Soy una estudiante de la Universidad de Oviedo,
+                    concretamente del grado de Ingeniería informática. Actualmente vivo en Oviedo, pero soy de un pueblo de la provincia
+                    de León llamado Villablino. 
+                </p>
+
+                <address> 
+                    <p>Para cualquier tipo de contacto en el <a href="mailto:uo277876@uniovi.es">email</a>.</p>
+                </address>
+
+                <p>
+                    Más información relativa a la Universidad de Oviedo haciendo clic 
+                    <a href="https://www.uniovi.es/">aquí</a>.
+                </p>
+
+                <!-- Contenedor de imagen personal, en diferentes tamaños -->
+                <picture>
+                    <source media="(max-width:465px)" srcset="multimedia/imagenes/yo-465w.jpg" />
+                    <source media="(max-width:799px)" srcset="multimedia/imagenes/yo-799w.jpg" />
+                    <source media="(min-width:800px)" srcset="multimedia/imagenes/yo-800w.jpg" /> 
+                
+                    <img src="multimedia/imagenes/yo-800w.jpg" alt="Imagen personal de Andrea Auñón Antúnez" />
+                </picture>
+
+                <!-- Uso de listas y listas enlazadas -->
+                <h3> Aficiones </h3>
+                <!-- Lista no ordenada -->
+                <p> Una pequeña introducción a mis aficiones principales: </p>
+                <ul>
+                    <li> Lectura de libros de fantasía </li>
+                    <li> Videojuegos </li>
+                    <li> Series y anime </li>
+                    <li> Los paseos </li>
+                    <li> Viajar </li>
+                </ul>
+
+                <!--  <em> Para enfatizar el texto -->
+                <p> Dejo una pequeña introducción (un trozo de un audiolibro) sobre una de las triologías que más me
+                    ha gustado leer, <em>Nacidos de la Bruma</em> de Brandon Sanderson, concretamente del primer libro
+                    <em>"El Imperio Final"</em>: </p>
+
+                <!-- Para añadir audios en formato mp3 y wav -->
+                <audio controls>
+                    <source src="multimedia/audios/elImperioFinal_wa.wav" type="audio/wav" />
+                    <source src="multimedia/audios/elImperioFinal_mp.mp3" type="audio/mp3" />
+                </audio>
+
+                <!-- Lista ordenada y con una enlazada no ordenada -->
+                <p> También una recopilación de mis cantantes y grupos musicales favoritos: </p>
+
+                <ol>
+                    <li> Imagine Dragons</li>
+                    <li> Enol </li>
+                    <li> Recycled J </li>
+                    <li> Kpop, donde entran grupos como por ejemplo:
+                        <ul>
+                            <li>BTS</li>
+                            <li>TXT</li>
+                            <li>EXO</li>
+                            <li>Blackpink</li>
+                        </ul>
+                    </li>
+                    <li> Alan Walker </li>
+                </ol>
+
+                <!-- Para añadir vídeos en formato mp4 y webm -->
+                <!-- Añado el preload para que el navegador ponga el formato óptimo -->
+                <p> Añado también mi canción favorita de Imagine Dragons: </p>
+                <video controls preload="auto">
+                    <source src="multimedia/videos/demons_web.webm" type="audio/webm" />
+                    <source src="multimedia/videos/demons_mp.mp4" type="audio/mp4" />
+                </video>
+
+                <!-- Lista de definición -->
+                <p> Y para finalizar la lista de asignaturas que más me han gustado de mi carrera: </p>
+                <dl>
+                    <dt> SSI, Seguridad de Sistemas Informáticos </dt>
+                        <dd> Siempre me ha encatado la seguridad y además ha sido lo que me ha decantado por realizar esta carrera,
+                            así que debido a este pensamiento esta asignatura fue mi favorita sin duda alguna. </dd>
+                    <dt> DLP, Diseño de Lenguajes de Programación </dt>
+                        <dd> No pensé que me gusatría tanto, pero finalmente una vez realizada me pareció super interesante
+                            sus contenidos y sentí mucha satisfacción al entender el temario. </dd>
+                    <dt> ED, Estructura de Datos </dt>
+                        <dd> Esta asignatura esta en tercer lugar debido a que igual que DLP, me pareció muy interesante el contenido
+                            y útil finalmente en mi día a día en todas las demás asignaturas. </dd>
+                    <dt> MP, Metodología de la Programación </dt>
+                        <dd> Me costó un poco adaptarme al nuevo ritmo de mi vida pero esta asignatura hizo que me interesara
+                            por el desarrollo web.  </dd>
+                    <dt> DS, Diseño del Software </dt>
+                        <dd> Los conenidos impartidos en esta asignatura eran también bastante útiles a la hora de comprender
+                            un poco mejor como estructurar y optimizar mi código, problema que siempre tuve en otras asignaturas. </dd>
+                </dl>
+        </section>
+    </main>
+
+    <aside>
+        <article>
+            <!-- Tabla. Se vuelve a utilizar article porque se considera un elemento lo suficientemente independiente en contenido
+            de la información personal, pero reutilizable en meteorolodía por ejemplo -->
+            <h2> Temperaturas medias anuales de Oviedo </h2>
+            <p> 
+                A continuación se muestra una tabla con las temperaturas medias de Oviedo en los últimos
+                10 años recogidos en la página 
+                    
+                <a href="https://www.tutiempo.net/">TuTiempo</a>.
+            </p>
+
+            <table>
+                <caption> Temperaturas medias </caption>
+                <tr> 
+                    <th scope="col" id="años"> Años </th>
+                    <th scope="col" id="grados"> Grados centigrados (ºC) </th>
+                </tr>
+
+                <tr>
+                    <th scope="row" id="2022" headers="años"> 2022 </th>
+                    <td headers="grados 2022"> 14 </td>
+                </tr>
+                        
+                <tr>
+                    <th scope="row" id="2021" headers="años"> 2021 </th>
+                    <td headers="grados 2021"> 13 </td>
+                </tr>
+
+                <tr>
+                    <th scope="row" id="2020" headers="años"> 2020 </th>
+                    <td headers="grados 2020"> 13.8 </td>
+                </tr>
+
+                <tr>
+                    <th scope="row" id="2019" headers="años"> 2019 </th>
+                    <td headers="grados 2019"> 12.1 </td>
+                </tr>
+
+                <tr>
+                    <th scope="row" id="2018" headers="años"> 2018 </th>
+                    <td headers="grados 2018"> 13.1 </td>
+                </tr>
+
+                <tr>
+                    <th scope="row" id="2017" headers="años"> 2017 </th>
+                    <td headers="grados 2017"> 13.3 </td>
+                </tr>
+
+                <tr>
+                    <th scope="row" id="2016" headers="años"> 2016 </th>
+                    <td headers="grados 2016"> 13.2 </td>
+                </tr>
+
+                <tr>
+                    <th scope="row" id="2015" headers="años"> 2015 </th>
+                    <td headers="grados 2015"> 13.4 </td>
+                </tr>
+
+                <tr>
+                    <th scope="row" id="2014" headers="años"> 2014 </th>
+                    <td headers="grados 2014"> 13.5 </td>
+                </tr>
+
+                <tr>
+                    <th scope="row" id="2013" headers="años"> 2013 </th>
+                    <td headers="grados 2013"> 12.3 </td>
+                </tr>
+            </table>
+        </article>
+    </aside>
+
+    <!-- Pie de página -->
+    <!-- <footer>
+        <p>Copyright @2023 Andrea Auñón (uo277876)</p>
+        <p>SEW Curso 2023-2024</p>
+    </footer>
+    -->
+
+</body>
+</html>

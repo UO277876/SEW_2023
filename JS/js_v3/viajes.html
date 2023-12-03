@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="es">
+<head>
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8" />
+    <title>Escritorio virtual - Viajes</title>
+
+    <!-- Metadatos-->
+    <meta name ="author" content ="Andrea Auñón" />
+    <meta name ="description" content ="En desarrollo" />
+    <meta name ="keywords" content ="Viajes,geolocalizacion,mapaEstatico,mapaDinamico" />
+    <!-- Para la adaptibilidad -->
+    <meta name ="viewport" content ="width=device-width, initial-scale=1.0" />
+
+    <!-- Hojas de estilo -->
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
+
+    <!-- Icono para las pestañas del navegador -->
+    <link rel="icon" href="multimedia/imagenes/favicon_48.ico" />
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/viajes.js"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIcuOz-qDlbHdeYM44HgjGwCrCR71L5kI&callback=miMapa.initMap"></script>
+
+</head>
+
+<body>
+    <header>
+        <!-- Encabezado principal -->
+        <h1> Escritorio virtual </h1>
+
+        <!-- Barra de navegación hacia todos los documentos del sitio web -->
+        <nav>
+            <a accesskey="c" tabindex="1" href="index.html">Inicio</a>
+            <a accesskey="r" tabindex="2" href="sobremi.html">Sobre mi</a>
+            <a accesskey="n" tabindex="3" href="noticias.html">Noticias</a>
+            <a accesskey="g" tabindex="4" href="agenda.html">Agenda</a>
+            <a accesskey="l" tabindex="5" href="meteorologia.html">Meteorología</a>
+            <a accesskey="j" tabindex="6" href="viajes.html">Viajes</a>
+            <a accesskey="o" tabindex="7" href="juegos.html">Juegos</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Información geográfica</h2>
+            <button onclick="viajes.verTodo()">Obtener mis coordenadas</button>
+        </section>
+
+        <article>
+            <h2>Mapa estático</h2>
+            <button onclick="viajes.getMapaEstaticoGoogle()">Obtener mapa estático</button>
+            <p id="estatico"></p>
+        </article>
+
+        <article>
+            <h2>Mapa dinámico</h2>
+            <button onclick="viajes.initMap()">Obtener mapa dinámico</button>
+            <p id="dinamico"></p>
+        </article>
+    </main>
+</body>
+</html>
