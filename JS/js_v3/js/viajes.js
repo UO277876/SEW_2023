@@ -61,49 +61,6 @@ class Viajes {
         ubicacion.innerHTML = "<img src='"+this.imagenMapa+"' alt='mapa estático google' />";
     }
 
-    /*
-    initMap(){
-        var centro = {lat: 43.3672702, lng: -5.8502461};
-        var mapaGeoposicionado = new google.maps.Map(document.getElementById('dinamico'),{
-            zoom: 8,
-            center:centro,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        });
-            
-        var infoWindow = new google.maps.InfoWindow;
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            };
-        
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Localización encontrada');
-            infoWindow.open(mapaGeoposicionado);
-            mapaGeoposicionado.setCenter(pos);
-            }, function() {
-                handleLocationError(true, infoWindow, mapaGeoposicionado.getCenter());
-            });
-        } else {
-            // Browser doesn't support Geolocation
-            handleLocationError(false, infoWindow, mapaGeoposicionado.getCenter());
-        }
-    }
-        
-    handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                            'Error: Ha fallado la geolocalización' :
-                            'Error: Su navegador no soporta geolocalizaciÃ³n');
-        infoWindow.open(mapaGeoposicionado);
-    }       
-
-    getMapaDinamicoGoogle(){
-        viajes.initMap = initMap();
-    }
-    */
-
     initMap() {
         // Es la api_key publica de Mapbox
         mapboxgl.accessToken = 'pk.eyJ1IjoidW8yNzc4NzYiLCJhIjoiY2xwcTVhZjR6MWRqdDJtdDN6YWxyYjcyZCJ9.KedYvGNNAfrOhXpkQKjFZQ';
@@ -133,9 +90,6 @@ class Viajes {
         if (archivo.type.match(tipoTexto)) {
             var lector = new FileReader();
 
-            //El evento "onload" se lleva a cabo cada vez que se completa con éxito una operación de lectura
-            //La propiedad "result" es donde se almacena el contenido del archivo
-            //Esta propiedad solamente es válida cuando se termina la operación de lectura
             lector.onload = function (event) {
                 var areaVisualizacion = document.querySelector("p[data-type='xml']");
                 areaVisualizacion.innerText = lector.result;
@@ -145,34 +99,43 @@ class Viajes {
 
             lector.readAsText(archivo);
         } else {
-            errorArchivo.innerText = "Error : ¡¡¡ Archivo no válido !!!";
+            var areaVisualizacion = document.querySelector("p[data-type='xml']");
+            areaVisualizacion.innerText = "Error : ¡¡¡ Archivo XML no válido !!!";
         }     
     }
 
     /**
      * Se encarga de realizar la lectura de los ficheros kml
      */
-        readInputKML(files){
-            for(let i=0; i < files.length; i++){
-                var archivo = files[i];
+    readInputKML(files){
+        for(let i=0; i < files.length; i++){
+            var archivo = files[i];
     
-                var tipoTexto = /text.*/;
-                if (archivo.type.match(tipoTexto)) {
-                    var lector = new FileReader();
+            var tipoTexto = /text.*/;
+            if (archivo.type.match(tipoTexto)) {
+                var lector = new FileReader();
         
-                    //El evento "onload" se lleva a cabo cada vez que se completa con éxito una operación de lectura
-                    //La propiedad "result" es donde se almacena el contenido del archivo
-                    //Esta propiedad solamente es válida cuando se termina la operación de lectura
-                    lector.onload = function (event) {
-                        
-                    };     
+                lector.onload = function (event) {
+                    sacarCoordenadasKML(lector.result);
+                };     
         
-                    lector.readAsText(archivo);
-                } else {
-                    errorArchivo.innerText = "Error : ¡¡¡ Archivo no válido !!!";
-                }
-            }     
-        }
+                lector.readAsText(archivo);
+            } else {
+                var areaVisualizacion = document.getElementById("kml");
+                areaVisualizacion.innerText = "Error : ¡¡¡ Archivo KML no válido !!!";
+            }
+        }     
+    }
+
+    /**
+     * Procesa un kml para scaar sus coordenadas y llama a la creacion de un mapa con ellas
+     * @param {} result 
+     */
+    sacarCoordenadasKML(result){
+        
+    }
+
+
 
 }
 
