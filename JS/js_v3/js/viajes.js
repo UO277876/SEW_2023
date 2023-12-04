@@ -61,6 +61,7 @@ class Viajes {
         ubicacion.innerHTML = "<img src='"+this.imagenMapa+"' alt='mapa estático google' />";
     }
 
+    /*
     initMap(){
         var centro = {lat: 43.3672702, lng: -5.8502461};
         var mapaGeoposicionado = new google.maps.Map(document.getElementById('dinamico'),{
@@ -101,6 +102,25 @@ class Viajes {
     getMapaDinamicoGoogle(){
         viajes.initMap = initMap();
     }
+    */
+
+    initMap() {
+        // Es la api_key publica de Mapbox
+        mapboxgl.accessToken = 'pk.eyJ1IjoidW8yNzc4NzYiLCJhIjoiY2xwcTVhZjR6MWRqdDJtdDN6YWxyYjcyZCJ9.KedYvGNNAfrOhXpkQKjFZQ';
+        var lat = this.latitud;
+        var long = this.longitud;
+        
+        var map = new mapboxgl.Map({
+            container: 'dinamico', // container ID
+            center: [long, lat], // starting position [lng, lat]
+            zoom: 13, // starting zoom
+        });
+
+        // Para añadir un marcador a la posicion del usuario
+        const marker = new mapboxgl.Marker()
+        .setLngLat([long,lat])
+        .addTo(map);
+    }
     
     
     /**
@@ -117,11 +137,10 @@ class Viajes {
             //La propiedad "result" es donde se almacena el contenido del archivo
             //Esta propiedad solamente es válida cuando se termina la operación de lectura
             lector.onload = function (event) {
-                //$("p[data-element='xml']").text(lector.result);
-                var areaVisualizacion = document.querySelector("p[data-element='xml']");
+                var areaVisualizacion = document.querySelector("p[data-type='xml']");
                 areaVisualizacion.innerText = lector.result;
 
-                $("input").attr("disabled", "disabled");
+                $("input:first").attr("disabled", "disabled");
             };     
 
             lector.readAsText(archivo);
@@ -133,7 +152,7 @@ class Viajes {
     /**
      * Se encarga de realizar la lectura de los ficheros kml
      */
-        readInputXML(files){
+        readInputKML(files){
             for(let i=0; i < files.length; i++){
                 var archivo = files[i];
     

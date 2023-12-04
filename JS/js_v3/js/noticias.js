@@ -11,7 +11,7 @@ class Noticias {
             mensaje = "¡¡¡Este navegador NO soporta el API File y este programa puede no funcionar correctamente!!!";
         }
 
-        $("section:first").ready().after(mensaje);
+        $(mensaje).appendTo($("section").first());
     }
 
     /**
@@ -58,7 +58,7 @@ class Noticias {
                 stringDatos += "<p>Autor: " + informacion[3] + "<p>";
                 stringDatos += "</article>"
 
-                $(stringDatos).appendTo($("section[data-element='noticias']"));
+                $(stringDatos).appendTo($("section").last());
             }
         } else {
             alert("Contenido del fichero inválido");
@@ -82,7 +82,7 @@ class Noticias {
             stringDatos += "<p>Autor: " + autor + "<p>";
             stringDatos += "</article>"
     
-            $(stringDatos).appendTo($("section[data-element='noticias']"));
+            $(stringDatos).appendTo($("section").last());
         } else {
             alert("Falta algún campo por rellenar");
         }

@@ -66,7 +66,7 @@ class Agenda{
 
         if(this.datos != null && this.isReceived){
             //Presentacion del archivo XML en modo texto
-            $("<h3>Información</h3>").appendTo($("section[data-element='information']")); 
+            $("<h3>Información</h3>").appendTo($("section").last()); 
 
             $.each($("Race",this.datos), function(i,race ) {
                 //Extracción de los datos contenidos en el XML
@@ -86,7 +86,7 @@ class Agenda{
                 stringDatos += "<li> Hora: " + hora + "</li></ul>";
                 stringDatos += "</article>";
     
-                $(stringDatos).appendTo($("section[data-element='information']"));  
+                $(stringDatos).appendTo($("section").last());  
                 agenda.isReceived = false;
             });
         }             
