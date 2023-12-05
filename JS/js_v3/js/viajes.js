@@ -90,17 +90,59 @@ class Viajes {
         if (archivo.type.match(tipoTexto)) {
             var lector = new FileReader();
 
-            lector.onload = function (event) {
-                var areaVisualizacion = document.querySelector("p[data-type='xml']");
-                areaVisualizacion.innerText = lector.result;
+            lector.onload = function (event) {      
+                $.each($("ruta",lector.result), function(i,ruta ) {
+                    //Extracción de los datos contenidos en el XML
+                    var nombre_ruta = $('nombre',ruta).text();
+                    var tipo =  $('tipoRuta',ruta).text();
+                    var medio_transporte = $('mtransporte',ruta).text();
 
-                $("input:first").attr("disabled", "disabled");
+                    var duracion = $('duracion',ruta).text();
+                    duracion = duracion.replace("PT","");
+
+                    var agencia = $('agencia',ruta).text();
+                    var descripcion = $('descripcion',ruta).text();
+
+                    var lugar_inicio = $('linicio',ruta).text();
+                    var direcc_inicio = $('dinicio',ruta).text();
+
+                    var latitud = $('latitud',ruta).first().text();
+                    var longitud = $('longitud',ruta).first().text();
+                    var altitud = $('altitud',ruta).first().text();
+
+                    var recomendacion = $('recomendacion',ruta).text();           
+                            
+                    // Colocar los datos del XML en el HTML
+                    var stringDatos = "<article>";
+                    stringDatos += "<h3>" + nombre_ruta + "</h3>";
+                    stringDatos += "<ul><li> Nombre de la ruta: " + nombre_ruta + "</li>";
+                    stringDatos += "<li> Tipo: " + tipo + "</li>";
+                    stringDatos += "<li> Medio de transporte: " + medio_transporte + "</li>";
+                    stringDatos += "<li> Duración: " + duracion + "</li>";
+                    stringDatos += "<li> Agencia: " + agencia + "</li>";
+                    stringDatos += "<li> Descripción: " + descripcion + "</li>";
+                    stringDatos += "<li> Inicio: " + lugar_inicio + ", " + direcc_inicio + "</li>";
+                    stringDatos += "<li> Recomendación: " + recomendacion + "</li>";
+                    stringDatos += "<li> Coordenadas: " + latitud + "," + longitud + "," + altitud + "</li></ul>";
+
+                    stringDatos += "<h3> Bibliografía</h3>";
+                    /*
+                    $.each($("referencia",ruta), function(i,referencia ){
+                        stringDatos += "<p> Referencia" + (i+1) + ": " + referencia.text() + "</p>";
+                    });
+                    */
+
+                    // HITOS
+
+                    
+        
+                    $(stringDatos).appendTo($("section:nth-child(3)"));  
+                });
             };     
 
             lector.readAsText(archivo);
         } else {
-            var areaVisualizacion = document.querySelector("p[data-type='xml']");
-            areaVisualizacion.innerText = "Error : ¡¡¡ Archivo XML no válido !!!";
+            $("Error : ¡¡¡ Archivo XML no válido !!!").appendTo($("section:nth-child(3)"));  
         }     
     }
 
@@ -108,34 +150,54 @@ class Viajes {
      * Se encarga de realizar la lectura de los ficheros kml
      */
     readInputKML(files){
+        mapboxgl.accessToken = 'pk.eyJ1IjoidW8yNzc4NzYiLCJhIjoiY2xwcTVhZjR6MWRqdDJtdDN6YWxyYjcyZCJ9.KedYvGNNAfrOhXpkQKjFZQ';
+        var auxLat = this.latitud;
+        var auxLong = this.longitud;
+        
+        var map = new mapboxgl.Map({
+            container: 'kml', // container ID
+            center: [auxLong, auxLat], // starting position [lng, lat]
+            zoom: 13, // starting zoom
+        });
+
+        var viajes = this;
+
         for(let i=0; i < files.length; i++){
             var archivo = files[i];
     
-            var tipoTexto = /text.*/;
-            if (archivo.type.match(tipoTexto)) {
-                var lector = new FileReader();
+            var lector = new FileReader();
         
-                lector.onload = function (event) {
-                    sacarCoordenadasKML(lector.result);
-                };     
+            lector.onload = function (event) {
+                var kml = lector.result;
+                var listCoordinates = $("coordinates", kml);   
+                listCoordinates = listCoordinates[0].innerHTML.split("\n");   
+
+                // Se empieza en 1 porque el primer elemento es "" y el ultimo tambien (por eso .length - 1)
+                for(let j=1; j < listCoordinates.length - 1; j++){
+                    var coordinates = listCoordinates[j].split(",");
+                    var long = coordinates[0];
+                    var lat = coordinates[1];
+                        
+                    viajes.añadirMarcador(map,long,lat);    
+                }
+            };     
         
-                lector.readAsText(archivo);
-            } else {
-                var areaVisualizacion = document.getElementById("kml");
-                areaVisualizacion.innerText = "Error : ¡¡¡ Archivo KML no válido !!!";
-            }
+            lector.readAsText(archivo);
         }     
     }
 
     /**
-     * Procesa un kml para scaar sus coordenadas y llama a la creacion de un mapa con ellas
-     * @param {} result 
+     * Añade un marcador en la longitud y latitud pasadas como parametro
+     * 
+     * @param {} map el mapa al que se añaden los marcadores
+     * @param {*} long coordenada x
+     * @param {*} lat coordenada y
      */
-    sacarCoordenadasKML(result){
-        
+    añadirMarcador(map,long,lat){
+        var marker = new mapboxgl.Marker()
+        .setLngLat([long,lat])
+        .addTo(map);
     }
-
-
 
 }
 
