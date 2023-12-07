@@ -2,6 +2,10 @@
 class Viajes {
     constructor(){
         navigator.geolocation.getCurrentPosition(this.getPosicion.bind(this), this.verErrores.bind(this));
+
+        // Si no se ejecuta de esta manera no se carga por compelto el documento,
+        // entonces no encuentra la section
+        document.addEventListener("DOMContentLoaded", this.comprobarApiFile.bind(this));        
     }
 
     getPosicion(posicion){
@@ -35,26 +39,11 @@ class Viajes {
         var ubicacion = document.getElementById("estatico");
         
         var apiKey = "&key=AIzaSyC6j4mF6blrc4kZ54S6vYZ2_FpMY9VzyRU";
-        //URL: obligatoriamente https
         var url = "https://maps.googleapis.com/maps/api/staticmap?";
-        //Parámetros
-        // centro del mapa (obligatorio si no hay marcadores)
         var centro = "center=" + this.latitud + "," + this.longitud;
-        //zoom (obligatorio si no hay marcadores)
-        //zoom: 1 (el mundo), 5 (continentes), 10 (ciudad), 15 (calles), 20 (edificios)
-        var zoom ="&zoom=15";
-        //Tamaño del mapa en pixeles (obligatorio)
+        var zoom ="&zoom=15"
         var tam= "&size=800x600";
-        //Escala (opcional)
-        //Formato (opcional): PNG,JPEG,GIF
-        //Tipo de mapa (opcional)
-        //Idioma (opcional)
-        //region (opcional)
-        //marcadores (opcional)
         var marcador = "&markers=color:red%7Clabel:S%7C" + this.latitud + "," + this.longitud;
-        //rutas. path (opcional)
-        //visible (optional)
-        //style (opcional)
         var sensor = "&sensor=false"; 
         
         this.imagenMapa = url + centro + zoom + tam + marcador + sensor + apiKey;
@@ -115,8 +104,7 @@ class Viajes {
                     // Colocar los datos del XML en el HTML
                     var stringDatos = "<article>";
                     stringDatos += "<h3>" + nombre_ruta + "</h3>";
-                    stringDatos += "<ul><li> Nombre de la ruta: " + nombre_ruta + "</li>";
-                    stringDatos += "<li> Tipo: " + tipo + "</li>";
+                    stringDatos += "<ul><li> Tipo: " + tipo + "</li>";
                     stringDatos += "<li> Medio de transporte: " + medio_transporte + "</li>";
                     stringDatos += "<li> Duración: " + duracion + "</li>";
                     stringDatos += "<li> Agencia: " + agencia + "</li>";
@@ -125,17 +113,37 @@ class Viajes {
                     stringDatos += "<li> Recomendación: " + recomendacion + "</li>";
                     stringDatos += "<li> Coordenadas: " + latitud + "," + longitud + "," + altitud + "</li></ul>";
 
-                    stringDatos += "<h3> Bibliografía</h3>";
-                    /*
+                    stringDatos += "<h3>Bibliografía</h3>";
                     $.each($("referencia",ruta), function(i,referencia ){
-                        stringDatos += "<p> Referencia" + (i+1) + ": " + referencia.text() + "</p>";
+                        stringDatos += "<p>" + referencia.innerHTML + "</p>";
+                        //var referencia = (referencia.innerHTML).split(":");
+                        //stringDatos += "<p>" + referencia[0] + ": <a href='" + referencia[1] + "'>" + referencia[1] + "</a></p>";
                     });
-                    */
 
                     // HITOS
+                    stringDatos += "<h3>Hitos</h3>";
 
-                    
-        
+                    $.each($("hito",ruta), function(i,hito){
+                        var nombre_hito = $('hnombre',hito).text();
+                        var descripcion_hito = $('hdescripcion',hito).text();
+                        var lat_hito = $('latitud',hito).text();
+                        var long_hito = $('longitud',hito).text();
+                        var alt_hito = $('altitud',hito).text();
+                        var distancia = $('distancia',hito).text();
+                        var unidades = $('distancia',hito).attr("unidades");
+
+                        stringDatos += "<h4>" + nombre_hito + "</h4>";
+                        stringDatos += "<ul><li> Descripción del hito: " + descripcion_hito + "</li>";
+                        stringDatos += "<li> Coordenadas: " + lat_hito + "," + long_hito + "," + alt_hito + "</li>";
+                        stringDatos += "<li> Distancia: " + distancia + " " + unidades + "</li></ul>";
+
+                        $.each($("fotografia",hito), function(i,foto){
+                            stringDatos += "<img" + "src=./xml/" + foto + "alt=foto ruta" + i + "/>";
+                        });
+
+                    });
+
+                    stringDatos += "</article>"
                     $(stringDatos).appendTo($("section:nth-child(3)"));  
                 });
             };     
@@ -151,13 +159,11 @@ class Viajes {
      */
     readInputKML(files){
         mapboxgl.accessToken = 'pk.eyJ1IjoidW8yNzc4NzYiLCJhIjoiY2xwcTVhZjR6MWRqdDJtdDN6YWxyYjcyZCJ9.KedYvGNNAfrOhXpkQKjFZQ';
-        var auxLat = this.latitud;
-        var auxLong = this.longitud;
         
         var map = new mapboxgl.Map({
             container: 'kml', // container ID
-            center: [auxLong, auxLat], // starting position [lng, lat]
-            zoom: 13, // starting zoom
+            center: [-89.191428, 13.698964], // Coordenadas de El Salvador
+            zoom: 9, // starting zoom
         });
 
         var viajes = this;
@@ -168,23 +174,89 @@ class Viajes {
             var lector = new FileReader();
         
             lector.onload = function (event) {
-                var kml = lector.result;
+                var kml = event.target.result;
                 var listCoordinates = $("coordinates", kml);   
                 listCoordinates = listCoordinates[0].innerHTML.split("\n");   
+
+                var rute =[];
 
                 // Se empieza en 1 porque el primer elemento es "" y el ultimo tambien (por eso .length - 1)
                 for(let j=1; j < listCoordinates.length - 1; j++){
                     var coordinates = listCoordinates[j].split(",");
                     var long = coordinates[0];
                     var lat = coordinates[1];
+
+                    rute.push([long,lat]);
                         
-                    viajes.añadirMarcador(map,long,lat);    
+                    //viajes.añadirMarcador(map,long,lat,colorLinea);    
                 }
+
+                viajes.addRuta(rute,map,i);
+            };  
+            
+            lector.readAsText(archivo);
+        }     
+    }
+
+
+    addRuta(rute,map,i){
+        map.on('load', () => {
+            map.addSource('route' + i, {
+                'type': 'geojson',
+                'data': {
+                    'type': 'Feature',
+                    'properties': {},
+                    'geometry': {
+                        'type': 'LineString',
+                        'coordinates': rute
+                    }
+                }
+            });
+
+
+            map.addLayer({
+                'id': 'route' + i,
+                'type': 'line',
+                'source': 'route' + i,
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#FF0',
+                    'line-width': 7
+                }
+            });
+        });
+    }
+
+    /**
+     * Se encarga de realizar la lectura de los ficheros svg
+     */
+    readInputSVG(files){
+        mapboxgl.accessToken = 'pk.eyJ1IjoidW8yNzc4NzYiLCJhIjoiY2xwcTVhZjR6MWRqdDJtdDN6YWxyYjcyZCJ9.KedYvGNNAfrOhXpkQKjFZQ';
+        
+        var map = new mapboxgl.Map({
+            container: 'svg', // container ID
+            center: [-89.191428, 13.698964], // Coordenadas de El Salvador
+            zoom: 8, // starting zoom
+        });
+
+        var viajes = this;
+
+        for(let i=0; i < files.length; i++){
+            var archivo = files[i];
+    
+            var lector = new FileReader();
+        
+            lector.onload = function (event) {
+                var svg = lector.result;
+                
             };     
         
             lector.readAsText(archivo);
         }     
-    }
+    }    
 
     /**
      * Añade un marcador en la longitud y latitud pasadas como parametro
@@ -193,10 +265,20 @@ class Viajes {
      * @param {*} long coordenada x
      * @param {*} lat coordenada y
      */
-    añadirMarcador(map,long,lat){
-        var marker = new mapboxgl.Marker()
+    añadirMarcador(map,long,lat,colorLinea){
+        new mapboxgl.Marker({color: colorLinea})
         .setLngLat([long,lat])
         .addTo(map);
+    }
+
+    comprobarApiFile(){
+        if (window.File && window.FileReader && window.FileList && window.Blob) {  
+            //El navegador soporta el API File
+            $("<p>Este navegador soporta el API File </p>").appendTo("section:nth-child(3)");
+        } else {
+            $("<p>¡¡¡ Este navegador NO soporta el API File y este programa puede no funcionar correctamente !!!</p>")
+                .appendTo("section:nth-child(3)");
+        }
     }
 
 }

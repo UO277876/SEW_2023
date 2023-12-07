@@ -2,16 +2,19 @@
 class Noticias {
 
     constructor(){
-        var mensaje = '';
+        // Si no se ejecuta de esta manera no se carga por compelto el documento,
+        // entonces no encuentra la section
+        document.addEventListener("DOMContentLoaded", this.comprobarApiFile.bind(this));
+    }
 
+    comprobarApiFile(){
         if (window.File && window.FileReader && window.FileList && window.Blob) {  
             //El navegador soporta el API File
-            mensaje = "Este navegador soporta el API File";
+            $("<p>Este navegador soporta el API File </p>").appendTo("section:nth-child(1)");
         } else {
-            mensaje = "¡¡¡Este navegador NO soporta el API File y este programa puede no funcionar correctamente!!!";
+            $("<p>¡¡¡ Este navegador NO soporta el API File y este programa puede no funcionar correctamente !!!</p>")
+                .appendTo("section:nth-child(1)");
         }
-
-        $(mensaje).appendTo($("section").first());
     }
 
     /**

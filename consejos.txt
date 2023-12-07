@@ -1,4 +1,2 @@
-- El tema de los ids en el formulario de Noticias
 - La redimensión del sudoku y el crucigrama
-- El tema de la botonera del crucigrama si es accesible usando display:none
-- Las llamadas de las url tienen que ser http o https (ergast y openweather)
+- Al procesar el XML en viajes como procesar las imagenes y las URL
