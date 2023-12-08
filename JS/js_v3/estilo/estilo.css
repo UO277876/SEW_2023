@@ -150,6 +150,17 @@ audio{
     height: auto;
 }
 
+/* ------------- FOOTER ------------- */
+/* Especificidad: 001*/
+footer{
+    background-color: #5F423A;
+    color:#ebebe1;
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+    margin: 1em;
+}
+
 /* ------------- METEOROLOGIA ------------- */
 /* Hereda el color de texto de su elemento padre, body*/
 /* Especificidad: 011*/

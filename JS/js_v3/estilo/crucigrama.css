@@ -11,8 +11,8 @@ main{
     height: auto;
 }
 
-/*Especificidad: 001*/
-p {
+/*Especificidad: 002*/
+main > p {
     padding: 0.6em;
     margin: 0;
     text-align: center;

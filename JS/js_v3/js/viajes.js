@@ -154,6 +154,16 @@ class Viajes {
         }     
     }
 
+    comprobarApiFile(){
+        if (window.File && window.FileReader && window.FileList && window.Blob) {  
+            //El navegador soporta el API File
+            $("<p>Este navegador soporta el API File </p>").appendTo("section:nth-child(3)");
+        } else {
+            $("<p>¡¡¡ Este navegador NO soporta el API File y este programa puede no funcionar correctamente !!!</p>")
+                .appendTo("section:nth-child(3)");
+        }
+    }
+
     /**
      * Se encarga de realizar la lectura de los ficheros kml
      */
@@ -175,20 +185,22 @@ class Viajes {
         
             lector.onload = function (event) {
                 var kml = event.target.result;
+                // Para coger todas las coordenadas
                 var listCoordinates = $("coordinates", kml);   
+                // Se dividen ls coordenadas en diferentes lineas
                 listCoordinates = listCoordinates[0].innerHTML.split("\n");   
 
+                // rute va a contener las coordenadas para pasarselas al json de mapbox
                 var rute =[];
 
                 // Se empieza en 1 porque el primer elemento es "" y el ultimo tambien (por eso .length - 1)
+                // El bucle se hace ya que las coordenadas estan al reves (lat,long) y para añadirlas a rute
                 for(let j=1; j < listCoordinates.length - 1; j++){
                     var coordinates = listCoordinates[j].split(",");
                     var long = coordinates[0];
                     var lat = coordinates[1];
 
-                    rute.push([long,lat]);
-                        
-                    //viajes.añadirMarcador(map,long,lat,colorLinea);    
+                    rute.push([long,lat]);  
                 }
 
                 viajes.addRuta(rute,map,i);
@@ -198,7 +210,11 @@ class Viajes {
         }     
     }
 
-
+    /**
+     * Crea una línea uniendo diferentes puntos (variable rute) en un mapa pasado como parámetro
+     * La i es para cambiar el identificador de la ruta por el que sea correspondiente al llamar
+     * al método
+     */
     addRuta(rute,map,i){
         map.on('load', () => {
             map.addSource('route' + i, {
@@ -212,7 +228,6 @@ class Viajes {
                     }
                 }
             });
-
 
             map.addLayer({
                 'id': 'route' + i,
@@ -234,14 +249,6 @@ class Viajes {
      * Se encarga de realizar la lectura de los ficheros svg
      */
     readInputSVG(files){
-        mapboxgl.accessToken = 'pk.eyJ1IjoidW8yNzc4NzYiLCJhIjoiY2xwcTVhZjR6MWRqdDJtdDN6YWxyYjcyZCJ9.KedYvGNNAfrOhXpkQKjFZQ';
-        
-        var map = new mapboxgl.Map({
-            container: 'svg', // container ID
-            center: [-89.191428, 13.698964], // Coordenadas de El Salvador
-            zoom: 8, // starting zoom
-        });
-
         var viajes = this;
 
         for(let i=0; i < files.length; i++){
@@ -250,35 +257,29 @@ class Viajes {
             var lector = new FileReader();
         
             lector.onload = function (event) {
-                var svg = lector.result;
-                
+                var svg = event.target.result;
+               
+                viajes.printSVG(svg)
             };     
         
             lector.readAsText(archivo);
+
         }     
     }    
 
     /**
-     * Añade un marcador en la longitud y latitud pasadas como parametro
-     * 
-     * @param {} map el mapa al que se añaden los marcadores
-     * @param {*} long coordenada x
-     * @param {*} lat coordenada y
+     * Imprime el svg pasado como parámetro en el HTML
+     * @param {*} svg 
      */
-    añadirMarcador(map,long,lat,colorLinea){
-        new mapboxgl.Marker({color: colorLinea})
-        .setLngLat([long,lat])
-        .addTo(map);
-    }
+    printSVG(svg){
+        // Se quitan las dos líneas del svg en xml
+        var lines = svg.split('\n').slice(2);
+        var svgWithoutHeader = lines.join('\n');
 
-    comprobarApiFile(){
-        if (window.File && window.FileReader && window.FileList && window.Blob) {  
-            //El navegador soporta el API File
-            $("<p>Este navegador soporta el API File </p>").appendTo("section:nth-child(3)");
-        } else {
-            $("<p>¡¡¡ Este navegador NO soporta el API File y este programa puede no funcionar correctamente !!!</p>")
-                .appendTo("section:nth-child(3)");
-        }
+        var stringDatos = "<svg height='850' width='500'>"
+        stringDatos += svgWithoutHeader;
+        stringDatos += "</svg>"
+        $(stringDatos).appendTo($("section:nth-child(5)"));  
     }
 
 }

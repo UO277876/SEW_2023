@@ -66,8 +66,6 @@ class Agenda{
 
         if(this.datos != null && this.isReceived){
             //Presentacion del archivo XML en modo texto
-            $("<h3>Información</h3>").appendTo($("section").last()); 
-
             $.each($("Race",this.datos), function(i,race ) {
                 //Extracción de los datos contenidos en el XML
                 var nombre_carrera = $('RaceName',race).text();

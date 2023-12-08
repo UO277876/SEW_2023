@@ -12,8 +12,8 @@ main{
     font-size: 1.2em;
 }
 
-/*Especificidad: 001*/
-p {
+/*Especificidad: 002*/
+main > p {
     padding: 25%;
     margin: 0;
     text-align: center;
