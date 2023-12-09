@@ -3,8 +3,7 @@
 /* Para los archivos que contienen un mapa dinamico */
 /*Especificidad: 100*/
 #dinamico,
-#kml,
-#svg{
+#kml{
 	width:60vw; 
 	height:50vw;
 }

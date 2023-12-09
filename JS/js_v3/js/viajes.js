@@ -138,7 +138,7 @@ class Viajes {
                         stringDatos += "<li> Distancia: " + distancia + " " + unidades + "</li></ul>";
 
                         $.each($("fotografia",hito), function(i,foto){
-                            stringDatos += "<img" + "src=./xml/" + foto + "alt=foto ruta" + i + "/>";
+                            stringDatos += "<img" + "src=./xml/" + foto + "alt=" + nombre_hito + "/>";
                         });
 
                     });

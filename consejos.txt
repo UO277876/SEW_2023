@@ -1,2 +1,3 @@
 - La redimensión del sudoku y el crucigrama
 - Al procesar el XML en viajes como procesar las imagenes y las URL
+- El aviso del validador en el .css del crucigrama
