@@ -50,13 +50,13 @@
         <section>
             <h2>Mapa estático</h2>
             <button onclick="viajes.getMapaEstaticoGoogle()">Obtener mapa estático</button>
-            <p id="estatico"></p>
+            <p data-type="estatico"></p>
         </section>
 
         <section>
             <h2>Mapa dinámico</h2>
             <button onclick="viajes.initMap()">Obtener mapa dinámico</button>
-            <p id="dinamico"></p>
+            <p id="dinamico" data-type="mapa"></p>
         </section>
 
         <section>
@@ -69,7 +69,7 @@
             <h2>Carga de archivos KML</h2>
             <!-- Se cambia el atributo multiple a true, por lo que permite la carga de varios archivos -->
             <p><input type="file" accept=".kml" onchange="viajes.readInputKML(this.files);" multiple></p>
-            <p id="kml"></p>
+            <p id="kml" data-type="mapa"></p>
         </section>
 
         <section>

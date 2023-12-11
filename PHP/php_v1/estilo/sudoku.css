@@ -1,5 +1,6 @@
 /* Andrea Auñón Antúnez UO277876 */
 
+/* Me da un aviso el validador porque se redefine en la mediaquery width */
 /*Especificidad: 001*/
 main{
     display: grid;

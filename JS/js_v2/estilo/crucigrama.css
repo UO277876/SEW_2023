@@ -33,7 +33,7 @@ p[data-state='blocked']{
     font-weight: bold;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 799px) {
     /* Estilos para una mediaquery
     que muestre la botonera en tablet y móvil */
     /*Especificidad: 011*/

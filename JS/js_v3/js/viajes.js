@@ -173,7 +173,7 @@ class Viajes {
         var map = new mapboxgl.Map({
             container: 'kml', // container ID
             center: [-89.191428, 13.698964], // Coordenadas de El Salvador
-            zoom: 9, // starting zoom
+            zoom: 8, // starting zoom
         });
 
         var viajes = this;

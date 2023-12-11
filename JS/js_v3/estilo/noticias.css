@@ -1,5 +1,6 @@
 /* Andrea Auñón Antúnez UO277876 */
 
+/* Hereda el color de texto de su elemento padre, body*/
 /*Especificidad: 001*/
 article {
     display: flex;

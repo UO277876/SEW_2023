@@ -1,9 +1,8 @@
 /* Andrea Auñón Antúnez UO277876 */
 
 /* Para el contenedor de los mapas dinamicos */
-/*Especificidad: 100*/
-#dinamico,
-#kml{
+/*Especificidad: 011*/
+p[data-type="mapa"]{
 	width:60vw; 
 	height:50vw;
 }
@@ -11,11 +10,8 @@
 /* Hereda el color de texto de su elemento padre, body*/
 /* Especifidad: 001 */
 article {
-    /*display: flex;*/
     background-color: #b99a87;
     font-size: 1.1em;
     border: 0.15em solid black;
     margin: 1em;
-    /*flex-direction: column;*/
-    /*flex-wrap: wrap;*/
 }

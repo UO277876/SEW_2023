@@ -19,6 +19,7 @@ button{
     display: block;
 }
 
+/* Hereda el color de texto de su elemento padre, body*/
 /* Especifidad: 002 */
 section > article {
     background-color: #b99a87;

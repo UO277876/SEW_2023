@@ -33,12 +33,13 @@ p[data-state='blocked']{
     font-weight: bold;
 }
 
+/* Me da un aviso el validador porque se redefine en la mediaquery display */
 /*Especificidad: 001*/
 section[data-type="botonera"]{
     display: none;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1500px) {
     /* Estilos para una mediaquery
     que muestre la botonera en tablet y móvil */
     /*Especificidad: 011*/

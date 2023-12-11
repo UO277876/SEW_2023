@@ -10,20 +10,38 @@ class Crucigrama {
      * tablero - Array con las dimensiones del tablero [filas][columnas]
      */
     constructor(){
+        // Facil
         /*
         this.board = "4,*,.,=,12,#,#,#,5,#,#,*,#,/,#,#,#,*,4,-" +
         ",.,=,.,#,15,#,.,*,#,=,#,=,#,/,#,=,.,#,3,#,4,*,.,=,20,=,#,#,#,#,#,=,#,#,8,#,9,-,.,=,3,#,.,#,#,-" +
-        ",#,+,#,#,#,*,6,/,.,=,.,#,#,#,.,#,#,=,#,=,#,#,#,=,#,#,6,#,8,*,.,=,16"
+        ",#,+,#,#,#,*,6,/,.,=,.,#,#,#,.,#,#,=,#,=,#,#,#,=,#,#,6,#,8,*,.,=,16";
+
+        this.nivel = "Facil";
         */
+
+        // Medio
        /*
         this.board = "12,*,.,=,36,#,#,#,15,#,#,*,#,/,#,#,#,*,.,-" +
         ",.,=,.,#,55,#,.,*,#,=,#,=,#,/,#,=,.,#,15,#,9,*,.,=,45,=,#,#,#,#,#,=,#,#,72,#,20,-,.,=,11,#,.,#,#,-" +
-        ",#,+,#,#,#,*,56,/,.,=,.,#,#,#,.,#,#,=,#,=,#,#,#,=,#,#,12,#,16,*,.,=,32"
+        ",#,+,#,#,#,*,56,/,.,=,.,#,#,#,.,#,#,=,#,=,#,#,#,=,#,#,12,#,16,*,.,=,32";
+
+        this.nivel = "Medio";
         */
         
+        // Dificil
+        /*
         this.board = "4,.,.,=,36,#,#,#,25,#,#,*,#,.,#,#,#,.,.,-" +
         ",.,=,.,#,15,#,.,*,#,=,#,=,#,.,#,=,.,#,18,#,6,*,.,=,30,=,#,#,#,#,#,=,#,#,56,#,9,-" +
-        ",.,=,3,#,.,#,#,*,#,+,#,#,#,*,20,.,.,=,18,#,#,#,.,#,#,=,#,=,#,#,#,=,#,#,18,#,24,.,.,=,72"
+        ",.,=,3,#,.,#,#,*,#,+,#,#,#,*,20,.,.,=,18,#,#,#,.,#,#,=,#,=,#,#,#,=,#,#,18,#,24,.,.,=,72";
+
+        this.nivel = "Dificil";
+        */
+
+        // Pruebas
+        this.board = "4,1,1,=,36,#,#,#,25,#,#,*,#,1,#,#,#,1,1,-" +
+        ",1,=,1,#,15,#,1,*,#,=,#,=,#,1,#,=,1,#,18,#,6,*,1,=,30,=,#,#,#,#,#,=,#,#,56,#,9,-" +
+        ",1,=,3,#,1,#,#,*,#,+,#,#,#,*,20,1,1,=,18,#,#,#,1,#,#,=,#,=,#,#,#,=,#,#,18,#,1,*,1,=,."
+        this.nivel = "Dificil";
         
         this.filas = 11;
         this.columnas = 9;
@@ -31,6 +49,7 @@ class Crucigrama {
         this.end_time = null;
         this.tablero = [];
 
+        this.isFinished = false;
         this.start();
     }
 
@@ -199,6 +218,9 @@ class Crucigrama {
             this.end_time = new Date();
             var totalTime = this.calculate_date_difference();
             alert("Ha tardado " + totalTime + " en completar el tablero");
+
+            this.isFinished = true;
+            this.crearFormularioFinal(totalTime);
         }
 
     }
@@ -303,25 +325,54 @@ class Crucigrama {
             event.currentTarget.dataset.state = "clicked"
         }  
     }
+
+    /**
+     * Crea el formulario final para añadir los datos del jugador
+     */
+    crearFormularioFinal(totalTime){
+        var tiempo = totalTime.split(":");
+        var segundos = parseInt(tiempo[0]) * 3600 + parseInt(tiempo[1]) * 60 + parseInt(tiempo[2]);
+
+
+        var stringDatos = "<article>";
+        stringDatos += "<h2> Datos del jugador </h2>";
+        stringDatos += "<form action='#' method='post' name='crucigrama'>";
+        stringDatos += "<p><label for='nombre'>Nombre:</label>";
+        stringDatos += "<input id='nombre' type='text' required /></p>";
+        stringDatos += "<p><label for='apellidos'>Apellidos:</label>";
+        stringDatos += "<input id='apellidos' type='text' required /></p>";
+        stringDatos += "<p><label for='nivel'>Nivel:</label>";
+        stringDatos += "<input id='nivel' type='text' value=" + this.nivel +" readonly /></p>";
+        stringDatos += "<p><label for='tiempo'>Tiempo (en segundos):</label>";
+        stringDatos += "<input id='tiempo' type='number' value=" + segundos +" readonly /></p>";
+        stringDatos += "<input type='submit' value='Aceptar'/>";
+        stringDatos += "</form>"
+
+        //stringDatos += "<button onclick="">Añadir</button>";
+        stringDatos += "</article>"
+        $(stringDatos).insertAfter("main");
+    }
 }
 
 var crucigrama = new Crucigrama();
 crucigrama.paintMathword();
 
 document.addEventListener('keydown', function(e) {
-    var cellClicked = document.querySelector("p[data-state='clicked']");
+    if(!(crucigrama.isFinished)){
+        var cellClicked = document.querySelector("p[data-state='clicked']");
 
-    // Comprueba si hay alguna casilla seleccionada
-    if(cellClicked == null){
-        alert("Debe pulsar una casilla antes de continuar")
-    } else {
-        // Comprueba si la casilla seleccionada esta en estado clicked (por si acaso)
-        if(cellClicked.dataset.state == "clicked"){
-            if((e.key >= "1" && e.key) <= "9" || 
-                (e.key == "+" || e.key == "-" || e.key == "*" || e.key == "/")){
-                    crucigrama.introduceElement(e.key);
-            } else {
-                alert("La tecla seleccionada no es correcta")
+        // Comprueba si hay alguna casilla seleccionada
+        if(cellClicked == null){
+            alert("Debe pulsar una casilla antes de continuar")
+        } else {
+            // Comprueba si la casilla seleccionada esta en estado clicked (por si acaso)
+            if(cellClicked.dataset.state == "clicked"){
+                if((e.key >= "1" && e.key) <= "9" || 
+                    (e.key == "+" || e.key == "-" || e.key == "*" || e.key == "/")){
+                        crucigrama.introduceElement(e.key);
+                } else {
+                    alert("La tecla seleccionada no es correcta")
+                }
             }
         }
     }

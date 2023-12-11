@@ -36,7 +36,7 @@ class Viajes {
     }
 
     getMapaEstaticoGoogle(){
-        var ubicacion = document.getElementById("estatico");
+        var ubicacion = document.querySelector("p[data-type='estatico']");
         
         var apiKey = "&key=AIzaSyC6j4mF6blrc4kZ54S6vYZ2_FpMY9VzyRU";
         var url = "https://maps.googleapis.com/maps/api/staticmap?";
