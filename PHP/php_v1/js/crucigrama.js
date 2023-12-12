@@ -38,10 +38,11 @@ class Crucigrama {
         */
 
         // Pruebas
+        
         this.board = "4,1,1,=,36,#,#,#,25,#,#,*,#,1,#,#,#,1,1,-" +
         ",1,=,1,#,15,#,1,*,#,=,#,=,#,1,#,=,1,#,18,#,6,*,1,=,30,=,#,#,#,#,#,=,#,#,56,#,9,-" +
         ",1,=,3,#,1,#,#,*,#,+,#,#,#,*,20,1,1,=,18,#,#,#,1,#,#,=,#,=,#,#,#,=,#,#,18,#,1,*,1,=,."
-        this.nivel = "Dificil";
+        this.nivel = "Facil";
         
         this.filas = 11;
         this.columnas = 9;
@@ -338,13 +339,13 @@ class Crucigrama {
         stringDatos += "<h2> Datos del jugador </h2>";
         stringDatos += "<form action='#' method='post' name='crucigrama'>";
         stringDatos += "<p><label for='nombre'>Nombre:</label>";
-        stringDatos += "<input id='nombre' type='text' required /></p>";
+        stringDatos += "<input id='nombre' type='text' name='nombre' required /></p>";
         stringDatos += "<p><label for='apellidos'>Apellidos:</label>";
-        stringDatos += "<input id='apellidos' type='text' required /></p>";
+        stringDatos += "<input id='apellidos' type='text' name='apellidos' required /></p>";
         stringDatos += "<p><label for='nivel'>Nivel:</label>";
-        stringDatos += "<input id='nivel' type='text' value=" + this.nivel +" readonly /></p>";
+        stringDatos += "<input id='nivel' type='text' name='nivel' value=" + this.nivel +" readonly /></p>";
         stringDatos += "<p><label for='tiempo'>Tiempo (en segundos):</label>";
-        stringDatos += "<input id='tiempo' type='number' value=" + segundos +" readonly /></p>";
+        stringDatos += "<input id='tiempo' type='number' name='tiempo' value=" + segundos +" readonly /></p>";
         stringDatos += "<input type='submit' value='Aceptar'/>";
         stringDatos += "</form>"
 

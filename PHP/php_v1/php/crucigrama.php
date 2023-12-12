@@ -85,22 +85,19 @@
             protected $dbname;
 
             public function __construct() {
-                $this->server = "local";
+                $this->server = "localhost";
                 $this->user = "DBUSER2023";
-                $this->passs = "DBPSWD2023";
+                $this->pass = "DBPSWD2023";
                 $this->dbname = "records";
             }
 
             protected function connectionBD() {
                 // Conexión al SGBD local con XAMPP con el usuario creado 
-                //$db = new mysqli($this->$server,$this->$user,$this->$pass,$this->$dbname);
                 $db = new mysqli($this->server,$this->user,$this->pass,$this->dbname);
 
                 //comprobamos conexión
                 if($db->connect_error) {
                     exit ("<p>ERROR de conexión:".$db->connect_error."</p>");  
-                } else {
-                    echo "<p>Conexión establecida con " . $db->host_info . "</p>";
                 }
 
                 return $db;
@@ -112,13 +109,11 @@
             public function addRecord() {
                 $db = $this->connectionBD();
 
-                echo var_dump($db) . "<br>";
-
                 $consultaPre = $db->prepare("INSERT INTO registro (nombre, apellidos, nivel, tiempo) VALUES (?,?,?,?)");
                 $consultaPre->bind_param('sssi',$_POST['nombre'],$_POST['apellidos'],$_POST['nivel'],$_POST['tiempo']); 
                 $consultaPre->execute();
 
-                echo "<p>Filas agregadas: " . $consultaPre->affected_rows . "</p>";
+                //echo "<p>Filas agregadas: " . $consultaPre->affected_rows . "</p>";
 
                 $consultaPre->close();
 
@@ -126,7 +121,7 @@
                 $db->close();  
                 
                 // Llamada para obtener los 10 mejores records
-                //$this->getRecords();
+                $this->getRecords();
             }
 
             /**
@@ -136,16 +131,26 @@
                 $db = $this->connectionBD();
 
                 $consultaPre = $db->prepare("SELECT nombre, apellidos, nivel, tiempo FROM registro 
-                    ORDER BY tiempo LIMIT 10");
-                $consultaPre->bind_param('sssi',$nombre,$apellidos,$nivel,$tiempo); 
+                    WHERE nivel = ? ORDER BY tiempo LIMIT 10");
+                $consultaPre->bind_param('s',$_POST['nivel']); 
                 $consultaPre->execute();
 
                 $result = $consultaPre->get_result();
 
                 if ($result->num_rows > 0) {
-
+                    echo "<article><h3>Top 10 mejores jugadores para el nivel actual</h3>";
+                    $result->data_seek(0); // Se posiciona al inicio del resultado de búsqueda
+                    echo "<ol>";
+                    while($fila = $result->fetch_assoc()) {
+                         // Formatear el tiempo en horas:minutos:segundos
+                        $tiempo_formateado = gmdate("H:i:s", $fila["tiempo"]);
+                        echo "<li>" . $fila["nombre"] . " " . $fila["apellidos"] . " con tiempo " . $tiempo_formateado . "</li>"; 
+                    }            
+                    
+                    echo "</ol>";
+                    echo "</article>";
                 } else {
-                    $this->msgEstado = "No se han encontrado resultados";
+                    echo "<p>Búsqueda sin resultados</p>";
                 }
 
                 $consultaPre->close();
@@ -157,8 +162,8 @@
 
         $record = new Record();
 
-        if (count($_POST) > 0) {
-            if (isset($_POST["Aceptar"])) $record->addRecord();
+        if(count($_POST) > 0){
+            $record->addRecord();
         }
     ?>
 
