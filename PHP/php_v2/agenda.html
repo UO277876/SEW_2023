@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="es">
+<head>
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8" />
+    <title>Escritorio virtual - Agenda</title>
+
+    <!-- Metadatos-->
+    <meta name ="author" content ="Andrea Auñón" />
+    <meta name ="description" content ="Agenda con las últimas carreras de la Formula 1 2023 " />
+    <meta name ="keywords" content ="Agenda,Formula1,Carreras,Temporada2023" />
+    <!-- Para la adaptibilidad -->
+    <meta name ="viewport" content ="width=device-width, initial-scale=1.0" />
+
+    <!-- Hojas de estilo -->
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/agenda.css" />
+
+    <!-- Icono para las pestañas del navegador -->
+    <link rel="icon" href="multimedia/imagenes/favicon_48.ico" />
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" 
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="js/agenda.js"></script>
+</head>
+
+<body>
+    <header>
+        <!-- Encabezado principal -->
+        <h1> Escritorio virtual </h1>
+
+        <!-- Barra de navegación hacia todos los documentos del sitio web -->
+        <nav>
+            <a accesskey="c" tabindex="1" href="index.html">Inicio</a>
+            <a accesskey="r" tabindex="2" href="sobremi.html">Sobre mi</a>
+            <a accesskey="n" tabindex="3" href="noticias.html">Noticias</a>
+            <a accesskey="g" tabindex="4" href="agenda.html">Agenda</a>
+            <a accesskey="l" tabindex="5" href="meteorologia.html">Meteorología</a>
+            <a accesskey="j" tabindex="6" href="php/viajes.php">Viajes</a>
+            <a accesskey="o" tabindex="7" href="juegos.html">Juegos</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Carreras de la temporada 2023</h2>
+            <button onclick="agenda.getInformation()">Obtener carreras</button>
+        </section>
+
+        <section>
+            <h3>Información</h3>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright @2023 Andrea Auñón (uo277876)</p>
+        <p>SEW Curso 2023-2024</p>
+    </footer>
+</body>
+</html>
