@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="../estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="../estilo/layout.css" />
     <link rel="stylesheet" type="text/css" href="../estilo/viajes.css" />
+    <link rel="stylesheet" type="text/css" href="../estilo/carrusel.css" />
 
     <!-- Hojas de estilo - Mapbox -->
     <link href='https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.css' rel='stylesheet' />
@@ -51,13 +52,17 @@
         <section>
             <h2>Mapa estático</h2>
             <button onclick="viajes.getMapaEstaticoGoogle()">Obtener mapa estático</button>
-            <p data-type="estatico"></p>
+            <article data-type="estatico">
+                <h3> Ver mapa pulsando en el botón </h3>
+            </article>
         </section>
 
         <section>
             <h2>Mapa dinámico</h2>
             <button onclick="viajes.initMap()">Obtener mapa dinámico</button>
-            <p id="dinamico" data-type="mapa"></p>
+            <article id="dinamico" data-type="mapa">
+                <h3> Ver mapa pulsando en el botón </h3>
+            </article>
         </section>
 
         <section>
@@ -70,7 +75,9 @@
             <h2>Carga de archivos KML</h2>
             <!-- Se cambia el atributo multiple a true, por lo que permite la carga de varios archivos -->
             <p><input type="file" accept=".kml" onchange="viajes.readInputKML(this.files);" multiple></p>
-            <p id="kml" data-type="mapa"></p>
+            <article id="kml" data-type="mapa">
+                <h3> Ver mapa pulsando en el botón </h3>
+            </article>
         </section>
 
         <section>
@@ -91,49 +98,66 @@
                 }
 
                 
-            public function getFotos(){
-                // 1. Crear la URL de la API que se va a llamar
-                $params = array(
-                    'api_key'	=> '0565634739c78dcdbf56368cb0991f0b',
-                    'method'	=> 'flickr.photos.getInfo',
-                    'photo_id'	=> '33289594495',
-                    'format'	=> 'php_serial',
-                );
+                public function getFotos(){
+                    // 1. Crear la URL de la API que se va a llamar
+                    $api_key = '9d61c740301a658bb4f4f8f7bd99076b';
+                    $method = "flickr.photos.search";
+                    $tag = $this->nombre . "," . $this->capital;
+                    $perPage = 10;
 
-                $encoded_params = array();
+                    $url = "https://api.flickr.com/services/rest/?";
+                    $url .= '&method=' . $method;
+                    $url .= '&api_key=' . $api_key;
+                    $url .= '&tags=' . $tag;
+                    $url .= '&per_page=' . $perPage;
+                    $url .= '&format=json';
+                    $url .= '&nojsoncallback=1';
 
-                foreach ($params as $k => $v) {
-                    $encoded_params[] = urlencode($k).'='.urlencode($v);
-                }
+                    $respuesta = file_get_contents($url);
+                    $json = json_decode($respuesta);
 
-                // 2. Llamar a la API y decodificar la respuesta
-                $url = "https://api.flickr.com/services/rest/?".implode('&', $encoded_params);
+                    /*
+                    print ("<pre>");
+                    print_r($json);
+                    print ("</pre>");
+                    */
 
-                $rsp = file_get_contents($url);
+                    $imgs = "";
+                    if($json==null) {
+                        $imgs = "<h3>Error en el archivo JSON recibido</h3>";
+                    } else {
+                        $imgs = "<h2>Carrusel de imágenes</h2>";
+                        echo "<section data-type='carrusel'>";
 
-                $rsp_obj = unserialize($rsp);
+                        for($i=0; $i < $perPage; $i++) {
+                            $titulo = $json->photos->photo[$i]->title;
+                            $server = $json->photos->photo[$i]->server;
+                            $photo_id = $json->photos->photo[$i]->id;
+                            $secret = $json->photos->photo[$i]->secret;
 
-                echo "<article>";
-                echo "<h2>Objeto PHP recibido</h2>";
-                print ("<pre>");
-                print_r($rsp_obj);
-                print ("</pre>");
+                            $URLfoto = "https://live.staticflickr.com/" . $server . "/" . $photo_id 
+                                . "_" . $secret . "_w.jpg";  
 
-                echo "<h2>Datos recibidos</h2>";
+                            $imgs .= "<img alt='" . $titulo . "' src='". $URLfoto . "' />";
+                        }
 
-                // 3. Ver los datos de la imagen (o un error)
-                if ($rsp_obj['stat'] == 'ok'){
+                        echo $imgs;
+                        echo "<button data-action='next' onclick='viajes.nextSlide()'> > </button>";
+                        echo "<button data-action='prev'  onclick='viajes.prevSlide()'> < </button>";
+                        echo "</section>";
+                    }
 
-                } else {
-                    echo "<h3>¡Error al llamar al servicio Web!</h3>";
-                }
-            }   
+
+                    return $imgs;
+                }   
                 
             }
 
-            $carrusel = new Carrusel("El Salvador","San Salvador"); 
+            // Si no paso los strings juntos flickr da error en tags
+            $carrusel = new Carrusel("elsalvador","sansalvador"); 
 
-            $carrusel->getFotos();
+            $imgs = $carrusel->getFotos();
+
         ?>
     </main>
 

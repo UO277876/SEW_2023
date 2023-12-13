@@ -2,14 +2,14 @@
 
 /* Para el contenedor de los mapas dinamicos */
 /*Especificidad: 011*/
-p[data-type="mapa"]{
+article[data-type="mapa"]{
 	width:60vw; 
 	height:50vw;
 }
 
 /* Hereda el color de texto de su elemento padre, body*/
 /* Especifidad: 001 */
-article {
+article[data-type="xml"] {
     background-color: #b99a87;
     font-size: 1.1em;
     border: 0.15em solid black;

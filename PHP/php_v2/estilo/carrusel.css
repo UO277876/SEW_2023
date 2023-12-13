@@ -1,14 +1,7 @@
 /* Andrea Auñón Antúnez UO277876 */
 
-/*Especificidad: 001*/
-body {
-    height: 100vh;
-    display: grid;
-    place-items: center;
-}
-
-/*Especificidad: 001*/
-article {
+/*Especificidad: 011*/
+section[data-type="carrusel"] {
     width: 100%;
     max-width: 100vh;
     height: 70vh;
@@ -17,16 +10,16 @@ article {
     border-radius: 1em;
 }
 
-/*Especificidad: 001*/
-article h3 {
+/*Especificidad: 012*/
+section[data-type="carrusel"] h2 {
       width: 100%;
       text-align: center;
       margin-bottom: 0.5em;
       font-size: 2em;
 }
 
-/*Especificidad: 001*/
-img {
+/*Especificidad: 012*/
+section[data-type="carrusel"] img {
     width: 100%;
     max-width: 100vh;
     height: 60vh;
@@ -36,8 +29,8 @@ img {
     border-radius: 0.5em;
 }
 
-/*Especificidad: 001*/
-button {
+/*Especificidad: 012*/
+section[data-type="carrusel"] button {
     position: absolute;
     width: 2em;
     height: 2em;
@@ -47,22 +40,23 @@ button {
     z-index: 10;
     cursor: pointer;
     background-color: #fff;
+    color: black;
     font-size: 1em;
 }
 
-/*Especificidad: 011*/
-button:active {
+/*Especificidad: 022*/
+section[data-type="carrusel"] button:active {
     transform: scale(1.1);
 }
 
-/*Especificidad: 011*/
-button[data-action=prev] {
+/*Especificidad: 022*/
+section[data-type="carrusel"] button[data-action=prev] {
     top: 50%;
     left: 2%;
 }
 
-/*Especificidad: 011*/
-button[data-action=next] {
+/*Especificidad: 022*/
+section[data-type="carrusel"] button[data-action=next] {
     top: 50%;
     right: 2%;
 }

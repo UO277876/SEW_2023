@@ -5,7 +5,10 @@ class Viajes {
 
         // Si no se ejecuta de esta manera no se carga por compelto el documento,
         // entonces no encuentra la section
-        document.addEventListener("DOMContentLoaded", this.comprobarApiFile.bind(this));        
+        document.addEventListener("DOMContentLoaded", this.comprobarApiFile.bind(this));      
+        
+        // Para el carrusel de imagenes
+        this.curSlide = 9;
     }
 
     getPosicion(posicion){
@@ -15,7 +18,7 @@ class Viajes {
         this.altitud          = posicion.coords.altitude;
         this.precisionAltitud = posicion.coords.altitudeAccuracy;
         this.rumbo            = posicion.coords.heading;
-        this.velocidad        = posicion.coords.speed;       
+        this.velocidad        = posicion.coords.speed;      
     }
 
     verErrores(error){
@@ -36,7 +39,7 @@ class Viajes {
     }
 
     getMapaEstaticoGoogle(){
-        var ubicacion = document.querySelector("p[data-type='estatico']");
+        var ubicacion = document.querySelector("article[data-type='estatico']");
         
         var apiKey = "&key=AIzaSyC6j4mF6blrc4kZ54S6vYZ2_FpMY9VzyRU";
         var url = "https://maps.googleapis.com/maps/api/staticmap?";
@@ -102,7 +105,7 @@ class Viajes {
                     var recomendacion = $('recomendacion',ruta).text();           
                             
                     // Colocar los datos del XML en el HTML
-                    var stringDatos = "<article>";
+                    var stringDatos = "<article data-type='xml'>";
                     stringDatos += "<h3>" + nombre_ruta + "</h3>";
                     stringDatos += "<ul><li> Tipo: " + tipo + "</li>";
                     stringDatos += "<li> Medio de transporte: " + medio_transporte + "</li>";
@@ -280,6 +283,50 @@ class Viajes {
         stringDatos += svgWithoutHeader;
         stringDatos += "</svg>"
         $(stringDatos).appendTo($("section:nth-child(5)"));  
+    }
+
+    /**
+     * Pasa la imagen del carrusel a la siguiente
+     */
+    nextSlide(){
+        const slides = document.querySelectorAll("img");
+        
+        // maximum number of slides
+        let maxSlide = slides.length - 1;
+        
+
+        if (this.curSlide === maxSlide) {
+            this.curSlide = 0;
+        } else {
+            this.curSlide++;
+        }
+        
+        //   move slide by -100%
+        slides.forEach((slide, indx) => {
+            var trans = 100 * (indx - this.curSlide);
+            $(slide).css('transform', 'translateX(' + trans + '%)')
+        });
+    }
+
+    /**
+     * Pasa la imagen del carrusel a la anterior
+     */
+    prevSlide(){
+        const slides = document.querySelectorAll("img");
+
+        // maximum number of slides
+        let maxSlide = slides.length - 1;
+
+        if (this.curSlide === 0) {
+            this.curSlide = maxSlide;
+        } else {
+            this.curSlide--;
+        }
+        //   move slide by 100%
+        slides.forEach((slide, indx) => {
+            var trans = 100 * (indx - this.curSlide);
+            $(slide).css('transform', 'translateX(' + trans + '%)')
+        });
     }
 
 }
