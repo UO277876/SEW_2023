@@ -6,8 +6,8 @@ main{
     grid-template-columns: repeat(9, 1fr); /* 9 columnas iguales en el tablero */
     grid-template-rows: repeat(11, 1fr); /* 11 filas en el tablero */
     margin: 0.2em;
-    font-size: 1.4em;
-    width: 50%;
+    font-size: 1.2em;
+    width: 75%;
     height: auto;
 }
 

@@ -12,7 +12,7 @@ section[data-type="carrusel"] {
 
 /*Especificidad: 012*/
 section[data-type="carrusel"] h2 {
-      width: 100%;
+      /*width: 100%;*/
       text-align: center;
       margin-bottom: 0.5em;
       font-size: 2em;

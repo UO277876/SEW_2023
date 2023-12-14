@@ -76,7 +76,7 @@
             <!-- Se cambia el atributo multiple a true, por lo que permite la carga de varios archivos -->
             <p><input type="file" accept=".kml" onchange="viajes.readInputKML(this.files);" multiple></p>
             <article id="kml" data-type="mapa">
-                <h3> Ver mapa pulsando en el botón </h3>
+                <h3> Ver mapa añadiendo archivos .kml </h3>
             </article>
         </section>
 
@@ -153,11 +153,53 @@
                 
             }
 
+            class Moneda {
+
+                protected $monLocal;
+                protected $monCambio;
+                
+                public function __construct($monLocal, $monCambio) {
+                    $this->monLocal = $monLocal;
+                    $this->monCambio = $monCambio;
+                }
+
+                
+                public function getCambio(){
+                    $api_key = '49db7223b908e0d7e99a2c163da83698334154e0';
+
+                    // Tengo 100 usos diarios
+                    $url = "https://api.getgeoapi.com/v2/currency/convert";
+                    $url .= '?api_key=' . $api_key;
+                    $url .= '&from=' . $this->monCambio;
+                    $url .= '&to=' . $this->monLocal;
+                    $url .= '&format=json';
+
+                    $respuesta = file_get_contents($url);
+                    $json = json_decode($respuesta);
+
+                    $cambio = "";
+                    if($json==null) {
+                        $cambio = "<h3>Error en el archivo JSON de camnio de moneda recibido</h3>";
+                    } else {
+                        echo "<h2>Cambio de moneda</h2>";
+                    
+                        echo "<section>";
+                        $cambio = $json->rates->SVC->rate;
+                        echo "<p>La moneda de San Salvador es el Colón y 1€ es equivalente a " . $cambio . "₡</p>";             
+                        echo "</section>";
+                    }
+                }   
+                
+            }
+
             // Si no paso los strings juntos flickr da error en tags
             $carrusel = new Carrusel("elsalvador","sansalvador"); 
-
             $imgs = $carrusel->getFotos();
 
+            // SVC - Colón El Slavador
+            // Hay 100 usos diarios de la API
+            $monedas = new Moneda("SVC","EUR"); 
+            $monedas->getCambio();
         ?>
     </main>
 

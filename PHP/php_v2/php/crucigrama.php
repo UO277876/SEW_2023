@@ -46,12 +46,13 @@
 
     <section>
         <h2> Juegos </h2>
-        <!-- Barra de navegación hacia todos los juegos -->
+        <!-- Barra de navegación hacia todos los juegos + api + libreria (php) -->
         <nav>
             <a accesskey="i" tabindex="1" href="../memoria.html">Memoria</a>
             <a accesskey="u" tabindex="2" href="../sudoku.html">Sudoku</a>
             <a accesskey="m" tabindex="3" href="crucigrama.php">Crucigrama</a>
-            <a accesskey="p" tabindex="4" href="../api.html">Musica</a>
+            <a accesskey="p" tabindex="4" href="../api.html">Música</a>
+            <a accesskey="l" tabindex="5" href="libreria.php">Librería</a>
         </nav>
     </section>
 

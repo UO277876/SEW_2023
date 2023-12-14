@@ -1,0 +1,49 @@
+/* Andrea Auñón Antúnez UO277876 */
+
+/*Especificidad: 001*/
+input {
+    margin: 0.4em 0;
+    padding: 0.5em 1.2em;
+    border: 0.2em solid black;
+    display: block;
+    box-sizing: border-box;
+}
+
+/*Especificidad: 001*/
+label {
+    font-size: 1.2em;  
+}
+
+/*Especificidad: 001*/
+section{
+	box-sizing: border-box;
+	padding: 1em;
+	margin: 1em;
+    border: 0.2em solid black;
+}
+
+/*Especificidad: 001*/
+h3{
+    font-size: 1.7em;  
+}
+
+/*Especificidad: 001*/
+th, td, caption{
+	border: 0.25em solid #000000;
+	border-collapse: collapse;
+	padding:0.5em;
+}
+
+/*Especificidad: 001*/
+table{
+    margin-top: 0.5em;
+    border: 0.25em solid #000000;
+	border-collapse: collapse;
+	padding:0.5em;
+}
+
+/*Especificidad: 001*/
+caption{
+	background-color: #000000;
+	font-weight: bold;
+}
