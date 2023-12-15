@@ -63,19 +63,13 @@ class Api{
     readInput(files){
         // Si dejo la comprobación como atributo accept=".jpg,.png" no me funciona
         var archivo = files[0];
-        var partesArchivo = archivo.name.split(".")
 
-        if(partesArchivo[1] == "png" || partesArchivo[1] == "jpg"){
-            var lector = new FileReader();
-            lector.readAsDataURL(archivo);
+        var lector = new FileReader();
+        lector.readAsDataURL(archivo);
             
-            lector.onloadend = function (event) {
-                this.loadImage(lector.result);
-            }.bind(this);         
-    
-        } else {
-            alert("Archivo no válido");
-        }
+        lector.onloadend = function (event) {
+            this.loadImage(lector.result);
+        }.bind(this);         
     }
 
     /**

@@ -4,6 +4,7 @@
             private $db;
 
             public function __construct() {
+                $this->crearBD();
                 $this->crearTablas();
             }
 
@@ -25,7 +26,7 @@
                 $this->connectionBD();
 
                 $sql = "CREATE DATABASE IF NOT EXISTS tienda COLLATE utf8_spanish_ci";
-                $this->db->query($cadenaSQL);
+                $this->db->query($sql);
                 $this->cerrarBD();  
             }
 
@@ -288,33 +289,162 @@
                 $this->connectionBD();
                 $this->db -> select_db("tienda");
                 
-                $consultaPre = $this->db->prepare("SELECT * FROM compra WHERE idUsuario=?");
-                $consultaPre->bind_param('s',$_POST['idUsuario']); 
+                $consultaPre = $this->db->prepare("SELECT *
+                    FROM compra JOIN libro ON libro.idLibro = compra.idLibro
+                    WHERE compra.idUsuario = ?");
+                $consultaPre->bind_param('s',$_POST['idUsuarioCompra']); 
                 $consultaPre->execute();
 
-                $autores = $consultaPre->get_result();
-        
-                if ($autores->num_rows > 0) {
+                $libros = $consultaPre->get_result();
+
+                if ($libros->num_rows > 0) {
                     echo "<table>
-                            <caption>Compras</caption>
+                            <caption>Libros del usuario seleccionado</caption>
                             <tr>
-                                <th scope='col' id='idAutor'>id</th> 
-                                <th scope='col' id='nombrea'>Nombre</th> 
-                                <th scope='col' id='apellidosa'>Apellidos</th>
+                                <th scope='col' id='idLibrous'>id</th>
+                                <th scope='col' id='titulous'>Titulo</th> 
+                                <th scope='col' id='generoLitus'>Género</th>
+                                <th scope='col' id='precious'>Precio</th>
                             </tr>
                         ";
 
-                    foreach ($autores as $autor) {
+                    $precioTotal = 0;
+                    foreach ($libros as $libro) {
                         echo "<tr>";
-                        echo "<td headers='idAutor'>".$autor["idAutor"]."</td> ";
-                        echo "<td headers='nombrea'>".$autor["nombrea"]."</td> ";
-                        echo "<td headers='apellidosa'>".$autor["apellidosa"]."</td> ";
+                        echo "<td headers='idLibrous'>".$libro["idLibro"]."</td> ";
+                        echo "<td headers='titulous'>".$libro["titulo"]."</td> ";
+                        echo "<td headers='generoLitus'>".$libro["generoLit"]."</td> ";
+                        echo "<td headers='precious'>".$libro["precio"]."</td> ";
+                        echo "</tr>";
+
+                        $precioTotal += floatval($libro["precio"]);
+                    }
+
+                    echo "</table>";
+                    echo "<p>Dinero gastado: ".$precioTotal."€</p>";
+                } else {
+                    echo "<p>No hay libros comprados por ese usuario</p>";
+                }
+
+                $consultaPre->close();
+                
+                // Cierra la base de datos
+                $this->cerrarBD();  
+            }
+
+            public function reviseStock(){
+                $this->connectionBD();
+                $this->db -> select_db("tienda");
+                
+                $consultaPre = $this->db->prepare("SELECT * FROM contiene WHERE idLibreria = ? AND idLibro = ?");
+                $consultaPre->bind_param('ss',$_POST['idLibreriaAdd'],$_POST['idLibroAdd']); 
+                $consultaPre->execute();
+
+                $columnas = $consultaPre->get_result();
+
+                $hayStock = false;
+                $stock = intval($_POST['cantidad']);
+                $stockAnterior = "";
+                if ($columnas->num_rows > 0) {
+                    // Primero se revisa si ya hay stock de ese libro
+                    echo "<p>Ya hay stock del libro en la tienda seleccionada. Se procede a sumar.</p>";
+                    $hayStock = true;
+                    foreach ($columnas as $columna) {
+                        $stock += intval($columna["cantidad"]);
+                        $stockAnterior = $columna["cantidad"];
+                    } 
+                } else {
+                    echo "<p>No hay stock en la tienda seleccionada, se va a añadir.</p>";
+                }
+
+                $consultaPre->close();
+                
+                // Cierra la base de datos
+                $this->cerrarBD();  
+
+                if($hayStock){
+                    // Si hay stock se hace un update
+                    echo "<p> Stock anterior: " .$stockAnterior . "</p>";
+                    echo "<p> Nuevo stock: " .$stock . "</p>";
+                    $this->updateStock($stock,$_POST['idLibreriaAdd'],$_POST['idLibroAdd']);
+                } else {
+                    // Si no hay stock se hace un insert
+                    $this->addStock($stock,$_POST['idLibreriaAdd'],$_POST['idLibroAdd']);
+                }
+            }
+
+            protected function addStock($stock,$idLibreria,$idLibro){
+                $this->connectionBD();
+                $this->db -> select_db("tienda");
+                
+                $consultaPre = $this->db->prepare("INSERT INTO contiene (idLibro,idLibreria,cantidad) VALUES (?,?,?)");
+                $consultaPre->bind_param('ssi',$idLibro,$idLibreria,$stock); 
+                $exito = $consultaPre->execute();
+
+                if($exito === FALSE){
+                    echo "<p>Ha habido algún problema al añadir el stock.</p>";
+                } else {
+                    echo "<p>Stock añadido correctamente.</p>";
+                }
+
+                $consultaPre->close();
+                
+                // Cierra la base de datos
+                $this->cerrarBD();  
+            }
+
+            protected function updateStock($stock,$idLibreria,$idLibro){
+                $this->connectionBD();
+                $this->db -> select_db("tienda");
+                
+                $consultaPre = $this->db->prepare("UPDATE contiene SET cantidad = ? WHERE idLibro = ? AND idLibreria = ?");
+                $consultaPre->bind_param('ssi',$stock,$idLibro,$idLibreria); 
+                $exito = $consultaPre->execute();
+                
+                if($exito === FALSE){
+                    echo "<p>Ha habido algún problema al actualizar el stock.</p>";
+                } else {
+                    echo "<p>Stock actualizado correctamente.</p>";
+                }
+
+                $consultaPre->close();
+                
+                // Cierra la base de datos
+                $this->cerrarBD();  
+            }
+
+            public function viewStock(){
+                $this->connectionBD();
+                $this->db -> select_db("tienda");
+                
+                $consultaPre = $this->db->prepare("SELECT * FROM contiene WHERE idLibreria = ? AND idLibro = ?");
+                $consultaPre->bind_param('ss',$_POST['idLibreriaStock'],$_POST['idLibroStock']); 
+                $consultaPre->execute();
+
+                $columnas = $consultaPre->get_result();
+
+                if ($columnas->num_rows > 0) {
+                    echo "<table>
+                            <caption>Stock de la librería seleccionada</caption>
+                            <tr>
+                                <th scope='col' id='idLibreriaSt'>idLibreria</th>
+                                <th scope='col' id='idLibroSt'>idLibro</th> 
+                                <th scope='col' id='stockLibro'>Stock</th>
+                            </tr>
+                        ";
+
+                    $precioTotal = 0;
+                    foreach ($columnas as $columna) {
+                        echo "<tr>";
+                        echo "<td headers='idLibreriaSt'>".$columna["idLibreria"]."</td> ";
+                        echo "<td headers='idLibroSt'>".$columna["idLibro"]."</td> ";
+                        echo "<td headers='stockLibro'>".$columna["cantidad"]."</td> ";
                         echo "</tr>";
                     }
 
                     echo "</table>";
                 } else {
-                    echo "<p>No hay autores disponibles</p>";
+                    echo "<p>No hay stock para esa librería</p>";
                 }
 
                 $consultaPre->close();
@@ -392,7 +522,7 @@
                 <?php
 					if (count($_POST)>0) {   
                         $db = new Libreria();
-						if(isset($_POST["verUsuarios"])) $db->getLibros();
+						if(isset($_POST["verUsuarios"])) $db->getUsuarios();
                         if(isset($_POST["verLibrerias"])) $db->getLibrerias();
                         if(isset($_POST["verAutores"])) $db->getAutores();
                         if(isset($_POST["verLibros"])) $db->getLibros();
@@ -417,7 +547,7 @@
             </section> 
 
             <section>
-                <h3>Ver compras de un usuario</h3>
+                <h3>Ver compras de un usuario y el total de ellas</h3>
                 <form action='#' method='post'>                          
                     <p><label for='idUsuarioCompra'>idUsuario:</label>
                         <input id='idUsuarioCompra' type='text' name='idUsuarioCompra' required /></p>
@@ -434,8 +564,40 @@
 
             <section>
                 <h3>Añadir stock a una librería</h3>
+                <form action='#' method='post'>                          
+                    <p><label for='idLibreriaAdd'>idLibreria:</label>
+                        <input id='idLibreriaAdd' type='text' name='idLibreriaAdd' required /></p>
+                    <p><label for='idLibroAdd'>idLibro:</label>
+                        <input id='idLibroAdd' type='text' name='idLibroAdd' required /></p>
+                    <p><label for='cantidad'>Cantidad:</label>
+                        <input id='cantidad' type='number' min="0" max="100" name='cantidad' required /></p>
+                    <button type="submit" name='addStock'>Añadir</button>
+                </form>
 
-                <button onclick="api.addInformation()">Añadir</button>
+                <?php
+					if (count($_POST)>0) {   
+                        $db = new Libreria();
+						if(isset($_POST["addStock"])) $db->reviseStock();
+					}
+				?>
+            </section> 
+
+            <section>
+                <h3>Ver stock de una librería</h3>
+                <form action='#' method='post'>                          
+                    <p><label for='idLibreriaStock'>idLibreria:</label>
+                        <input id='idLibreriaStock' type='text' name='idLibreriaStock' required /></p>
+                    <p><label for='idLibroStock'>idLibro:</label>
+                        <input id='idLibroStock' type='text' name='idLibroStock' required /></p>
+                    <button type="submit" name='viewStock'>Ver</button>
+                </form>
+
+                <?php
+					if (count($_POST)>0) {   
+                        $db = new Libreria();
+						if(isset($_POST["viewStock"])) $db->viewStock();
+					}
+				?>
             </section> 
         </article>
     </main>

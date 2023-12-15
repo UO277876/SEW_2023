@@ -29,7 +29,6 @@ h3{
 
 /*Especificidad: 001*/
 th, td, caption{
-	border: 0.25em solid #000000;
 	border-collapse: collapse;
 	padding:0.5em;
 }

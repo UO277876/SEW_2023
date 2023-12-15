@@ -78,8 +78,8 @@
                 <p><label for="autor">Autor:</label>
                     <input id="autor" name="autor" type="text" placeholder="Autor" required/></p>
                 <!-- 4. Campo file - Debe ser obligatoriamente .png o .jpg -->
-                <p><label for="portada">Seleccione una imagen (.jpg/.png):</label>
-                    <input id="portada" type="file" onchange="api.readInput(this.files);" required/></p>
+                <p><label for="portada">Seleccione una imagen (.jpg):</label>
+                    <input id="portada" type="file" accept=".jpg" onchange="api.readInput(this.files);" required/></p>
             </form>
 
             <button onclick="api.addInformation()">Añadir</button>
