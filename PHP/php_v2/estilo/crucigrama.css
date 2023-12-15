@@ -27,14 +27,13 @@ p[data-state='empty']{
 }
 
 /* Celdas con un valor predefinido */
-/* Hereda el color de letra de su elemento padre, body */
 /*Especificidad: 011*/
 p[data-state='blocked']{
     font-weight: bold;
 }
 
-/* Me da un aviso el validador porque se redefine en la mediaquery display */
-/*Especificidad: 001*/
+/* Me da un aviso el validador porque se redefine en la mediaquery display para moviles */
+/*Especificidad: 011*/
 section[data-type="botonera"]{
     display: none;
 }

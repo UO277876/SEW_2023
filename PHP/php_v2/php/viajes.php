@@ -52,9 +52,7 @@
         <section>
             <h2>Mapa estático</h2>
             <button onclick="viajes.getMapaEstaticoGoogle()">Obtener mapa estático</button>
-            <article data-type="estatico">
-                <h3> Ver mapa pulsando en el botón </h3>
-            </article>
+            <p data-type="estatico"></p>
         </section>
 
         <section>
@@ -181,9 +179,8 @@
                     if($json==null) {
                         $cambio = "<h3>Error en el archivo JSON de camnio de moneda recibido</h3>";
                     } else {
-                        echo "<h2>Cambio de moneda</h2>";
-                    
                         echo "<section>";
+                        echo "<h2>Cambio de moneda</h2>";
                         $cambio = $json->rates->SVC->rate;
                         echo "<p>La moneda de San Salvador es el Colón y 1€ es equivalente a " . $cambio . "₡</p>";             
                         echo "</section>";

@@ -249,7 +249,7 @@
                 $this->db -> select_db("tienda");
                 
                 $consultaPre = $this->db->prepare("SELECT * FROM libro WHERE idAutor=?");
-                $consultaPre->bind_param('s',$_POST['idAutorLibro']); 
+                $consultaPre->bind_param('s',$_GET['idAutorLibro']); 
                 $consultaPre->execute();
 
                 $libros = $consultaPre->get_result();
@@ -292,7 +292,7 @@
                 $consultaPre = $this->db->prepare("SELECT *
                     FROM compra JOIN libro ON libro.idLibro = compra.idLibro
                     WHERE compra.idUsuario = ?");
-                $consultaPre->bind_param('s',$_POST['idUsuarioCompra']); 
+                $consultaPre->bind_param('s',$_GET['idUsuarioCompra']); 
                 $consultaPre->execute();
 
                 $libros = $consultaPre->get_result();
@@ -418,7 +418,7 @@
                 $this->db -> select_db("tienda");
                 
                 $consultaPre = $this->db->prepare("SELECT * FROM contiene WHERE idLibreria = ? AND idLibro = ?");
-                $consultaPre->bind_param('ss',$_POST['idLibreriaStock'],$_POST['idLibroStock']); 
+                $consultaPre->bind_param('ss',$_GET['idLibreriaStock'],$_GET['idLibroStock']); 
                 $consultaPre->execute();
 
                 $columnas = $consultaPre->get_result();
@@ -451,6 +451,136 @@
                 
                 // Cierra la base de datos
                 $this->cerrarBD();  
+            }
+
+            public function import(){
+                $csvName = "datos.csv";
+                $this->connectionBD();
+                $this->db->select_db("tienda");
+
+                $handle = fopen($csvName, "r");
+                $index = 1;
+                while (($data = fgetcsv($handle,10000, ",")) != false) {
+                    if($index <= 4 ){
+
+                    }
+                    
+                    $index++;
+                }
+
+                    
+
+                fclose($handle);
+                $this->cerrarBD(); 
+            }
+
+            public function importAutor($csvName) {
+                $handle = fopen($csvName, "r");
+        
+                while (($data = fgetcsv($handle,10000, ",")) != false) {
+                    $consultaPre = $this->db->prepare("INSERT INTO autor (idAutor,nombrea,apellidosa) VALUES (?,?,?)");
+        
+                    // Añade los parámetros de la variable Predefinida $_POST
+                    $consultaPre->bind_param('sss', $data[0],$data[1],$data[2]);
+        
+                    $exito = $consultaPre->execute();
+        
+                    $consultaPre->close();
+                }
+        
+                if ($exito) {
+                    echo "<p>Importación de autores exitosa.</p>";
+                } else {
+                    echo "<p>Ha habido algún fallo con la importación de autores.</p>";
+                }
+
+                fclose($handle);
+            }
+
+            public function importUsuarios($csvName) {
+                $handle = fopen($csvName, "r");
+        
+                while (($data = fgetcsv($handle)) != false) {
+                    $consultaPre = $this->db->prepare("INSERT INTO usuario (idUsuario,nombreu,edadu,generou,emailu) VALUES (?,?,?,?,?)");
+        
+                    // Añade los parámetros de la variable Predefinida $_POST
+                    $consultaPre->bind_param('ssiss', $data[0], $data[1],$data[2],$data[3],$data[4]);
+        
+                    $exito = $consultaPre->execute();
+        
+                    $consultaPre->close();
+                }
+        
+                if ($exito) {
+                    echo "<p>Importación de usuarios exitosa.</p>";
+                } else {
+                    echo "<p>Ha habido algún fallo con la importación de usuarios.</p>";
+                }
+
+                fclose($handle);
+            }
+
+            public function export(){
+                $csvName = "datos.csv";
+                $this->connectionBD();
+                $this->db->select_db("tienda");
+
+                $this->exportInicial($csvName);
+
+                $nameTable = "libro";
+                $this->exportFinal($csvName,$nameTable);
+                $nameTable = "libreria";
+                $this->exportFinal($csvName,$nameTable);
+                $nameTable = "usuario";
+                $this->exportFinal($csvName,$nameTable);
+                $nameTable = "contiene";
+                $this->exportFinal($csvName,$nameTable);
+                $nameTable = "compra";
+                $this->exportFinal($csvName,$nameTable);
+
+                $this->cerrarBD(); 
+            }
+
+            /**
+             * Exporta la primera tabla (abriendo el fichero en modo w), para crearlo de 0
+             */
+            public function exportInicial($csvName) {
+                $consultaPre = $this->db->prepare("SELECT * FROM autor");
+                $consultaPre->execute();
+                $resultado = $consultaPre->get_result();
+        
+                $fp = fopen($csvName, 'w');
+        
+                foreach ($resultado as $line) {
+                    fputcsv($fp, $line);
+                }
+
+                $consultaPre->close();
+                echo "<p>Exportación de autor exitosa.</p>";
+                fclose($fp);
+            }
+        
+            /**
+             * Exporta la demás tablas
+             */
+            public function exportFinal($csvName,$nameTable) {
+                $consultaPre = $this->db->prepare("SELECT * FROM " . $nameTable);
+        
+                $consultaPre->execute();
+        
+                $resultado = $consultaPre->get_result();
+        
+                $fp = fopen($csvName, 'a');
+        
+                foreach ($resultado as $line) {
+                    fputcsv($fp, $line);
+                }
+
+                $consultaPre->close();
+        
+                echo "<p>Exportación de " . $nameTable . " exitosa.</p>";
+        
+                fclose($fp);
             }
         }
     ?>
@@ -497,14 +627,15 @@
 
     <article>
         <h2> Juegos </h2>
-        <!-- Barra de navegación hacia todos los juegos + api + libreria (php) -->
-        <nav>
-            <a accesskey="i" tabindex="1" href="../memoria.html">Memoria</a>
-            <a accesskey="u" tabindex="2" href="../sudoku.html">Sudoku</a>
-            <a accesskey="m" tabindex="3" href="crucigrama.php">Crucigrama</a>
-            <a accesskey="p" tabindex="4" href="../api.html">Música</a>
-            <a accesskey="l" tabindex="5" href="libreria.php">Librería</a>
-        </nav>
+            <!-- Barra de navegación hacia todos los juegos + api + libreria (php) -->
+            <nav>
+                <a accesskey="i" tabindex="1" href="../memoria.html">Memoria</a>
+                <a accesskey="k" tabindex="2" href="../sudoku.html">Sudoku</a>
+                <a accesskey="m" tabindex="3" href="crucigrama.php">Crucigrama</a>
+                <!-- Considere poner el acceskey en relación con e texto, no con el .html -->
+                <a accesskey="u" tabindex="4" href="../api.html">Música</a>
+                <a accesskey="b" tabindex="5" href="libreria.php">Librería</a>
+            </nav>
     </article>
 
     <main>
@@ -512,52 +643,86 @@
             <h2>Gestión de la tienda de libros</h2>
 
             <section>
-                <h3>Buscar información general</h3>
+                <h3>Importar datos</h3>
                 <form action="#" method="post">
+                    <button type="submit" name='importarUsuarios'>Usuarios</button>
+                    <button type="submit" name='importarLibrerias'>Librerías</button>
+                    <button type="submit" name='importarAutores'>Autores</button>
+                    <button type="submit" name='importarLibros'>Libros</button>
+                </form>
+
+                <?php
+					if (count($_POST)>0) {   
+                        $db = new Libreria();
+						if(isset($_POST["importarUsuarios"])) $db->importUsuarios();
+                        if(isset($_POST["importarLibrerias"])) $db->importLibrerias();
+                        if(isset($_POST["importarAutores"])) $db->importAutores();
+                        if(isset($_POST["importarLibros"])) $db->importLibros();
+					}
+				?>
+            </section> 
+
+            <section>
+                <h3>Exportar datos</h3>
+                <form action="#" method="post">
+                    <button type="submit" name='exportar'>Exportar</button>
+                </form>
+
+                <?php
+					if (count($_POST)>0) {   
+                        $db = new Libreria();
+						if(isset($_POST["exportar"])) $db->export();
+					}
+				?>
+            </section> 
+
+            <section>
+                <h3>Buscar información general</h3>
+                <form action="#" method="get">
                     <button type="submit" name='verUsuarios'>Usuarios</button>
                     <button type="submit" name='verLibrerias'>Librerías</button>
                     <button type="submit" name='verAutores'>Autores</button>
                     <button type="submit" name='verLibros'>Libros</button>
                 </form>
                 <?php
-					if (count($_POST)>0) {   
+					if (count($_GET)>0) {   
                         $db = new Libreria();
-						if(isset($_POST["verUsuarios"])) $db->getUsuarios();
-                        if(isset($_POST["verLibrerias"])) $db->getLibrerias();
-                        if(isset($_POST["verAutores"])) $db->getAutores();
-                        if(isset($_POST["verLibros"])) $db->getLibros();
+						if(isset($_GET["verUsuarios"])) $db->getUsuarios();
+                        if(isset($_GET["verLibrerias"])) $db->getLibrerias();
+                        if(isset($_GET["verAutores"])) $db->getAutores();
+                        if(isset($_GET["verLibros"])) $db->getLibros();
 					}
 				?>
             </section>
 
             <section>
                 <h3>Ver libros por autor</h3>
-                <form action='#' method='post'>                          
+                <form action='#' method='get'>                          
                     <p><label for='idAutorLibro'>idAutor:</label>
                         <input id='idAutorLibro' type='text' name='idAutorLibro' required /></p>
                     <button type="submit" name='librosAutor'>Buscar</button>
                 </form>
 
                 <?php
-					if (count($_POST)>0) {   
+					if (count($_GET)>0) {   
                         $db = new Libreria();
-						if(isset($_POST["librosAutor"])) $db->getLibrosAutor();
+						if(isset($_GET["librosAutor"])) $db->getLibrosAutor();
 					}
 				?>
             </section> 
 
             <section>
-                <h3>Ver compras de un usuario y el total de ellas</h3>
-                <form action='#' method='post'>                          
+                <h3>Ver compras de un usuario y el total de precio ellas</h3>
+                <form action='#' method='get'>                          
                     <p><label for='idUsuarioCompra'>idUsuario:</label>
                         <input id='idUsuarioCompra' type='text' name='idUsuarioCompra' required /></p>
                     <button type="submit" name='usuarioCompras'>Buscar</button>
                 </form>
 
                 <?php
-					if (count($_POST)>0) {   
+					if (count($_GET)>0) {   
                         $db = new Libreria();
-						if(isset($_POST["usuarioCompras"])) $db->getLibrosUsuario();
+						if(isset($_GET["usuarioCompras"])) $db->getLibrosUsuario();
 					}
 				?>
             </section> 
@@ -584,7 +749,7 @@
 
             <section>
                 <h3>Ver stock de una librería</h3>
-                <form action='#' method='post'>                          
+                <form action='#' method='get'>                          
                     <p><label for='idLibreriaStock'>idLibreria:</label>
                         <input id='idLibreriaStock' type='text' name='idLibreriaStock' required /></p>
                     <p><label for='idLibroStock'>idLibro:</label>
@@ -593,9 +758,9 @@
                 </form>
 
                 <?php
-					if (count($_POST)>0) {   
+					if (count($_GET)>0) {   
                         $db = new Libreria();
-						if(isset($_POST["viewStock"])) $db->viewStock();
+						if(isset($_GET["viewStock"])) $db->viewStock();
 					}
 				?>
             </section> 

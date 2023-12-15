@@ -19,9 +19,9 @@
              <altitud>1506</altitud>
         </coordenadas>
         <bibliografia>
-            <referencia>Referencia 1: https://es.wikiloc.com/rutas-senderismo/travesia-de-apaneca-cerro-grande-de-apaneca-laguna-de-las-ninfas-y-laguna-verde-113755632</referencia>
-            <referencia>Referencia 2: https://www.tripadvisor.es/Attraction_Review-g297533-d7313044-Reviews-Laguna_las_Ninfas-Puerto_Ayora_Santa_Cruz_Galapagos_Islands.html</referencia>
-            <referencia>Referencia 3: https://elsalvador.travel/experience/la-laguna-verde/</referencia>
+            <referencia>https://es.wikiloc.com/rutas-senderismo/travesia-de-apaneca-cerro-grande-de-apaneca-laguna-de-las-ninfas-y-laguna-verde-113755632</referencia>
+            <referencia>https://www.tripadvisor.es/Attraction_Review-g297533-d7313044-Reviews-Laguna_las_Ninfas-Puerto_Ayora_Santa_Cruz_Galapagos_Islands.html</referencia>
+            <referencia>https://elsalvador.travel/experience/la-laguna-verde/</referencia>
         </bibliografia>
         <recomendacion>7</recomendacion>
         <hitos>
@@ -86,9 +86,9 @@
              <altitud>1793</altitud>
         </coordenadas>
         <bibliografia>
-            <referencia>Referencia 1: https://www.tripadvisor.es/AttractionProductReview-g294476-d13204172-Santa_Ana_Volcano_Tour_Adventure_Early_Hike_Coatepeque_Lake_visit_and_swim-San_Sal.html</referencia>
-            <referencia>Referencia 2: https://es.wikipedia.org/wiki/Volc%C3%A1n_Ilamatepec</referencia>
-            <referencia>Referencia 3: https://www.visitcentroamerica.com/visitar/lago-coatepeque/</referencia>
+            <referencia>https://www.tripadvisor.es/AttractionProductReview-g294476-d13204172-Santa_Ana_Volcano_Tour_Adventure_Early_Hike_Coatepeque_Lake_visit_and_swim-San_Sal.html</referencia>
+            <referencia>https://es.wikipedia.org/wiki/Volc%C3%A1n_Ilamatepec</referencia>
+            <referencia>https://www.visitcentroamerica.com/visitar/lago-coatepeque/</referencia>
         </bibliografia>
         <recomendacion>9</recomendacion>
         <hitos>
@@ -134,7 +134,7 @@
                     <fotografia>monumento4.jpg</fotografia>
                 </fotografias>
                 <videos>
-                    <video>https://www.youtube.com/watch?v=VWPfryfy_vg</video>
+                    <video>coatepeque.mp4</video>
                 </videos>
             </hito>
         </hitos>
@@ -156,9 +156,9 @@
              <altitud>1007</altitud>
         </coordenadas>
         <bibliografia>
-            <referencia>Referencia 1: https://www.cultura.gob.sv/parque-arqueologico-tazumal/</referencia>
-            <referencia>Referencia 2: https://es.wikipedia.org/wiki/Parque_nacional_Los_Volcanes</referencia>
-            <referencia>Referencia 3: http://www.elsalvadorturismo.com.sv/turismoelsalvador/areasnaturales/parque-nacional-los-volcanes/index.html</referencia>
+            <referencia>https://www.cultura.gob.sv/parque-arqueologico-tazumal/</referencia>
+            <referencia>https://es.wikipedia.org/wiki/Parque_nacional_Los_Volcanes</referencia>
+            <referencia>http://www.elsalvadorturismo.com.sv/turismoelsalvador/areasnaturales/parque-nacional-los-volcanes/index.html</referencia>
         </bibliografia>
         <recomendacion>8</recomendacion>
         <hitos>

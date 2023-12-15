@@ -42,6 +42,7 @@ table{
 }
 
 /*Especificidad: 001*/
+/* Hereda el color de texto de estilo.css */
 caption{
 	background-color: #000000;
 	font-weight: bold;

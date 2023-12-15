@@ -8,7 +8,7 @@ article[data-type="mapa"]{
 }
 
 /* Hereda el color de texto de su elemento padre, body*/
-/* Especifidad: 001 */
+/* Especifidad: 011 */
 article[data-type="xml"] {
     background-color: #b99a87;
     font-size: 1.1em;

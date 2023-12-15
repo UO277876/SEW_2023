@@ -102,7 +102,7 @@ class Viajes {
                     var recomendacion = $('recomendacion',ruta).text();           
                             
                     // Colocar los datos del XML en el HTML
-                    var stringDatos = "<article>";
+                    var stringDatos = "<article data-type='xml'>";
                     stringDatos += "<h3>" + nombre_ruta + "</h3>";
                     stringDatos += "<ul><li> Tipo: " + tipo + "</li>";
                     stringDatos += "<li> Medio de transporte: " + medio_transporte + "</li>";
@@ -114,10 +114,10 @@ class Viajes {
                     stringDatos += "<li> Coordenadas: " + latitud + "," + longitud + "," + altitud + "</li></ul>";
 
                     stringDatos += "<h3>Bibliografía</h3>";
-                    $.each($("referencia",ruta), function(i,referencia ){
-                        stringDatos += "<p>" + referencia.innerHTML + "</p>";
-                        //var referencia = (referencia.innerHTML).split(":");
-                        //stringDatos += "<p>" + referencia[0] + ": <a href='" + referencia[1] + "'>" + referencia[1] + "</a></p>";
+                    var index = 1;
+                    $.each($("referencia",ruta), function(i,referencia){
+                        stringDatos += "<p><a href=" + $(referencia).text() + "> Referencia " + index + "</a></p>";
+                        index++;
                     });
 
                     // HITOS
@@ -138,7 +138,13 @@ class Viajes {
                         stringDatos += "<li> Distancia: " + distancia + " " + unidades + "</li></ul>";
 
                         $.each($("fotografia",hito), function(i,foto){
-                            stringDatos += "<img" + "src=./xml/" + foto + "alt=" + nombre_hito + "/>";
+                            var rutaFoto = $(foto).text();
+                            stringDatos += '<img src="../xml/' + rutaFoto + '" alt="' + nombre_hito + '" />';
+                        });
+
+                        $.each($("video",hito), function(i,video){
+                            var rutaVideo = $(video).text();
+                            stringDatos += "<video src=xml/" + rutaVideo + " controls preload='auto'></video>";
                         });
 
                     });
