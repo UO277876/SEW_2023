@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html lang="es">
+<head>
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8" />
+    <!-- Icono para las pestañas del navegador -->
+    <link rel="icon" href="multimedia/imagenes/favicon_48.ico" />
+    <title>Escritorio virtual - Noticias</title>
+
+    <meta name ="author" content ="Andrea Auñón" />
+    <meta name ="description" content ="Conjunto de noticias" />
+    <meta name ="keywords" content ="Noticias,AñadeNoticias" />
+    <!-- Para la adaptibilidad -->
+    <meta name ="viewport" content ="width=device-width, initial-scale=1.0" />
+
+    <!-- Hojas de estilo -->
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/noticias.css" />
+
+    <!-- Icono para las pestañas del navegador -->
+    <link rel="icon" href="multimedia/imagenes/favicon_48.ico" />
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" 
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="js/noticias.js"></script>
+</head>
+
+<body>
+    <header>
+        <!-- Encabezado principal -->
+        <h1> Escritorio virtual </h1>
+
+        <!-- Barra de navegación hacia todos los documentos del sitio web -->
+        <nav>
+            <a accesskey="c" tabindex="1" href="index.html">Inicio</a>
+            <a accesskey="r" tabindex="2" href="sobremi.html">Sobre mi</a>
+            <a accesskey="n" tabindex="3" href="noticias.html">Noticias</a>
+            <a accesskey="g" tabindex="4" href="agenda.html">Agenda</a>
+            <a accesskey="l" tabindex="5" href="meteorologia.html">Meteorología</a>
+            <a accesskey="j" tabindex="6" href="viajes.html">Viajes</a>
+            <a accesskey="o" tabindex="7" href="juegos.html">Juegos</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Añadir noticia por carga de archivos</h2>
+                <p><input type="file" onchange="noticias.readInputFile(this.files);"></p>
+                <p data-type="file"></p>
+        </section>
+
+        <section>
+            <h2>Añadir noticias</h2>
+                <form name="noticia">
+                    <!-- 1. Campo titulo -->
+                    <label for="titulo">Título:</label>
+                        <input id="titulo" type="text"><br/>
+                    <!-- 2. Campo subtitulo -->
+                    <label for="subtitulo">Subtítulo:</label>
+                        <input id="subtitulo" type="text"><br/>
+                    <!-- 3. Campo descripcion -->
+                    <label for="descripcion">Descripción:</label>
+                        <input id="descripcion" type="text"><br/>
+                    <!-- 4. Campo autor -->
+                    <label for="autor">Autor:</label>
+                        <input id="autor" type="text"><br/>
+                </form>
+
+                <button onclick="noticias.addInformation()">Añadir</button>
+        </section>
+    
+        <section>
+            <h2>Noticias</h2>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright @2023 Andrea Auñón (uo277876)</p>
+        <p>SEW Curso 2023-2024</p>
+    </footer>
+</body>
+</html>
