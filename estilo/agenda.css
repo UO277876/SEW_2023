@@ -1,0 +1,12 @@
+/* Andrea Auñón Antúnez UO277876 */
+
+/* Hereda el color de texto de su elemento padre, body*/
+/* Especifidad: 001 */
+article {
+    display: flex;
+    background-color: #b99a87;
+    font-size: 1.1em;
+    justify-content: center;
+    border: 0.15em solid black;
+    margin: 1em;
+}

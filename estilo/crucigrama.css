@@ -1,0 +1,77 @@
+/* Andrea Auñón Antúnez UO277876 */
+
+/*Especificidad: 001*/
+main{
+    display: grid;
+    grid-template-columns: repeat(9, 1fr); /* 9 columnas iguales en el tablero */
+    grid-template-rows: repeat(11, 1fr); /* 11 filas en el tablero */
+    margin: 0.2em;
+    font-size: 1.2em;
+    width: 75%;
+    height: auto;
+}
+
+/*Especificidad: 002*/
+main > p {
+    padding: 0.6em;
+    margin: 0;
+    text-align: center;
+    border: 0.05em solid black;
+}
+
+/* Celdas con un -1 o # */
+/* Hereda el color de letra de su elemento padre, body */
+/*Especificidad: 011*/
+p[data-state='empty']{
+    background-color: #000000;
+}
+
+/* Celdas con un valor predefinido */
+/* Hereda el color de letra de su elemento padre, body */
+/*Especificidad: 011*/
+p[data-state='blocked']{
+    font-weight: bold;
+}
+
+/* Me da un aviso el validador porque se redefine en la mediaquery display */
+/*Especificidad: 001*/
+section[data-type="botonera"]{
+    display: none;
+}
+
+@media screen and (max-width: 1500px) {
+    /* Estilos para una mediaquery
+    que muestre la botonera en tablet y móvil */
+    /*Especificidad: 011*/
+    section[data-type=botonera] {
+        display: flex;
+        gap: 1em;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    /*Especificidad: 012*/
+    section[data-type=botonera] h2 {
+        width: 100%;
+        text-align: center;
+    }
+
+    /*Especificidad: 012*/
+    section[data-type=botonera] button {
+        width: calc(15% - 1em);
+        height: 4em;
+        text-align: center;
+    }
+
+    /*Especificidad: 001*/
+    article{
+        width: 80%;
+    }
+
+    /*Especificidad: 001*/
+    section[data-type=botonera] p{
+        width: 100%;
+        text-align: center;
+    }
+}

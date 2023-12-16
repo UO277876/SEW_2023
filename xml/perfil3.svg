@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="2.0">
+<polyline points=
+"10.0,183.0
+99.9,90.0
+209.9,0.0
+297.91,240.0
+10,240.0"
+style="fill:white;stroke:blue;stroke-width:4" />
+<text x="10.0" y="245.0" style="writing-mode: tb; glyph-orientation-horizontal: 0;">
+	Tour combinado de día completo
+</text>
+<text x="99.9" y="245.0" style="writing-mode: tb; glyph-orientation-horizontal: 0;">
+	Tazumal, Chalchuapa El Salvador
+</text>
+<text x="209.9" y="245.0" style="writing-mode: tb; glyph-orientation-horizontal: 0;">
+	Parque Nacional Los Volcanes Sector Los Andes
+</text>
+<text x="297.91" y="245.0" style="writing-mode: tb; glyph-orientation-horizontal: 0;">
+	Iglesia Catolica San Judas
+</text>
+<text x="10" y="245.0" style="writing-mode: tb; glyph-orientation-horizontal: 0;">
+	
+</text>
+</svg>

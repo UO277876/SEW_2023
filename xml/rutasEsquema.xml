@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rutas xsi:schemaLocation="http://www.uniovi.es rutas.xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.uniovi.es">
+
+    <ruta>
+        <nombre>Travesía de Apaneca</nombre>
+        <tipoRuta>Senderismo</tipoRuta>
+        <mtransporte>A pie</mtransporte>
+        <duracion>PT10H24M</duracion>
+        <agencia>Federación Salvadoreña de Montañismo y Escalada</agencia>
+        <descripcion>Va por Cerro Grande de Apaneca, Laguna de las Ninfas y Laguna verde</descripcion>
+        <perAdmitidas>Personas con buena forma física</perAdmitidas>
+        <linicio>Centro Escolar Colonia San Pedro</linicio>
+        <dinicio>Apaneca, El Salvador</dinicio>
+        <coordenadas>
+             <longitud>-89.799348</longitud>
+             <latitud>13.848899</latitud> 
+             <altitud>1506</altitud>
+        </coordenadas>
+        <bibliografia>
+            <referencia>https://es.wikiloc.com/rutas-senderismo/travesia-de-apaneca-cerro-grande-de-apaneca-laguna-de-las-ninfas-y-laguna-verde-113755632</referencia>
+            <referencia>https://www.tripadvisor.es/Attraction_Review-g297533-d7313044-Reviews-Laguna_las_Ninfas-Puerto_Ayora_Santa_Cruz_Galapagos_Islands.html</referencia>
+            <referencia>https://elsalvador.travel/experience/la-laguna-verde/</referencia>
+        </bibliografia>
+        <recomendacion>7</recomendacion>
+        <hitos>
+            <hito>
+                <hnombre>Cerro Grande de Apaneca</hnombre>
+                <hdescripcion>Se ha llegado al punto de acceso (Portón de acceso)</hdescripcion>
+                <coordenadas>
+                    <longitud>-89.798611</longitud>
+                    <latitud>13.841389</latitud> 
+                    <altitud>1826</altitud>
+                </coordenadas> 
+                <distancia unidades="metros">1600</distancia>
+                <fotografias>
+                    <fotografia>apaneca1.jpg</fotografia>
+                    <fotografia>apaneca2.jpg</fotografia>
+                </fotografias>
+            </hito>
+
+            <hito>
+                <hnombre>Laguna de las Ninfas</hnombre>
+                <hdescripcion>Se ha llegado a ver Apaeca desde el Cerro Grande de Apaneca</hdescripcion>
+                <coordenadas>
+                    <longitud>-89.796667</longitud>
+                    <latitud>13.878889</latitud>
+                    <altitud>1696</altitud>
+                </coordenadas> 
+                <distancia unidades="metros">9800</distancia>
+                <fotografias>
+                    <fotografia>apaneca3.jpg</fotografia>
+                </fotografias>
+            </hito>
+
+            <hito>
+                <hnombre>Laguna Verde</hnombre>
+                <hdescripcion>Se ha llegado a la laguna de las Ninfas</hdescripcion>
+                <coordenadas>
+                    <longitud>-89.785556</longitud>
+                    <latitud>13.891389</latitud>
+                    <altitud>1693</altitud>
+                </coordenadas> 
+                <distancia unidades="metros">3300</distancia>
+                <fotografias>
+                    <fotografia>apaneca4.jpg</fotografia>
+                </fotografias>
+            </hito>
+        </hitos>
+    </ruta>
+
+    <ruta>
+        <nombre>Excursión al volcán Santa Ana</nombre>
+        <tipoRuta>Senderismo</tipoRuta>
+        <mtransporte>A pie</mtransporte>
+        <duracion>PT8H</duracion>
+        <agencia>Sin agencia</agencia>
+        <descripcion>Descubra los volcanes de El Salvador por el parque nacional del Complejo de Volcanes</descripcion>
+        <perAdmitidas>Personas con una condición física buena, no aconsejado a personas mayores</perAdmitidas>
+        <linicio>Centro Escolar Caserío Loma Chata, Cantón Las Lajas</linicio>
+        <dinicio>Colonia 11 de agosto Izalco, Las lajas, Cantón de Las Lajas, El Salvador</dinicio>
+        <coordenadas>
+             <longitud>-89.572534</longitud>
+             <latitud>13.809522</latitud> 
+             <altitud>1793</altitud>
+        </coordenadas>
+        <bibliografia>
+            <referencia>https://www.tripadvisor.es/AttractionProductReview-g294476-d13204172-Santa_Ana_Volcano_Tour_Adventure_Early_Hike_Coatepeque_Lake_visit_and_swim-San_Sal.html</referencia>
+            <referencia>https://es.wikipedia.org/wiki/Volc%C3%A1n_Ilamatepec</referencia>
+            <referencia>https://www.visitcentroamerica.com/visitar/lago-coatepeque/</referencia>
+        </bibliografia>
+        <recomendacion>9</recomendacion>
+        <hitos>
+            <hito>
+                <hnombre>Parque nacional del Complejo de los Volcanes</hnombre>
+                <hdescripcion>Listos para ascender al volcán mas alto de San Salvador</hdescripcion>
+                <coordenadas>
+                    <longitud>-89.631248</longitud>
+                    <latitud>13.833110</latitud>
+                    <altitud>1849</altitud>
+                </coordenadas> 
+                <distancia unidades="metros">6760</distancia>
+                <fotografias>
+                    <fotografia>monumento1.jpg</fotografia>
+                </fotografias>
+            </hito>
+
+            <hito>
+                <hnombre>Volcán de Santa Ana</hnombre>
+                <hdescripcion>Tiene una cumbre de 2384 metros</hdescripcion>
+                <coordenadas>
+                    <longitud>-89.629444</longitud>
+                    <latitud>13.850000</latitud>
+                    <altitud>1995</altitud>
+                </coordenadas> 
+                <distancia unidades="metros">1850</distancia>
+                <fotografias>
+                    <fotografia>monumento2.jpg</fotografia>
+                </fotografias>
+            </hito>
+
+            <hito>
+                <hnombre>Lago de Coatepeque</hnombre>
+                <hdescripcion>Lago de origen volcánico</hdescripcion>
+                <coordenadas>
+                    <longitud>-89.570975</longitud>
+                    <latitud>13.859722</latitud>
+                    <altitud>1500</altitud>
+                </coordenadas> 
+                <distancia unidades="metros">6850</distancia>
+                <fotografias>
+                    <fotografia>monumento3.jpg</fotografia>
+                    <fotografia>monumento4.jpg</fotografia>
+                </fotografias>
+                <videos>
+                    <video>coatepeque.mp4</video>
+                </videos>
+            </hito>
+        </hitos>
+    </ruta>
+
+    <ruta>
+        <nombre>Tour combinado de día completo</nombre>
+        <tipoRuta>Gastronómica y de monumentos</tipoRuta>
+        <mtransporte>En coche</mtransporte>
+        <duracion>PT7H</duracion>
+        <agencia>El Salvador Positive Tours</agencia>
+        <descripcion>Viaja sin miedo por San Salvador con este Tour de un día</descripcion>
+        <perAdmitidas>Se permiten niños</perAdmitidas>
+        <linicio>Universidad Autónoma de Santa Ana</linicio>
+        <dinicio>Autopista Sur Poniente km 63, Santa Ana, El Salvador</dinicio>
+        <coordenadas>
+             <longitud>-89.588733</longitud>
+             <latitud>13.976494</latitud> 
+             <altitud>1007</altitud>
+        </coordenadas>
+        <bibliografia>
+            <referencia>https://www.cultura.gob.sv/parque-arqueologico-tazumal/</referencia>
+            <referencia>https://es.wikipedia.org/wiki/Parque_nacional_Los_Volcanes</referencia>
+            <referencia>http://www.elsalvadorturismo.com.sv/turismoelsalvador/areasnaturales/parque-nacional-los-volcanes/index.html</referencia>
+        </bibliografia>
+        <recomendacion>8</recomendacion>
+        <hitos>
+            <hito>
+                <hnombre>Tazumal, Chalchuapa El Salvador</hnombre>
+                <hdescripcion>Asentamiento maya</hdescripcion>
+                <coordenadas>
+                    <longitud>-89.674497</longitud>
+                    <latitud>13.980412</latitud>
+                    <altitud>1100</altitud>
+                </coordenadas> 
+                <distancia unidades="metros">8990</distancia>
+                <fotografias>
+                    <fotografia>maya1.jpg</fotografia>
+                </fotografias>
+            </hito>
+
+            <hito>
+                <hnombre>Parque Nacional Los Volcanes Sector Los Andes</hnombre>
+                <hdescripcion>Área natura de San Salvador con 14 volcanes</hdescripcion>
+                <coordenadas>
+                    <longitud>-89.620072</longitud>
+                    <latitud>13.869254</latitud>
+                    <altitud>1190</altitud>
+                </coordenadas> 
+                <distancia unidades="metros">11000</distancia>
+                <fotografias>
+                    <fotografia>maya2.jpg</fotografia>
+                </fotografias>
+            </hito>
+
+            <hito>
+                <hnombre>Iglesia Catolica San Judas</hnombre>
+                <hdescripcion>Lugar emblemático</hdescripcion>
+                <coordenadas>
+                    <longitud>-89.543218</longitud>
+                    <latitud>13.976973</latitud>
+                    <altitud>950</altitud>
+                </coordenadas> 
+                <distancia unidades="metros">8801</distancia>
+                <fotografias>
+                    <fotografia>maya3.jpg</fotografia>
+                </fotografias>
+            </hito>
+        </hitos>
+    </ruta>
+</rutas>

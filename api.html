@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html lang="es">
+<head>
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8" />
+    <title>Escritorio virtual - API</title>
+
+    <!-- Metadatos-->
+    <meta name ="author" content ="Andrea Auñón" />
+    <meta name ="description" content ="Almacena tus canciones favoritas en esta bibioteca personal" />
+    <meta name ="keywords" content ="Musica,Biblioteca,Videos" />
+    <!-- Para la adaptibilidad -->
+    <meta name ="viewport" content ="width=device-width, initial-scale=1.0" />
+
+    <!-- Hojas de estilo -->
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/api.css" />
+
+    <!-- Icono para las pestañas del navegador -->
+    <link rel="icon" href="multimedia/imagenes/favicon_48.ico" />
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" 
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="js/api.js"></script>
+</head>
+
+<body>
+    <header>
+        <!-- Encabezado principal -->
+        <h1> Escritorio virtual </h1>
+
+        <!-- Barra de navegación hacia todos los documentos del sitio web -->
+        <nav>
+            <a accesskey="c" tabindex="1" href="index.html">Inicio</a>
+            <a accesskey="r" tabindex="2" href="sobremi.html">Sobre mi</a>
+            <a accesskey="n" tabindex="3" href="noticias.html">Noticias</a>
+            <a accesskey="g" tabindex="4" href="agenda.html">Agenda</a>
+            <a accesskey="l" tabindex="5" href="meteorologia.html">Meteorología</a>
+            <a accesskey="j" tabindex="6" href="viajes.html">Viajes</a>
+            <a accesskey="o" tabindex="7" href="juegos.html">Juegos</a>
+        </nav>
+    </header>
+
+    <article>
+        <h2> Juegos </h2>
+        <!-- Barra de navegación hacia todos los juegos -->
+        <nav>
+            <a accesskey="i" tabindex="1" href="memoria.html">Memoria</a>
+            <a accesskey="u" tabindex="2" href="sudoku.html">Sudoku</a>
+            <a accesskey="m" tabindex="3" href="crucigrama.html">Crucigrama</a>
+            <a accesskey="p" tabindex="4" href="api.html">Musica</a>
+        </nav>
+    </article>
+
+    <main>
+        <section>
+            <h2>Introducción</h2>
+            <p>¡Añade tus canciones favoritas!</p>
+            <video src="multimedia/videos/demons_mp.mp4" controls preload="auto"></video>
+
+            <button type="button" onclick="api.abrirPantallaCompleta()">Ver en pantalla completa</button>
+        </section>
+
+        <section>
+            <h2>Añade canciones</h2>
+
+            <form name="cancion">
+                <!-- 1. Campo titulo -->
+                <label for="titulo">Título:</label>
+                    <input id="titulo" type="text"><br/>
+                <!-- 2. Campo genero -->
+                <label for="genero">Género:</label>
+                    <input id="genero" type="text"><br/>
+                <!-- 3. Campo autor -->
+                <label for="autor">Autor:</label>
+                    <input id="autor" type="text"><br/>
+                <!-- 4. Campo file - Debe ser obligatoriamente .png o .jpg -->
+                <label for="portada">Seleccione una imagen (.jpg/.png):</label>
+                    <input id="portada" type="file" onchange="api.readInput(this.files);" />    
+            </form>
+
+            <button onclick="api.addInformation()">Añadir</button>
+        </section>
+
+        <section>
+            <h2>Tus canciones favoritas</h2>
+            
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright @2023 Andrea Auñón (uo277876)</p>
+        <p>SEW Curso 2023-2024</p>
+    </footer>
+</body>
+</html>
