@@ -20,22 +20,23 @@ class Crucigrama {
         */
 
         // Medio
-       
+       /*
         this.board = "12,*,.,=,36,#,#,#,15,#,#,*,#,/,#,#,#,*,.,-" +
         ",.,=,.,#,55,#,.,*,#,=,#,=,#,/,#,=,.,#,15,#,9,*,.,=,45,=,#,#,#,#,#,=,#,#,72,#,20,-,.,=,11,#,.,#,#,-" +
         ",#,+,#,#,#,*,56,/,.,=,.,#,#,#,.,#,#,=,#,=,#,#,#,=,#,#,12,#,16,*,.,=,32";
 
         this.nivel = "medio";
+        */
         
         
         // Dificil
-        /*
+        
         this.board = "4,.,.,=,36,#,#,#,25,#,#,*,#,.,#,#,#,.,.,-" +
         ",.,=,.,#,15,#,.,*,#,=,#,=,#,.,#,=,.,#,18,#,6,*,.,=,30,=,#,#,#,#,#,=,#,#,56,#,9,-" +
         ",.,=,3,#,.,#,#,*,#,+,#,#,#,*,20,.,.,=,18,#,#,#,.,#,#,=,#,=,#,#,#,=,#,#,18,#,24,.,.,=,72";
 
         this.nivel = "dificil";
-        */
+        
 
         // Pruebas
         /*
@@ -165,7 +166,7 @@ class Crucigrama {
         var expression_row = true;
         var expression_col = true;
 
-        var cells = document.querySelectorAll("p");
+        var cells = document.querySelectorAll("main p");
         var cellFound = false;
 
         var row = 0;
@@ -240,7 +241,7 @@ class Crucigrama {
             return true;
         }
 
-        while (this.tablero[row + index][column] != "=") {
+        while (this.tablero[row][column + index] != "=") {
             if(this.tablero[row][column + index + 1] == "="){
                 columnIgual = column + index + 1;
                 break;
@@ -355,27 +356,3 @@ class Crucigrama {
         $(stringDatos).insertAfter("main");
     }
 }
-
-var crucigrama = new Crucigrama();
-crucigrama.paintMathword();
-
-document.addEventListener('keydown', function(e) {
-    if(!(crucigrama.isFinished)){
-        var cellClicked = document.querySelector("p[data-state='clicked']");
-
-        // Comprueba si hay alguna casilla seleccionada
-        if(cellClicked == null){
-            alert("Debe pulsar una casilla antes de continuar")
-        } else {
-            // Comprueba si la casilla seleccionada esta en estado clicked (por si acaso)
-            if(cellClicked.dataset.state == "clicked"){
-                if((e.key >= "1" && e.key) <= "9" || 
-                    (e.key == "+" || e.key == "-" || e.key == "*" || e.key == "/")){
-                        crucigrama.introduceElement(e.key);
-                } else {
-                    alert("La tecla seleccionada no es correcta")
-                }
-            }
-        }
-    }
-});

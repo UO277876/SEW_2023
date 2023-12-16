@@ -59,6 +59,7 @@
 
     <section data-type="botonera">
         <h2>Botonera</h2>
+        <p>Para usar en dispositivos móviles se debe usar la botonera</p>
         <button onclick="crucigrama.introduceElement(1)">1</button>
         <button onclick="crucigrama.introduceElement(2)">2</button>
         <button onclick="crucigrama.introduceElement(3)">3</button>
@@ -75,7 +76,29 @@
     </section>
 
     <main>
-
+        <script>
+            var crucigrama = new Crucigrama();
+            crucigrama.paintMathword();
+    
+            document.addEventListener('keydown', function(e) {
+                var cellClicked = document.querySelector("p[data-state='clicked']");
+    
+                // Comprueba si hay alguna casilla seleccionada
+                if(cellClicked == null){
+                    alert("Debe pulsar una casilla antes de continuar")
+                } else {
+                    // Comprueba si la casilla seleccionada esta en estado clicked (por si acaso)
+                    if(cellClicked.dataset.state == "clicked"){
+                        if((e.key >= "1" && e.key) <= "9" || 
+                            (e.key == "+" || e.key == "-" || e.key == "*" || e.key == "/")){
+                                crucigrama.introduceElement(e.key);
+                        } else {
+                            alert("La tecla seleccionada no es correcta")
+                        }
+                    }
+                }
+            });
+        </script>
     </main>
 
     <?php

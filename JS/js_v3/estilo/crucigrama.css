@@ -68,4 +68,10 @@ section[data-type="botonera"]{
     article{
         width: 80%;
     }
+
+    /*Especificidad: 001*/
+    section[data-type=botonera] p{
+        width: 100%;
+        text-align: center;
+    }
 }

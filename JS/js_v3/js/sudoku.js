@@ -56,7 +56,7 @@ class Sudoku {
     */
     paintSudoku() {
         this.createStructure();
-        var cells = document.querySelectorAll("p");
+        var cells = document.querySelectorAll("main p");
         var aux = 0;
 
         for (let i=0; i < this.filas; i++) {
@@ -81,7 +81,7 @@ class Sudoku {
     * Comprueba si el numero pulsado es valido para la casilla seleccionada
     */
     introduceNumber(number) {
-        var cells = document.querySelectorAll("p");
+        var cells = document.querySelectorAll("main p");
         var row = 0;
         var column = 0;
         // aux es equivalente a multiplicar row*column, es decir, es el indice del parrafo
