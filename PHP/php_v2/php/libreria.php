@@ -454,37 +454,29 @@
             }
 
             public function import(){
-                $csvName = "datos.csv";
+                // 1. Se establece conexión con la BD
                 $this->connectionBD();
                 $this->db->select_db("tienda");
 
-                $handle = fopen($csvName, "r");
-                $index = 1;
-                while (($data = fgetcsv($handle,10000, ",")) != false) {
-                    if($index <= 4 ){
+                // 2. Se va exporando cada tabla
+                $this->importAutores("autor.csv");
+                $this->importUsuarios("usuario.csv");
+                $this->importLibros("libro.csv");
+                $this->importLibrerias("libreria.csv");    
+                $this->importCompra("compra.csv");    
+                $this->importContiene("contiene.csv");   
 
-                    }
-                    
-                    $index++;
-                }
-
-                    
-
-                fclose($handle);
+                // 3. Se cierra la BD
                 $this->cerrarBD(); 
             }
 
-            public function importAutor($csvName) {
+            protected function importAutores($csvName) {
                 $handle = fopen($csvName, "r");
         
                 while (($data = fgetcsv($handle,10000, ",")) != false) {
                     $consultaPre = $this->db->prepare("INSERT INTO autor (idAutor,nombrea,apellidosa) VALUES (?,?,?)");
-        
-                    // Añade los parámetros de la variable Predefinida $_POST
                     $consultaPre->bind_param('sss', $data[0],$data[1],$data[2]);
-        
                     $exito = $consultaPre->execute();
-        
                     $consultaPre->close();
                 }
         
@@ -497,17 +489,13 @@
                 fclose($handle);
             }
 
-            public function importUsuarios($csvName) {
+            protected function importUsuarios($csvName) {
                 $handle = fopen($csvName, "r");
         
                 while (($data = fgetcsv($handle)) != false) {
                     $consultaPre = $this->db->prepare("INSERT INTO usuario (idUsuario,nombreu,edadu,generou,emailu) VALUES (?,?,?,?,?)");
-        
-                    // Añade los parámetros de la variable Predefinida $_POST
                     $consultaPre->bind_param('ssiss', $data[0], $data[1],$data[2],$data[3],$data[4]);
-        
                     $exito = $consultaPre->execute();
-        
                     $consultaPre->close();
                 }
         
@@ -520,32 +508,104 @@
                 fclose($handle);
             }
 
+            protected function importLibrerias($csvName) {
+                $handle = fopen($csvName, "r");
+        
+                while (($data = fgetcsv($handle)) != false) {
+                    $consultaPre = $this->db->prepare("INSERT INTO libreria (idLibreria,ciudadl) VALUES (?,?)");
+                    $consultaPre->bind_param('ss', $data[0], $data[1]);
+                    $exito = $consultaPre->execute();
+                    $consultaPre->close();
+                }
+        
+                if ($exito) {
+                    echo "<p>Importación de librerías exitosa.</p>";
+                } else {
+                    echo "<p>Ha habido algún fallo con la importación de librerías.</p>";
+                }
+
+                fclose($handle);
+            }
+
+            protected function importLibros($csvName) {
+                $handle = fopen($csvName, "r");
+        
+                while (($data = fgetcsv($handle)) != false) {
+                    $consultaPre = $this->db->prepare("INSERT INTO libro (idLibro,titulo,generoLit,precio,idAutor) VALUES (?,?,?,?,?)");
+                    $consultaPre->bind_param('sssis', $data[0], $data[1],$data[2],$data[3],$data[4]);
+                    $exito = $consultaPre->execute();
+                    $consultaPre->close();
+                }
+        
+                if ($exito) {
+                    echo "<p>Importación de libros exitosa.</p>";
+                } else {
+                    echo "<p>Ha habido algún fallo con la importación de libros.</p>";
+                }
+
+                fclose($handle);
+            }
+
+            protected function importContiene($csvName) {
+                $handle = fopen($csvName, "r");
+        
+                while (($data = fgetcsv($handle)) != false) {
+                    $consultaPre = $this->db->prepare("INSERT INTO contiene (idLibro,idLibreria,cantidad) VALUES (?,?,?)");
+                    $consultaPre->bind_param('ssi', $data[0], $data[1],$data[2]);
+                    $exito = $consultaPre->execute();
+                    $consultaPre->close();
+                }
+        
+                if ($exito) {
+                    echo "<p>Importación de contiene exitosa.</p>";
+                } else {
+                    echo "<p>Ha habido algún fallo con la importación de contiene.</p>";
+                }
+
+                fclose($handle);
+            }
+
+            protected function importCompra($csvName) {
+                $handle = fopen($csvName, "r");
+        
+                while (($data = fgetcsv($handle)) != false) {
+                    $consultaPre = $this->db->prepare("INSERT INTO compra (idLibro,idUsuario) VALUES (?,?)");
+                    $consultaPre->bind_param('ss', $data[0], $data[1]);
+                    $exito = $consultaPre->execute();
+                    $consultaPre->close();
+                }
+        
+                if ($exito) {
+                    echo "<p>Importación de compra exitosa.</p>";
+                } else {
+                    echo "<p>Ha habido algún fallo con la importación de compra.</p>";
+                }
+
+                fclose($handle);
+            }
+
             public function export(){
-                $csvName = "datos.csv";
+                // 1. Se establece conexión con la BD
                 $this->connectionBD();
                 $this->db->select_db("tienda");
 
-                $this->exportInicial($csvName);
+                // 2. Se va exporando cada tabla
+                $this->exportTable("autor.csv","autor");
+                $this->exportTable("libro.csv","libro");
+                $this->exportTable("libreria.csv","libreria");
+                $this->exportTable("usuario.csv","usuario");
+                $this->exportTable("contiene.csv","contiene");
+                $this->exportTable("compra.csv","compra");
 
-                $nameTable = "libro";
-                $this->exportFinal($csvName,$nameTable);
-                $nameTable = "libreria";
-                $this->exportFinal($csvName,$nameTable);
-                $nameTable = "usuario";
-                $this->exportFinal($csvName,$nameTable);
-                $nameTable = "contiene";
-                $this->exportFinal($csvName,$nameTable);
-                $nameTable = "compra";
-                $this->exportFinal($csvName,$nameTable);
-
+                // 3. Se cierra la BD
                 $this->cerrarBD(); 
             }
 
             /**
-             * Exporta la primera tabla (abriendo el fichero en modo w), para crearlo de 0
+             * Exporta la tabla pasada como parámetro
              */
-            public function exportInicial($csvName) {
-                $consultaPre = $this->db->prepare("SELECT * FROM autor");
+            public function exportTable($csvName,$nameTable) {
+                $consultaPre = $this->db->prepare("SELECT * FROM " . $nameTable);
                 $consultaPre->execute();
                 $resultado = $consultaPre->get_result();
         
@@ -556,33 +616,12 @@
                 }
 
                 $consultaPre->close();
-                echo "<p>Exportación de autor exitosa.</p>";
-                fclose($fp);
-            }
-        
-            /**
-             * Exporta la demás tablas
-             */
-            public function exportFinal($csvName,$nameTable) {
-                $consultaPre = $this->db->prepare("SELECT * FROM " . $nameTable);
-        
-                $consultaPre->execute();
-        
-                $resultado = $consultaPre->get_result();
-        
-                $fp = fopen($csvName, 'a');
-        
-                foreach ($resultado as $line) {
-                    fputcsv($fp, $line);
-                }
-
-                $consultaPre->close();
-        
                 echo "<p>Exportación de " . $nameTable . " exitosa.</p>";
-        
                 fclose($fp);
             }
         }
+
+        $db = new Libreria();
     ?>
 
 <!DOCTYPE HTML>
@@ -590,12 +629,12 @@
 <head>
     <!-- Datos que describen el documento -->
     <meta charset="UTF-8" />
-    <title>Escritorio virtual - Viajes</title>
+    <title>Escritorio virtual - Librería</title>
 
     <!-- Metadatos-->
     <meta name ="author" content ="Andrea Auñón" />
     <meta name ="description" content ="Gestiona tu propia tienda de libros" />
-    <meta name ="keywords" content ="Librería,Libros,Tienda,Añadir,Ver" />
+    <meta name ="keywords" content ="Librería,Libros,Tienda,Añadir,Ver,Importar,Exportar" />
     <!-- Para la adaptibilidad -->
     <meta name ="viewport" content ="width=device-width, initial-scale=1.0" />
 
@@ -645,19 +684,12 @@
             <section>
                 <h3>Importar datos</h3>
                 <form action="#" method="post">
-                    <button type="submit" name='importarUsuarios'>Usuarios</button>
-                    <button type="submit" name='importarLibrerias'>Librerías</button>
-                    <button type="submit" name='importarAutores'>Autores</button>
-                    <button type="submit" name='importarLibros'>Libros</button>
+                    <button type="submit" name='import'>Importar</button>
                 </form>
 
                 <?php
 					if (count($_POST)>0) {   
-                        $db = new Libreria();
-						if(isset($_POST["importarUsuarios"])) $db->importUsuarios();
-                        if(isset($_POST["importarLibrerias"])) $db->importLibrerias();
-                        if(isset($_POST["importarAutores"])) $db->importAutores();
-                        if(isset($_POST["importarLibros"])) $db->importLibros();
+						if(isset($_POST["import"])) $db->import();
 					}
 				?>
             </section> 
@@ -670,7 +702,6 @@
 
                 <?php
 					if (count($_POST)>0) {   
-                        $db = new Libreria();
 						if(isset($_POST["exportar"])) $db->export();
 					}
 				?>
@@ -686,7 +717,6 @@
                 </form>
                 <?php
 					if (count($_GET)>0) {   
-                        $db = new Libreria();
 						if(isset($_GET["verUsuarios"])) $db->getUsuarios();
                         if(isset($_GET["verLibrerias"])) $db->getLibrerias();
                         if(isset($_GET["verAutores"])) $db->getAutores();
@@ -705,7 +735,6 @@
 
                 <?php
 					if (count($_GET)>0) {   
-                        $db = new Libreria();
 						if(isset($_GET["librosAutor"])) $db->getLibrosAutor();
 					}
 				?>
@@ -721,7 +750,6 @@
 
                 <?php
 					if (count($_GET)>0) {   
-                        $db = new Libreria();
 						if(isset($_GET["usuarioCompras"])) $db->getLibrosUsuario();
 					}
 				?>
@@ -741,7 +769,6 @@
 
                 <?php
 					if (count($_POST)>0) {   
-                        $db = new Libreria();
 						if(isset($_POST["addStock"])) $db->reviseStock();
 					}
 				?>
@@ -759,7 +786,6 @@
 
                 <?php
 					if (count($_GET)>0) {   
-                        $db = new Libreria();
 						if(isset($_GET["viewStock"])) $db->viewStock();
 					}
 				?>

@@ -5,15 +5,15 @@ main{
     display: grid;
     grid-template-columns: repeat(9, 1fr); /* 9 columnas iguales en el tablero */
     grid-template-rows: repeat(11, 1fr); /* 11 filas en el tablero */
-    margin: 0.2em;
-    font-size: 1.2em;
-    width: 75%;
+    border: 0.3em solid black;
     height: auto;
+    margin: 1em;
+    font-size: 1.2em;
 }
 
 /*Especificidad: 002*/
 main > p {
-    padding: 0.6em;
+    padding: 15%;
     margin: 0;
     text-align: center;
     border: 0.05em solid black;
@@ -26,17 +26,36 @@ p[data-state='empty']{
     background-color: #000000;
 }
 
-/* Celdas con un valor predefinido */
 /* Hereda el color de letra de su elemento padre, body */
 /*Especificidad: 011*/
 p[data-state='blocked']{
+    background-color: #b99a87;
     font-weight: bold;
 }
 
-/* Me da un aviso el validador porque se redefine en la mediaquery display */
-/*Especificidad: 001*/
+/* Me da un aviso el validador porque se redefine en la mediaquery display para moviles */
+/*Especificidad: 011*/
 section[data-type="botonera"]{
     display: none;
+}
+
+/*Especificidad: 001*/
+input {
+    margin: 0.5em 0;
+    padding: 0.75em 1.25em;
+    border: 0.2em solid black;
+    display: block;
+    box-sizing: border-box;
+}
+
+/*Especificidad: 001*/
+label {
+    font-size: 1.5em;  
+}
+
+/*Especificidad: 001*/
+button{
+    display: block;
 }
 
 @media screen and (max-width: 1500px) {
@@ -69,7 +88,7 @@ section[data-type="botonera"]{
         width: 80%;
     }
 
-    /*Especificidad: 001*/
+    /*Especificidad: 012*/
     section[data-type=botonera] p{
         width: 100%;
         text-align: center;
