@@ -116,15 +116,11 @@
                 $this->user = "DBUSER2023";
                 $this->pass = "DBPSWD2023";
                 $this->dbname = "records";
-
-                echo ("LLega aqui, al constructor");
             }
 
             protected function connectionBD() {
                 // Conexión al SGBD local con XAMPP con el usuario creado 
                 $db = new mysqli($this->server,$this->user,$this->pass,$this->dbname);
-
-                echo ("LLega aqui, a la conexion con la BD");
 
                 //comprobamos conexión
                 if($db->connect_error) {

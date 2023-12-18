@@ -52,131 +52,7 @@
             </nav>
     </article>
 
-    <main>
-        <article>
-            <h2>Gestión de la tienda de libros</h2>
-
-            <section>
-                <h3>Importar datos</h3>
-                <p>En caso de que sea la primera vez que entra en el sitio web, se deben importar los datos.</p>
-                <form action="#" method="post">
-                    <button type="submit" name='import'>Importar</button>
-                </form>
-
-                <?php
-					if (count($_POST)>0) {   
-						if(isset($_POST["import"])) $db->import();
-					}
-				?>
-            </section> 
-
-            <section>
-                <h3>Exportar datos</h3>
-                <form action="#" method="post">
-                    <button type="submit" name='exportar'>Exportar</button>
-                </form>
-
-                <?php
-					if (count($_POST)>0) {   
-						if(isset($_POST["exportar"])) $db->export();
-					}
-				?>
-            </section> 
-
-            <section>
-                <h3>Buscar información general</h3>
-                <form action="#" method="get">
-                    <button type="submit" name='verUsuarios'>Usuarios</button>
-                    <button type="submit" name='verLibrerias'>Librerías</button>
-                    <button type="submit" name='verAutores'>Autores</button>
-                    <button type="submit" name='verLibros'>Libros</button>
-                </form>
-                <?php
-					if (count($_GET)>0) {   
-						if(isset($_GET["verUsuarios"])) $db->getUsuarios();
-                        if(isset($_GET["verLibrerias"])) $db->getLibrerias();
-                        if(isset($_GET["verAutores"])) $db->getAutores();
-                        if(isset($_GET["verLibros"])) $db->getLibros();
-					}
-				?>
-            </section>
-
-            <section>
-                <h3>Ver libros por autor</h3>
-                <form action='#' method='get'>                          
-                    <p><label for='idAutorLibro'>idAutor:</label>
-                        <input id='idAutorLibro' type='text' name='idAutorLibro' required /></p>
-                    <button type="submit" name='librosAutor'>Buscar</button>
-                </form>
-
-                <?php
-					if (count($_GET)>0) {   
-						if(isset($_GET["librosAutor"])) $db->getLibrosAutor();
-					}
-				?>
-            </section> 
-
-            <section>
-                <h3>Ver compras de un usuario y el total de precio ellas</h3>
-                <form action='#' method='get'>                          
-                    <p><label for='idUsuarioCompra'>idUsuario:</label>
-                        <input id='idUsuarioCompra' type='text' name='idUsuarioCompra' required /></p>
-                    <button type="submit" name='usuarioCompras'>Buscar</button>
-                </form>
-
-                <?php
-					if (count($_GET)>0) {   
-						if(isset($_GET["usuarioCompras"])) $db->getLibrosUsuario();
-					}
-				?>
-            </section> 
-
-            <section>
-                <h3>Añadir stock a una librería</h3>
-                <form action='#' method='post'>                          
-                    <p><label for='idLibreriaAdd'>idLibreria:</label>
-                        <input id='idLibreriaAdd' type='text' name='idLibreriaAdd' required /></p>
-                    <p><label for='idLibroAdd'>idLibro:</label>
-                        <input id='idLibroAdd' type='text' name='idLibroAdd' required /></p>
-                    <p><label for='cantidad'>Cantidad:</label>
-                        <input id='cantidad' type='number' min="0" max="100" name='cantidad' required /></p>
-                    <button type="submit" name='addStock'>Añadir</button>
-                </form>
-
-                <?php
-					if (count($_POST)>0) {   
-						if(isset($_POST["addStock"])) $db->reviseStock();
-					}
-				?>
-            </section> 
-
-            <section>
-                <h3>Ver stock de una librería</h3>
-                <form action='#' method='get'>                          
-                    <p><label for='idLibreriaStock'>idLibreria:</label>
-                        <input id='idLibreriaStock' type='text' name='idLibreriaStock' required /></p>
-                    <p><label for='idLibroStock'>idLibro:</label>
-                        <input id='idLibroStock' type='text' name='idLibroStock' required /></p>
-                    <button type="submit" name='viewStock'>Ver</button>
-                </form>
-
-                <?php
-					if (count($_GET)>0) {   
-						if(isset($_GET["viewStock"])) $db->viewStock();
-					}
-				?>
-            </section> 
-        </article>
-    </main>
-
-    <footer>
-        <p>Copyright @2023 Andrea Auñón (uo277876)</p>
-        <p>SEW Curso 2023-2024</p>
-    </footer>
-</body>
-</html>
-
-<?php
+    <?php
         class Libreria {
 
             private $db;
@@ -191,8 +67,6 @@
                 $server = "localhost";
                 $user = "DBUSER2023";
                 $pass = "DBPSWD2023";
-
-                echo ("LLega aqui, a la conexion con la BD");
 
                 // Conexión al SGBD local con XAMPP con el usuario creado 
                 $this->db = new mysqli($server,$user,$pass);
@@ -745,7 +619,131 @@
                 echo "<p>Exportación de " . $nameTable . " exitosa.</p>";
                 fclose($fp);
             }
-    }
+        }
 
-    $db = new Libreria();
-?>
+        $db = new Libreria();
+    ?>
+
+    <main>
+        <article>
+            <h2>Gestión de la tienda de libros</h2>
+
+            <section>
+                <h3>Importar datos</h3>
+                <p>En caso de que sea la primera vez que entra en el sitio web, se deben importar los datos.</p>
+                <form action="#" method="post">
+                    <button type="submit" name='import'>Importar</button>
+                </form>
+
+                <?php
+					if (count($_POST)>0) {   
+						if(isset($_POST["import"])) $db->import();
+					}
+				?>
+            </section> 
+
+            <section>
+                <h3>Exportar datos</h3>
+                <form action="#" method="post">
+                    <button type="submit" name='exportar'>Exportar</button>
+                </form>
+
+                <?php
+					if (count($_POST)>0) {   
+						if(isset($_POST["exportar"])) $db->export();
+					}
+				?>
+            </section> 
+
+            <section>
+                <h3>Buscar información general</h3>
+                <form action="#" method="get">
+                    <button type="submit" name='verUsuarios'>Usuarios</button>
+                    <button type="submit" name='verLibrerias'>Librerías</button>
+                    <button type="submit" name='verAutores'>Autores</button>
+                    <button type="submit" name='verLibros'>Libros</button>
+                </form>
+                <?php
+					if (count($_GET)>0) {   
+						if(isset($_GET["verUsuarios"])) $db->getUsuarios();
+                        if(isset($_GET["verLibrerias"])) $db->getLibrerias();
+                        if(isset($_GET["verAutores"])) $db->getAutores();
+                        if(isset($_GET["verLibros"])) $db->getLibros();
+					}
+				?>
+            </section>
+
+            <section>
+                <h3>Ver libros por autor</h3>
+                <form action='#' method='get'>                          
+                    <p><label for='idAutorLibro'>idAutor:</label>
+                        <input id='idAutorLibro' type='text' name='idAutorLibro' required /></p>
+                    <button type="submit" name='librosAutor'>Buscar</button>
+                </form>
+
+                <?php
+					if (count($_GET)>0) {   
+						if(isset($_GET["librosAutor"])) $db->getLibrosAutor();
+					}
+				?>
+            </section> 
+
+            <section>
+                <h3>Ver compras de un usuario y el total de precio ellas</h3>
+                <form action='#' method='get'>                          
+                    <p><label for='idUsuarioCompra'>idUsuario:</label>
+                        <input id='idUsuarioCompra' type='text' name='idUsuarioCompra' required /></p>
+                    <button type="submit" name='usuarioCompras'>Buscar</button>
+                </form>
+
+                <?php
+					if (count($_GET)>0) {   
+						if(isset($_GET["usuarioCompras"])) $db->getLibrosUsuario();
+					}
+				?>
+            </section> 
+
+            <section>
+                <h3>Añadir stock a una librería</h3>
+                <form action='#' method='post'>                          
+                    <p><label for='idLibreriaAdd'>idLibreria:</label>
+                        <input id='idLibreriaAdd' type='text' name='idLibreriaAdd' required /></p>
+                    <p><label for='idLibroAdd'>idLibro:</label>
+                        <input id='idLibroAdd' type='text' name='idLibroAdd' required /></p>
+                    <p><label for='cantidad'>Cantidad:</label>
+                        <input id='cantidad' type='number' min="0" max="100" name='cantidad' required /></p>
+                    <button type="submit" name='addStock'>Añadir</button>
+                </form>
+
+                <?php
+					if (count($_POST)>0) {   
+						if(isset($_POST["addStock"])) $db->reviseStock();
+					}
+				?>
+            </section> 
+
+            <section>
+                <h3>Ver stock de una librería</h3>
+                <form action='#' method='get'>                          
+                    <p><label for='idLibreriaStock'>idLibreria:</label>
+                        <input id='idLibreriaStock' type='text' name='idLibreriaStock' required /></p>
+                    <p><label for='idLibroStock'>idLibro:</label>
+                        <input id='idLibroStock' type='text' name='idLibroStock' required /></p>
+                    <button type="submit" name='viewStock'>Ver</button>
+                </form>
+
+                <?php
+					if (count($_GET)>0) {   
+						if(isset($_GET["viewStock"])) $db->viewStock();
+					}
+				?>
+            </section> 
+        </article>
+    </main>
+
+    <footer>
+        <p>Copyright @2023 Andrea Auñón (uo277876)</p>
+        <p>SEW Curso 2023-2024</p>
+    </footer>
+</body>
+</html>
