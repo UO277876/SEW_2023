@@ -28,7 +28,6 @@ class Crucigrama {
         this.nivel = "medio";
         
         
-        
         // Dificil
         /*
         this.board = "4,.,.,=,36,#,#,#,25,#,#,*,#,.,#,#,#,.,.,-" +

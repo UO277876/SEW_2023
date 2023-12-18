@@ -81,19 +81,21 @@
             crucigrama.paintMathword();
     
             document.addEventListener('keydown', function(e) {
-                var cellClicked = document.querySelector("p[data-state='clicked']");
+                if(!(crucigrama.isFinished)){
+                    var cellClicked = document.querySelector("p[data-state='clicked']");
     
-                // Comprueba si hay alguna casilla seleccionada
-                if(cellClicked == null){
-                    alert("Debe pulsar una casilla antes de continuar")
-                } else {
-                    // Comprueba si la casilla seleccionada esta en estado clicked (por si acaso)
-                    if(cellClicked.dataset.state == "clicked"){
-                        if((e.key >= "1" && e.key) <= "9" || 
-                            (e.key == "+" || e.key == "-" || e.key == "*" || e.key == "/")){
-                                crucigrama.introduceElement(e.key);
-                        } else {
-                            alert("La tecla seleccionada no es correcta")
+                    // Comprueba si hay alguna casilla seleccionada
+                    if(cellClicked == null){
+                        alert("Debe pulsar una casilla antes de continuar")
+                    } else {
+                        // Comprueba si la casilla seleccionada esta en estado clicked (por si acaso)
+                        if(cellClicked.dataset.state == "clicked"){
+                            if((e.key >= "1" && e.key) <= "9" || 
+                                (e.key == "+" || e.key == "-" || e.key == "*" || e.key == "/")){
+                                    crucigrama.introduceElement(e.key);
+                            } else {
+                                alert("La tecla seleccionada no es correcta")
+                            }
                         }
                     }
                 }
@@ -114,11 +116,15 @@
                 $this->user = "DBUSER2023";
                 $this->pass = "DBPSWD2023";
                 $this->dbname = "records";
+
+                echo ("LLega aqui, al constructor");
             }
 
             protected function connectionBD() {
                 // Conexión al SGBD local con XAMPP con el usuario creado 
                 $db = new mysqli($this->server,$this->user,$this->pass,$this->dbname);
+
+                echo ("LLega aqui, a la conexion con la BD");
 
                 //comprobamos conexión
                 if($db->connect_error) {

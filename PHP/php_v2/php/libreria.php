@@ -1,9 +1,188 @@
+<!DOCTYPE HTML>
+<html lang="es">
+
+<head>
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8" />
+    <title>Escritorio virtual - Librería</title>
+
+    <!-- Metadatos-->
+    <meta name ="author" content ="Andrea Auñón" />
+    <meta name ="description" content ="Gestiona tu propia tienda de libros" />
+    <meta name ="keywords" content ="Librería,Libros,Tienda,Añadir,Ver,Importar,Exportar" />
+    <!-- Para la adaptibilidad -->
+    <meta name ="viewport" content ="width=device-width, initial-scale=1.0" />
+
+    <!-- Hojas de estilo -->
+    <link rel="stylesheet" type="text/css" href="../estilo/estilo.css" />
+    <link rel="stylesheet" type="text/css" href="../estilo/layout.css" />
+    <link rel="stylesheet" type="text/css" href="../estilo/libreria.css" />
+
+    <!-- Icono para las pestañas del navegador -->
+    <link rel="icon" href="../multimedia/imagenes/favicon_48.ico" />
+</head>
+
+<body>
+    <header>
+        <!-- Encabezado principal -->
+        <h1> Escritorio virtual </h1>
+
+        <!-- Barra de navegación hacia todos los documentos del sitio web -->
+        <nav>
+            <a accesskey="c" tabindex="1" href="../index.html">Inicio</a>
+            <a accesskey="r" tabindex="2" href="../sobremi.html">Sobre mi</a>
+            <a accesskey="n" tabindex="3" href="../noticias.html">Noticias</a>
+            <a accesskey="g" tabindex="4" href="../agenda.html">Agenda</a>
+            <a accesskey="l" tabindex="5" href="../meteorologia.html">Meteorología</a>
+            <a accesskey="j" tabindex="6" href="viajes.php">Viajes</a>
+            <a accesskey="o" tabindex="7" href="../juegos.html">Juegos</a>
+        </nav>
+    </header>
+
+    <article>
+        <h2> Juegos </h2>
+            <!-- Barra de navegación hacia todos los juegos + api + libreria (php) -->
+            <nav>
+                <a accesskey="i" tabindex="1" href="../memoria.html">Memoria</a>
+                <a accesskey="k" tabindex="2" href="../sudoku.html">Sudoku</a>
+                <a accesskey="m" tabindex="3" href="crucigrama.php">Crucigrama</a>
+                <!-- Considere poner el acceskey en relación con e texto, no con el .html -->
+                <a accesskey="u" tabindex="4" href="../api.html">Música</a>
+                <a accesskey="b" tabindex="5" href="libreria.php">Librería</a>
+            </nav>
+    </article>
+
+    <main>
+        <article>
+            <h2>Gestión de la tienda de libros</h2>
+
+            <section>
+                <h3>Importar datos</h3>
+                <p>En caso de que sea la primera vez que entra en el sitio web, se deben importar los datos.</p>
+                <form action="#" method="post">
+                    <button type="submit" name='import'>Importar</button>
+                </form>
+
+                <?php
+					if (count($_POST)>0) {   
+						if(isset($_POST["import"])) $db->import();
+					}
+				?>
+            </section> 
+
+            <section>
+                <h3>Exportar datos</h3>
+                <form action="#" method="post">
+                    <button type="submit" name='exportar'>Exportar</button>
+                </form>
+
+                <?php
+					if (count($_POST)>0) {   
+						if(isset($_POST["exportar"])) $db->export();
+					}
+				?>
+            </section> 
+
+            <section>
+                <h3>Buscar información general</h3>
+                <form action="#" method="get">
+                    <button type="submit" name='verUsuarios'>Usuarios</button>
+                    <button type="submit" name='verLibrerias'>Librerías</button>
+                    <button type="submit" name='verAutores'>Autores</button>
+                    <button type="submit" name='verLibros'>Libros</button>
+                </form>
+                <?php
+					if (count($_GET)>0) {   
+						if(isset($_GET["verUsuarios"])) $db->getUsuarios();
+                        if(isset($_GET["verLibrerias"])) $db->getLibrerias();
+                        if(isset($_GET["verAutores"])) $db->getAutores();
+                        if(isset($_GET["verLibros"])) $db->getLibros();
+					}
+				?>
+            </section>
+
+            <section>
+                <h3>Ver libros por autor</h3>
+                <form action='#' method='get'>                          
+                    <p><label for='idAutorLibro'>idAutor:</label>
+                        <input id='idAutorLibro' type='text' name='idAutorLibro' required /></p>
+                    <button type="submit" name='librosAutor'>Buscar</button>
+                </form>
+
+                <?php
+					if (count($_GET)>0) {   
+						if(isset($_GET["librosAutor"])) $db->getLibrosAutor();
+					}
+				?>
+            </section> 
+
+            <section>
+                <h3>Ver compras de un usuario y el total de precio ellas</h3>
+                <form action='#' method='get'>                          
+                    <p><label for='idUsuarioCompra'>idUsuario:</label>
+                        <input id='idUsuarioCompra' type='text' name='idUsuarioCompra' required /></p>
+                    <button type="submit" name='usuarioCompras'>Buscar</button>
+                </form>
+
+                <?php
+					if (count($_GET)>0) {   
+						if(isset($_GET["usuarioCompras"])) $db->getLibrosUsuario();
+					}
+				?>
+            </section> 
+
+            <section>
+                <h3>Añadir stock a una librería</h3>
+                <form action='#' method='post'>                          
+                    <p><label for='idLibreriaAdd'>idLibreria:</label>
+                        <input id='idLibreriaAdd' type='text' name='idLibreriaAdd' required /></p>
+                    <p><label for='idLibroAdd'>idLibro:</label>
+                        <input id='idLibroAdd' type='text' name='idLibroAdd' required /></p>
+                    <p><label for='cantidad'>Cantidad:</label>
+                        <input id='cantidad' type='number' min="0" max="100" name='cantidad' required /></p>
+                    <button type="submit" name='addStock'>Añadir</button>
+                </form>
+
+                <?php
+					if (count($_POST)>0) {   
+						if(isset($_POST["addStock"])) $db->reviseStock();
+					}
+				?>
+            </section> 
+
+            <section>
+                <h3>Ver stock de una librería</h3>
+                <form action='#' method='get'>                          
+                    <p><label for='idLibreriaStock'>idLibreria:</label>
+                        <input id='idLibreriaStock' type='text' name='idLibreriaStock' required /></p>
+                    <p><label for='idLibroStock'>idLibro:</label>
+                        <input id='idLibroStock' type='text' name='idLibroStock' required /></p>
+                    <button type="submit" name='viewStock'>Ver</button>
+                </form>
+
+                <?php
+					if (count($_GET)>0) {   
+						if(isset($_GET["viewStock"])) $db->viewStock();
+					}
+				?>
+            </section> 
+        </article>
+    </main>
+
+    <footer>
+        <p>Copyright @2023 Andrea Auñón (uo277876)</p>
+        <p>SEW Curso 2023-2024</p>
+    </footer>
+</body>
+</html>
+
 <?php
         class Libreria {
 
             private $db;
 
             public function __construct() {
+                echo ("LLega aqui, al constructor");
                 $this->crearBD();
                 $this->crearTablas();
             }
@@ -12,6 +191,8 @@
                 $server = "localhost";
                 $user = "DBUSER2023";
                 $pass = "DBPSWD2023";
+
+                echo ("LLega aqui, a la conexion con la BD");
 
                 // Conexión al SGBD local con XAMPP con el usuario creado 
                 $this->db = new mysqli($server,$user,$pass);
@@ -51,7 +232,7 @@
                     generoLit VARCHAR(255) NOT NULL,
                     precio DOUBLE NOT NULL,
                     idAutor VARCHAR(9) NOT NULL,
-                    FOREIGN KEY (idAutor) REFERENCES Autor(idAutor),
+                    FOREIGN KEY (idAutor) REFERENCES autor(idAutor),
                     PRIMARY KEY (idLibro)
                 );");
 
@@ -75,16 +256,16 @@
                     idLibreria VARCHAR(9) NOT NULL, 
                     cantidad INTEGER DEFAULT -1, 
                     PRIMARY KEY (idLibro,idLibreria),
-                    FOREIGN KEY (idLibro) REFERENCES Libro(idLibro),
-                    FOREIGN KEY (idLibreria) REFERENCES Libreria(idLibreria)
+                    FOREIGN KEY (idLibro) REFERENCES libro(idLibro),
+                    FOREIGN KEY (idLibreria) REFERENCES libreria(idLibreria)
                 );");   
 
                 $this->db->query("CREATE TABLE IF NOT EXISTS compra (
                     idLibro VARCHAR(9) NOT NULL,
                     idUsuario VARCHAR(9) NOT NULL,
                     PRIMARY KEY (idLibro,idUsuario),
-                    FOREIGN KEY (idLibro) REFERENCES Libro(idLibro),
-                    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
+                    FOREIGN KEY (idLibro) REFERENCES libro(idLibro),
+                    FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario)
                 );");   
             }
 
@@ -564,184 +745,7 @@
                 echo "<p>Exportación de " . $nameTable . " exitosa.</p>";
                 fclose($fp);
             }
-        }
+    }
 
-        $db = new Libreria();
-    ?>
-
-<!DOCTYPE HTML>
-<html lang="es">
-<head>
-    <!-- Datos que describen el documento -->
-    <meta charset="UTF-8" />
-    <title>Escritorio virtual - Librería</title>
-
-    <!-- Metadatos-->
-    <meta name ="author" content ="Andrea Auñón" />
-    <meta name ="description" content ="Gestiona tu propia tienda de libros" />
-    <meta name ="keywords" content ="Librería,Libros,Tienda,Añadir,Ver,Importar,Exportar" />
-    <!-- Para la adaptibilidad -->
-    <meta name ="viewport" content ="width=device-width, initial-scale=1.0" />
-
-    <!-- Hojas de estilo -->
-    <link rel="stylesheet" type="text/css" href="../estilo/estilo.css" />
-    <link rel="stylesheet" type="text/css" href="../estilo/layout.css" />
-    <link rel="stylesheet" type="text/css" href="../estilo/libreria.css" />
-
-    <!-- Icono para las pestañas del navegador -->
-    <link rel="icon" href="../multimedia/imagenes/favicon_48.ico" />
-</head>
-
-<body>
-    <header>
-        <!-- Encabezado principal -->
-        <h1> Escritorio virtual </h1>
-
-        <!-- Barra de navegación hacia todos los documentos del sitio web -->
-        <nav>
-            <a accesskey="c" tabindex="1" href="../index.html">Inicio</a>
-            <a accesskey="r" tabindex="2" href="../sobremi.html">Sobre mi</a>
-            <a accesskey="n" tabindex="3" href="../noticias.html">Noticias</a>
-            <a accesskey="g" tabindex="4" href="../agenda.html">Agenda</a>
-            <a accesskey="l" tabindex="5" href="../meteorologia.html">Meteorología</a>
-            <a accesskey="j" tabindex="6" href="viajes.php">Viajes</a>
-            <a accesskey="o" tabindex="7" href="../juegos.html">Juegos</a>
-        </nav>
-    </header>
-
-    <article>
-        <h2> Juegos </h2>
-            <!-- Barra de navegación hacia todos los juegos + api + libreria (php) -->
-            <nav>
-                <a accesskey="i" tabindex="1" href="../memoria.html">Memoria</a>
-                <a accesskey="k" tabindex="2" href="../sudoku.html">Sudoku</a>
-                <a accesskey="m" tabindex="3" href="crucigrama.php">Crucigrama</a>
-                <!-- Considere poner el acceskey en relación con e texto, no con el .html -->
-                <a accesskey="u" tabindex="4" href="../api.html">Música</a>
-                <a accesskey="b" tabindex="5" href="libreria.php">Librería</a>
-            </nav>
-    </article>
-
-    <main>
-        <article>
-            <h2>Gestión de la tienda de libros</h2>
-
-            <section>
-                <h3>Importar datos</h3>
-                <p>En caso de que sea la primera vez que entra en el sitio web, se deben importar los datos.</p>
-                <form action="#" method="post">
-                    <button type="submit" name='import'>Importar</button>
-                </form>
-
-                <?php
-					if (count($_POST)>0) {   
-						if(isset($_POST["import"])) $db->import();
-					}
-				?>
-            </section> 
-
-            <section>
-                <h3>Exportar datos</h3>
-                <form action="#" method="post">
-                    <button type="submit" name='exportar'>Exportar</button>
-                </form>
-
-                <?php
-					if (count($_POST)>0) {   
-						if(isset($_POST["exportar"])) $db->export();
-					}
-				?>
-            </section> 
-
-            <section>
-                <h3>Buscar información general</h3>
-                <form action="#" method="get">
-                    <button type="submit" name='verUsuarios'>Usuarios</button>
-                    <button type="submit" name='verLibrerias'>Librerías</button>
-                    <button type="submit" name='verAutores'>Autores</button>
-                    <button type="submit" name='verLibros'>Libros</button>
-                </form>
-                <?php
-					if (count($_GET)>0) {   
-						if(isset($_GET["verUsuarios"])) $db->getUsuarios();
-                        if(isset($_GET["verLibrerias"])) $db->getLibrerias();
-                        if(isset($_GET["verAutores"])) $db->getAutores();
-                        if(isset($_GET["verLibros"])) $db->getLibros();
-					}
-				?>
-            </section>
-
-            <section>
-                <h3>Ver libros por autor</h3>
-                <form action='#' method='get'>                          
-                    <p><label for='idAutorLibro'>idAutor:</label>
-                        <input id='idAutorLibro' type='text' name='idAutorLibro' required /></p>
-                    <button type="submit" name='librosAutor'>Buscar</button>
-                </form>
-
-                <?php
-					if (count($_GET)>0) {   
-						if(isset($_GET["librosAutor"])) $db->getLibrosAutor();
-					}
-				?>
-            </section> 
-
-            <section>
-                <h3>Ver compras de un usuario y el total de precio ellas</h3>
-                <form action='#' method='get'>                          
-                    <p><label for='idUsuarioCompra'>idUsuario:</label>
-                        <input id='idUsuarioCompra' type='text' name='idUsuarioCompra' required /></p>
-                    <button type="submit" name='usuarioCompras'>Buscar</button>
-                </form>
-
-                <?php
-					if (count($_GET)>0) {   
-						if(isset($_GET["usuarioCompras"])) $db->getLibrosUsuario();
-					}
-				?>
-            </section> 
-
-            <section>
-                <h3>Añadir stock a una librería</h3>
-                <form action='#' method='post'>                          
-                    <p><label for='idLibreriaAdd'>idLibreria:</label>
-                        <input id='idLibreriaAdd' type='text' name='idLibreriaAdd' required /></p>
-                    <p><label for='idLibroAdd'>idLibro:</label>
-                        <input id='idLibroAdd' type='text' name='idLibroAdd' required /></p>
-                    <p><label for='cantidad'>Cantidad:</label>
-                        <input id='cantidad' type='number' min="0" max="100" name='cantidad' required /></p>
-                    <button type="submit" name='addStock'>Añadir</button>
-                </form>
-
-                <?php
-					if (count($_POST)>0) {   
-						if(isset($_POST["addStock"])) $db->reviseStock();
-					}
-				?>
-            </section> 
-
-            <section>
-                <h3>Ver stock de una librería</h3>
-                <form action='#' method='get'>                          
-                    <p><label for='idLibreriaStock'>idLibreria:</label>
-                        <input id='idLibreriaStock' type='text' name='idLibreriaStock' required /></p>
-                    <p><label for='idLibroStock'>idLibro:</label>
-                        <input id='idLibroStock' type='text' name='idLibroStock' required /></p>
-                    <button type="submit" name='viewStock'>Ver</button>
-                </form>
-
-                <?php
-					if (count($_GET)>0) {   
-						if(isset($_GET["viewStock"])) $db->viewStock();
-					}
-				?>
-            </section> 
-        </article>
-    </main>
-
-    <footer>
-        <p>Copyright @2023 Andrea Auñón (uo277876)</p>
-        <p>SEW Curso 2023-2024</p>
-    </footer>
-</body>
-</html>
+    $db = new Libreria();
+?>

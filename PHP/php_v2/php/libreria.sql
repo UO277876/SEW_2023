@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS libro (
     generoLit VARCHAR(255) NOT NULL,
     precio DOUBLE NOT NULL,
     idAutor VARCHAR(9) NOT NULL,
-    FOREIGN KEY (idAutor) REFERENCES Autor(idAutor),
+    FOREIGN KEY (idAutor) REFERENCES autor(idAutor),
 	PRIMARY KEY (idLibro)
 );
 
@@ -40,16 +40,16 @@ CREATE TABLE IF NOT EXISTS contiene (
 	idLibreria VARCHAR(9) NOT NULL, 
 	cantidad INTEGER DEFAULT -1, 
 	PRIMARY KEY (idLibro,idLibreria),
-	FOREIGN KEY (idLibro) REFERENCES Libro(idLibro),
-	FOREIGN KEY (idLibreria) REFERENCES Libreria(idLibreria)
+	FOREIGN KEY (idLibro) REFERENCES libro(idLibro),
+	FOREIGN KEY (idLibreria) REFERENCES libreria(idLibreria)
 );
 
 CREATE TABLE IF NOT EXISTS compra (
 	idLibro VARCHAR(9) NOT NULL,
 	idUsuario VARCHAR(9) NOT NULL,
 	PRIMARY KEY (idLibro,idUsuario),
-	FOREIGN KEY (idLibro) REFERENCES Libro(idLibro),
-	FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
+	FOREIGN KEY (idLibro) REFERENCES libro(idLibro),
+	FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario)
 );
 
 INSERT INTO autor (idAutor, nombrea, apellidosa) VALUES ("3-001", "Brandon", "Sanderson");
