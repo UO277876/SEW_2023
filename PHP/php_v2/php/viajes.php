@@ -66,13 +66,15 @@
         <section>
             <h2>Carga de archivo XML</h2>
             <!-- El atributo multiple por defecto es false, por lo que solo permite la carga de 1 archivo -->
-            <p><input type="file" accept=".xml" onchange="viajes.readInputXML(this.files);"></p>
+            <p><label for="archivoXML">Seleccione un archivo XML:</label>
+                <input type="file" id="archivoXML" accept=".xml" onchange="viajes.readInputXML(this.files);"></p>
         </section>
 
         <section>
             <h2>Carga de archivos KML</h2>
             <!-- Se cambia el atributo multiple a true, por lo que permite la carga de varios archivos -->
-            <p><input type="file" accept=".kml" onchange="viajes.readInputKML(this.files);" multiple></p>
+            <p><label for="archivoKML">Seleccione un archivo KML:</label>
+                <input type="file" id="archivoKML" accept=".kml" onchange="viajes.readInputKML(this.files);" multiple></p>
             <article id="kml" data-type="mapa">
                 <h3> Ver mapa añadiendo archivos .kml </h3>
             </article>
@@ -81,7 +83,8 @@
         <section>
             <h2>Carga de archivos SVG</h2>
             <!-- Se cambia el atributo multiple a true, por lo que permite la carga de varios archivos -->
-            <p><input type="file" accept=".svg" onchange="viajes.readInputSVG(this.files);" multiple></p>
+            <p><label for="archivoSVG">Seleccione un archivo SVG:</label>
+                <input type="file" id="archivoSVG" accept=".svg" onchange="viajes.readInputSVG(this.files);" multiple></p>
         </section>
 
         <?php

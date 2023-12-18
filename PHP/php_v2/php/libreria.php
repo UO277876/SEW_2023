@@ -98,23 +98,15 @@
                 $libros = $consultaPre->get_result();
         
                 if ($libros->num_rows > 0) {
-                    echo "<table>
-                            <caption>Libros</caption>
-                            <tr>
-                                <th scope='col' id='idLibro'>id</th>
-                                <th scope='col' id='titulo'>Titulo</th> 
-                                <th scope='col' id='generoLit'>Género</th>
-                                <th scope='col' id='precio'>Precio</th>
-                            </tr>
-                        ";
+                    echo "<h4>Libros</h4>";
+                    echo "<ol>";
 
                     foreach ($libros as $libro) {
-                        echo "<tr>";
-                        echo "<td headers='idLibro'>".$libro["idLibro"]."</td> ";
-                        echo "<td headers='titulo'>".$libro["titulo"]."</td> ";
-                        echo "<td headers='generoLit'>".$libro["generoLit"]."</td> ";
-                        echo "<td headers='precio'>".$libro["precio"]."</td> ";
-                        echo "</tr>";
+                        echo "<li>IdLibro: ".$libro["idLibro"];
+                        echo "<ul><li>Titulo: ".$libro["titulo"]."</li>";
+                        echo "<li>Género literario: ".$libro["generoLit"]."</li>";
+                        echo "<li>Precio: ".$libro["precio"]."</li></ul>";
+                        echo "</li>";
                     }
 
                     echo "</table>";
@@ -138,28 +130,19 @@
                 $usuarios = $consultaPre->get_result();
         
                 if ($usuarios->num_rows > 0) {
-                    echo "<table>
-                            <caption>Usuarios</caption>
-                            <tr>
-                                <th scope='col' id='idUsuario'>id</th> 
-                                <th scope='col' id='nombre'>Nombre</th> 
-                                <th scope='col' id='genero'>Género</th>
-                                <th scope='col' id='edad'>Edad</th>
-                                <th scope='col' id='email'>Email</th>
-                            </tr>
-                        ";
+                    echo "<h4>Usuarios</h4>";
+                    echo "<ol>";
 
                     foreach ($usuarios as $usuario) {
-                        echo "<tr>";
-                        echo "<td headers='idUsuario'>".$usuario["idUsuario"]."</td> ";
-                        echo "<td headers='nombre'>".$usuario["nombreu"]."</td> ";
-                        echo "<td headers='genero'>".$usuario["generou"]."</td> ";
-                        echo "<td headers='edad'>".$usuario["edadu"]."</td> ";
-                        echo "<td headers='email'>".$usuario["emailu"]."</td> ";
-                        echo "</tr>";
+                        echo "<li>IdUsuario: ".$usuario["idUsuario"];
+                        echo "<ul><li>Nombre: ".$usuario["nombreu"]."</li>";
+                        echo "<li>Género: ".$usuario["generou"]."</li>";
+                        echo "<li>Edad: ".$usuario["edadu"]."</li>";
+                        echo "<li>Email: ".$usuario["emailu"]."</li></ul>";
+                        echo "</li>";
                     }
 
-                    echo "</table>";
+                    echo "</ol>";
                 } else {
                     echo "<p>No hay usuarios disponibles</p>";
                 }
@@ -180,22 +163,16 @@
                 $librerias = $consultaPre->get_result();
         
                 if ($librerias->num_rows > 0) {
-                    echo "<table>
-                            <caption>Librerías</caption>
-                            <tr>
-                                <th scope='col' id='idLibreria'>id</th> 
-                                <th scope='col' id='ciudad'>Ciudad</th> 
-                            </tr>
-                        ";
+                    echo "<h4>Librerías</h4>";
+                    echo "<ol>";
 
                     foreach ($librerias as $libreria) {
-                        echo "<tr>";
-                        echo "<td headers='idLibreria'>".$libreria["idLibreria"]."</td> ";
-                        echo "<td headers='ciudad'>".$libreria["ciudadl"]."</td> ";
-                        echo "</tr>";
+                        echo "<li>IdLibreria: ".$libreria["idLibreria"];
+                        echo "<ul><li>Ciudad: ".$libreria["ciudadl"]."</li></ul>";
+                        echo "</li>";
                     }
 
-                    echo "</table>";
+                    echo "</ol>";
                 } else {
                     echo "<p>No hay librerías disponibles</p>";
                 }
@@ -216,24 +193,17 @@
                 $autores = $consultaPre->get_result();
         
                 if ($autores->num_rows > 0) {
-                    echo "<table>
-                            <caption>Librerías</caption>
-                            <tr>
-                                <th scope='col' id='idAutor'>id</th> 
-                                <th scope='col' id='nombrea'>Nombre</th> 
-                                <th scope='col' id='apellidosa'>Apellidos</th>
-                            </tr>
-                        ";
+                    echo "<h4>Autores</h4>";
+                    echo "<ol>";
 
                     foreach ($autores as $autor) {
-                        echo "<tr>";
-                        echo "<td headers='idAutor'>".$autor["idAutor"]."</td> ";
-                        echo "<td headers='nombrea'>".$autor["nombrea"]."</td> ";
-                        echo "<td headers='apellidosa'>".$autor["apellidosa"]."</td> ";
-                        echo "</tr>";
+                        echo "<li>IdAutor: ".$autor["idAutor"];
+                        echo "<ul><li>Nombre: ".$autor["nombrea"]."</li>";
+                        echo "<li>Apellidos: ".$autor["apellidosa"]."</li></ul>";
+                        echo "</li>";
                     }
 
-                    echo "</table>";
+                    echo "</ol>";
                 } else {
                     echo "<p>No hay autores disponibles</p>";
                 }
@@ -255,26 +225,18 @@
                 $libros = $consultaPre->get_result();
         
                 if ($libros->num_rows > 0) {
-                    echo "<table>
-                            <caption>Libros del autor seleccionado</caption>
-                            <tr>
-                                <th scope='col' id='idLibroaut'>id</th>
-                                <th scope='col' id='tituloaut'>Titulo</th> 
-                                <th scope='col' id='generoLitaut'>Género</th>
-                                <th scope='col' id='precioaut'>Precio</th>
-                            </tr>
-                        ";
+                    echo "<ol>";
+                    echo "<h4>Libros</h4>";
 
                     foreach ($libros as $libro) {
-                        echo "<tr>";
-                        echo "<td headers='idLibroaut'>".$libro["idLibro"]."</td> ";
-                        echo "<td headers='tituloaut'>".$libro["titulo"]."</td> ";
-                        echo "<td headers='generoLitaut'>".$libro["generoLit"]."</td> ";
-                        echo "<td headers='precioaut'>".$libro["precio"]."</td> ";
-                        echo "</tr>";
+                        echo "<li>IdLibro: ".$libro["idLibro"];
+                        echo "<ul><li>Titulo: ".$libro["titulo"]."</li>";
+                        echo "<li>Género literario: ".$libro["generoLit"]."</li>";
+                        echo "<li>Precio: ".$libro["precio"]."</li></ul>";
+                        echo "</li>";
                     }
 
-                    echo "</table>";
+                    echo "</ol>";
                 } else {
                     echo "<p>No hay libros para ese autor disponibles</p>";
                 }
@@ -298,29 +260,20 @@
                 $libros = $consultaPre->get_result();
 
                 if ($libros->num_rows > 0) {
-                    echo "<table>
-                            <caption>Libros del usuario seleccionado</caption>
-                            <tr>
-                                <th scope='col' id='idLibrous'>id</th>
-                                <th scope='col' id='titulous'>Titulo</th> 
-                                <th scope='col' id='generoLitus'>Género</th>
-                                <th scope='col' id='precious'>Precio</th>
-                            </tr>
-                        ";
-
+                    echo "<ol>";
                     $precioTotal = 0;
+
                     foreach ($libros as $libro) {
-                        echo "<tr>";
-                        echo "<td headers='idLibrous'>".$libro["idLibro"]."</td> ";
-                        echo "<td headers='titulous'>".$libro["titulo"]."</td> ";
-                        echo "<td headers='generoLitus'>".$libro["generoLit"]."</td> ";
-                        echo "<td headers='precious'>".$libro["precio"]."</td> ";
-                        echo "</tr>";
+                        echo "<li>IdLibro: ".$libro["idLibro"];
+                        echo "<ul><li>Titulo: ".$libro["titulo"]."</li>";
+                        echo "<li>Género literario: ".$libro["generoLit"]."</li>";
+                        echo "<li>Precio: ".$libro["precio"]."</li></ul>";
+                        echo "</li>";
 
                         $precioTotal += floatval($libro["precio"]);
                     }
 
-                    echo "</table>";
+                    echo "</ol>";
                     echo "<p>Dinero gastado: ".$precioTotal."€</p>";
                 } else {
                     echo "<p>No hay libros comprados por ese usuario</p>";
@@ -424,25 +377,17 @@
                 $columnas = $consultaPre->get_result();
 
                 if ($columnas->num_rows > 0) {
-                    echo "<table>
-                            <caption>Stock de la librería seleccionada</caption>
-                            <tr>
-                                <th scope='col' id='idLibreriaSt'>idLibreria</th>
-                                <th scope='col' id='idLibroSt'>idLibro</th> 
-                                <th scope='col' id='stockLibro'>Stock</th>
-                            </tr>
-                        ";
+                    echo "<h4>Stock</h4>";
+                    echo "<ol>";
 
-                    $precioTotal = 0;
                     foreach ($columnas as $columna) {
-                        echo "<tr>";
-                        echo "<td headers='idLibreriaSt'>".$columna["idLibreria"]."</td> ";
-                        echo "<td headers='idLibroSt'>".$columna["idLibro"]."</td> ";
-                        echo "<td headers='stockLibro'>".$columna["cantidad"]."</td> ";
-                        echo "</tr>";
+                        echo "<li>IdLibreria: ".$columna["idLibreria"];
+                        echo "<ul><li>IdLibro: ".$columna["idLibro"]."</li>";
+                        echo "<li>Cantidad: ".$columna["cantidad"]."</li></ul>";
+                        echo "</li>";
                     }
 
-                    echo "</table>";
+                    echo "</ol>";
                 } else {
                     echo "<p>No hay stock para esa librería</p>";
                 }
@@ -683,6 +628,7 @@
 
             <section>
                 <h3>Importar datos</h3>
+                <p>En caso de que sea la primera vez que entra en el sitio web, se deben importar los datos.</p>
                 <form action="#" method="post">
                     <button type="submit" name='import'>Importar</button>
                 </form>

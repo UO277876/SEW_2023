@@ -28,21 +28,12 @@ h3{
 }
 
 /*Especificidad: 001*/
-th, td, caption{
-	border-collapse: collapse;
-	padding:0.4em;
+h3{
+    font-size: 1.3em;  
 }
 
 /*Especificidad: 001*/
-table{
-    margin-top: 0.5em;
-    border: 0.25em solid #000000;
-	border-collapse: collapse;
-}
-
-/*Especificidad: 001*/
-/* Hereda el color de texto de estilo.css */
-caption{
-	background-color: #000000;
-	font-weight: bold;
+li {
+    font-size: 1em;
+    color: black;
 }
