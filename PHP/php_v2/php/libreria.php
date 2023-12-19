@@ -620,16 +620,26 @@
                 $consultaPre = $this->db->prepare("SELECT * FROM " . $nameTable);
                 $consultaPre->execute();
                 $resultado = $consultaPre->get_result();
-        
-                $fp = fopen($csvName, 'w');
-        
-                foreach ($resultado as $line) {
-                    fputcsv($fp, $line);
-                }
 
                 $consultaPre->close();
-                echo "<p>Exportación de " . $nameTable . " exitosa.</p>";
-                fclose($fp);
+
+                if ($resultado->fetch_assoc() != null) {
+                    $fp = fopen($csvName, 'w');
+    
+                    foreach ($resultado as $fila) {
+                        fputcsv($fp, $fila);
+                    }
+    
+                    fclose($fp);
+    
+                        header("Cache-Control: public");
+                        header("Content-Description: File Transfer");
+                        header('Content-Disposition: attachment; filename="' . $csvName . '"');
+                        header("Content-Type: text/csv");
+                        header("Content-Transfer-Encoding: binary");
+
+                    echo "<p>Exportación de " . $nameTable . " exitosa.</p>";
+                }
             }
         }
 

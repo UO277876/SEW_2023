@@ -1,8 +1,9 @@
 "use strict";
 /**
- * La herramienta Lighthouse me da diversos errores debido las imágenes.
- * No los tuve en cuenta debido a que eran consejos sobre los formatos de imagen
- * más modernos o de ahorro de espacio de imágenes. 
+ * El inspector me da un aviso respecto a los mapas debido a que para que me pase  el validador HTML
+ * tuve que ponerle un h3 a los contenedores. El aviso es:
+ * The map container element should be empty, otherwise the map's interactivity will 
+ * be negatively impacted. If you want to display a message when WebGL is not supported, use the Mapbox GL Supported plugin instead
  */
 class Viajes {
     constructor(){
