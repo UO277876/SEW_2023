@@ -47,12 +47,12 @@
         <h2> Juegos </h2>
         <!-- Barra de navegación hacia todos los juegos + api + libreria (php) -->
         <nav>
-            <a accesskey="i" tabindex="1" href="memoria.html">Memoria</a>
-            <a accesskey="k" tabindex="2" href="sudoku.html">Sudoku</a>
-            <a accesskey="m" tabindex="3" href="php/crucigrama.php">Crucigrama</a>
+            <a accesskey="i" tabindex="8" href="memoria.html">Memoria</a>
+            <a accesskey="k" tabindex="9" href="sudoku.html">Sudoku</a>
+            <a accesskey="m" tabindex="10" href="php/crucigrama.php">Crucigrama</a>
             <!-- Considere poner el acceskey en relación con e texto, no con el .html -->
-            <a accesskey="u" tabindex="4" href="api.html">Música</a>
-            <a accesskey="b" tabindex="5" href="php/libreria.php">Librería</a>
+            <a accesskey="u" tabindex="11" href="api.html">Música</a>
+            <a accesskey="b" tabindex="12" href="php/libreria.php">Librería</a>
         </nav>
     </article>
 
@@ -68,20 +68,18 @@
         <section>
             <h2>Añade canciones</h2>
 
-            <form name="cancion">
-                <!-- 1. Campo titulo -->
-                <p><label for="titulo">Título:</label>
-                    <input id="titulo" name="titulo" type="text" placeholder="Escriba título" required/></p>
-                <!-- 2. Campo genero -->
-                <p><label for="genero">Género:</label>
-                    <input id="genero" name="genero" type="text" placeholder="Escriba género"  required/></p>
-                <!-- 3. Campo autor -->
-                <p><label for="autor">Autor:</label>
-                    <input id="autor" name="autor" type="text" placeholder="Autor" required/></p>
-                <!-- 4. Campo file - Debe ser obligatoriamente .png o .jpg -->
-                <p><label for="portada">Seleccione una imagen (.jpg):</label>
-                    <input id="portada" type="file" accept=".jpg" onchange="api.readInput(this.files);" required/></p>
-            </form>
+            <!-- 1. Campo titulo -->
+            <p><label for="titulo">Título:</label>
+                <input id="titulo" name="titulo" type="text" placeholder="Escriba título" required/></p>
+            <!-- 2. Campo genero -->
+            <p><label for="genero">Género:</label>
+                <input id="genero" name="genero" type="text" placeholder="Escriba género"  required/></p>
+            <!-- 3. Campo autor -->
+            <p><label for="autor">Autor:</label>
+                <input id="autor" name="autor" type="text" placeholder="Autor" required/></p>
+            <!-- 4. Campo file - Debe ser obligatoriamente .png o .jpg -->
+            <p><label for="portada">Seleccione una imagen (.jpg):</label>
+                <input id="portada" type="file" accept=".jpg" onchange="api.readInput(this.files);" required/></p>
 
             <button onclick="api.addInformation()">Añadir</button>
         </section>

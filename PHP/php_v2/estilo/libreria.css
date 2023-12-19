@@ -24,14 +24,10 @@ section{
 
 /*Especificidad: 001*/
 h3{
-    font-size: 1.7em;  
-}
-
-/*Especificidad: 001*/
-h3{
     font-size: 1.3em;  
 }
 
+/* Hereda el color del fondo de su elemento padre, body */
 /*Especificidad: 001*/
 li {
     font-size: 1em;

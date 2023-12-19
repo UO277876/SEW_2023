@@ -43,12 +43,12 @@
         <h2> Juegos </h2>
             <!-- Barra de navegación hacia todos los juegos + api + libreria (php) -->
             <nav>
-                <a accesskey="i" tabindex="1" href="../memoria.html">Memoria</a>
-                <a accesskey="k" tabindex="2" href="../sudoku.html">Sudoku</a>
-                <a accesskey="m" tabindex="3" href="crucigrama.php">Crucigrama</a>
+                <a accesskey="i" tabindex="8" href="../memoria.html">Memoria</a>
+                <a accesskey="k" tabindex="9" href="../sudoku.html">Sudoku</a>
+                <a accesskey="m" tabindex="10" href="crucigrama.php">Crucigrama</a>
                 <!-- Considere poner el acceskey en relación con e texto, no con el .html -->
-                <a accesskey="u" tabindex="4" href="../api.html">Música</a>
-                <a accesskey="b" tabindex="5" href="libreria.php">Librería</a>
+                <a accesskey="u" tabindex="11" href="../api.html">Música</a>
+                <a accesskey="b" tabindex="12" href="libreria.php">Librería</a>
             </nav>
     </article>
 
@@ -58,7 +58,6 @@
             private $db;
 
             public function __construct() {
-                echo ("LLega aqui, al constructor");
                 $this->crearBD();
                 $this->crearTablas();
             }
@@ -453,25 +452,11 @@
                 $this->cerrarBD();  
             }
 
-            public function import(){
-                // 1. Se establece conexión con la BD
+            public function importAutores() {
                 $this->connectionBD();
                 $this->db->select_db("tienda");
 
-                // 2. Se va exporando cada tabla
-                $this->importAutores("autor.csv");
-                $this->importUsuarios("usuario.csv");
-                $this->importLibros("libro.csv");
-                $this->importLibrerias("libreria.csv");    
-                $this->importCompra("compra.csv");    
-                $this->importContiene("contiene.csv");   
-
-                // 3. Se cierra la BD
-                $this->cerrarBD(); 
-            }
-
-            protected function importAutores($csvName) {
-                $handle = fopen($csvName, "r");
+                $handle = fopen("autor.csv", "r");
         
                 while (($data = fgetcsv($handle,10000, ",")) != false) {
                     $consultaPre = $this->db->prepare("INSERT INTO autor (idAutor,nombrea,apellidosa) VALUES (?,?,?)");
@@ -487,10 +472,15 @@
                 }
 
                 fclose($handle);
+
+                $this->cerrarBD(); 
             }
 
-            protected function importUsuarios($csvName) {
-                $handle = fopen($csvName, "r");
+            public function importUsuarios() {
+                $this->connectionBD();
+                $this->db->select_db("tienda");
+
+                $handle = fopen($_FILES['usuarios']['name'], "r");
         
                 while (($data = fgetcsv($handle)) != false) {
                     $consultaPre = $this->db->prepare("INSERT INTO usuario (idUsuario,nombreu,edadu,generou,emailu) VALUES (?,?,?,?,?)");
@@ -506,10 +496,15 @@
                 }
 
                 fclose($handle);
+
+                $this->cerrarBD(); 
             }
 
-            protected function importLibrerias($csvName) {
-                $handle = fopen($csvName, "r");
+            public function importLibrerias() {
+                $this->connectionBD();
+                $this->db->select_db("tienda");
+
+                $handle = fopen($_FILES['librerias']['name'], "r");
         
                 while (($data = fgetcsv($handle)) != false) {
                     $consultaPre = $this->db->prepare("INSERT INTO libreria (idLibreria,ciudadl) VALUES (?,?)");
@@ -525,10 +520,15 @@
                 }
 
                 fclose($handle);
+
+                $this->cerrarBD(); 
             }
 
-            protected function importLibros($csvName) {
-                $handle = fopen($csvName, "r");
+            public function importLibros() {
+                $this->connectionBD();
+                $this->db->select_db("tienda");
+
+                $handle = fopen($_FILES['libros']['name'], "r");
         
                 while (($data = fgetcsv($handle)) != false) {
                     $consultaPre = $this->db->prepare("INSERT INTO libro (idLibro,titulo,generoLit,precio,idAutor) VALUES (?,?,?,?,?)");
@@ -544,10 +544,15 @@
                 }
 
                 fclose($handle);
+
+                $this->cerrarBD(); 
             }
 
-            protected function importContiene($csvName) {
-                $handle = fopen($csvName, "r");
+            public function importContiene() {
+                $this->connectionBD();
+                $this->db->select_db("tienda");
+
+                $handle = fopen($_FILES['contiene']['name'], "r");
         
                 while (($data = fgetcsv($handle)) != false) {
                     $consultaPre = $this->db->prepare("INSERT INTO contiene (idLibro,idLibreria,cantidad) VALUES (?,?,?)");
@@ -563,10 +568,15 @@
                 }
 
                 fclose($handle);
+
+                $this->cerrarBD(); 
             }
 
-            protected function importCompra($csvName) {
-                $handle = fopen($csvName, "r");
+            public function importCompra() {
+                $this->connectionBD();
+                $this->db->select_db("tienda");
+
+                $handle = fopen($_FILES['compra']['name'], "r");
         
                 while (($data = fgetcsv($handle)) != false) {
                     $consultaPre = $this->db->prepare("INSERT INTO compra (idLibro,idUsuario) VALUES (?,?)");
@@ -582,6 +592,8 @@
                 }
 
                 fclose($handle);
+
+                $this->cerrarBD(); 
             }
 
             public function export(){
@@ -629,15 +641,92 @@
             <h2>Gestión de la tienda de libros</h2>
 
             <section>
-                <h3>Importar datos</h3>
-                <p>En caso de que sea la primera vez que entra en el sitio web, se deben importar los datos.</p>
-                <form action="#" method="post">
-                    <button type="submit" name='import'>Importar</button>
+                <h3>Importar usuarios</h3>
+                <form action='#' method='post' enctype='multipart/form-data'>
+                    <p><label for='importUsuarios'>Cargue el CSV de usuarios:</label> 
+                        <input id='importUsuarios' type='file' name='usuarios'/></p>
+                    <button type="submit" name='importUsuarios'>Enviar</button>
                 </form>
 
                 <?php
 					if (count($_POST)>0) {   
-						if(isset($_POST["import"])) $db->import();
+						if(isset($_POST["importUsuarios"])) $db->importUsuarios();
+					}
+				?>
+            </section> 
+
+            <section>
+                <h3>Importar autores</h3>
+                <form action='#' method='post' enctype='multipart/form-data'>
+                    <p><label for='importAutores'>Cargue el CSV de autores:</label> 
+                        <input id='importAutores' type='file' name='autores'/></p>
+                    <button type="submit" name='importAutores'>Enviar</button>
+                </form>
+
+                <?php
+					if (count($_POST)>0) {   
+						if(isset($_POST["importAutores"])) $db->importAutores();
+					}
+				?>
+            </section> 
+
+            <section>
+                <h3>Importar librerías</h3>
+                <form action='#' method='post' enctype='multipart/form-data'>
+                    <p><label for='importLibrerias'>Cargue el CSV de librerías:</label> 
+                        <input id='importLibrerias' type='file' name='librerias'/></p>
+                    <button type="submit" name='importLibrerias'>Enviar</button>
+                </form>
+
+                <?php
+					if (count($_POST)>0) {   
+						if(isset($_POST["importLibrerias"])) $db->importLibrerias();
+					}
+				?>
+            </section> 
+
+            <section>
+                <h3>Importar libros</h3>
+                <form action='#' method='post' enctype='multipart/form-data'>
+                    <p><label for='importLibros'>Cargue el CSV de libros:</label> 
+                        <input id='importLibros' type='file' name='libros'/></p>
+                    <button type="submit" name='importLibros'>Enviar</button>
+                </form>
+
+                <?php
+					if (count($_POST)>0) {   
+						if(isset($_POST["importLibros"])) $db->importLibros();
+					}
+				?>
+            </section> 
+
+            <section>
+                <h3>Importar los libros que contiene una librería</h3>
+                <form action='#' method='post' enctype='multipart/form-data'>
+                    <p><label for='importContiene'>Cargue el CSV que contiene los libros:</label> 
+                        <input id='importContiene' type='file' name='contiene'/></p>
+                    <button type="submit" name='importContiene'>Enviar</button>
+                </form>
+
+                <?php
+					if (count($_POST)>0) {   
+						if(isset($_POST["importContiene"])) $db->importContiene();
+					}
+				?>
+            </section> 
+
+            
+            <section>
+                <h3>Importar las compras de usuarios</h3>
+                <form action='#' method='post' enctype='multipart/form-data'>
+                    <p><label for='importCompra'>Cargue el CSV que contiene las compras:</label> 
+                        <input id='importCompra' type='file' name='compra'/></p>
+                    <button type="submit" name='importCompra'>Enviar</button>
+                </form>
+
+                <?php
+					if (count($_POST)>0) {   
+						if(isset($_POST["importCompra"])) $db->importCompra();
 					}
 				?>
             </section> 

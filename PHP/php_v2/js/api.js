@@ -65,11 +65,12 @@ class Api{
         var archivo = files[0];
 
         var lector = new FileReader();
-        lector.readAsDataURL(archivo);
             
         lector.onloadend = function (event) {
             this.loadImage(lector.result);
-        }.bind(this);         
+        }.bind(this);      
+        
+        lector.readAsDataURL(archivo);
     }
 
     /**

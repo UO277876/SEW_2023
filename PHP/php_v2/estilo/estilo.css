@@ -136,6 +136,7 @@ th  {
 img {
     max-width: 100%;
     height: auto;
+    width: auto;
 }
 
 /*Especificidad: 001*/
@@ -166,15 +167,16 @@ footer{
 article[data-state='meteo'] {
     display: flex;
     background-color: #b99a87;
-    font-size: 1.1em;
+    font-size: 1em;
     justify-content: center;
     border: 0.15em solid black;
     margin: 1em;
+    flex-wrap: wrap;
 }
 
 /* Especificidad: 012*/
 article[data-state='meteo'] > img {
-    width: 6em;
+    height: 25%;
 }
 
 /* Especificidad: 001*/

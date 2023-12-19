@@ -59,7 +59,7 @@
             <h2>Mapa dinámico</h2>
             <button onclick="viajes.initMap()">Obtener mapa dinámico</button>
             <article id="dinamico" data-type="mapa">
-                <h3> Ver mapa pulsando en el botón </h3>
+                <h3> Mapa de tu ubicación </h3>
             </article>
         </section>
 
@@ -76,7 +76,7 @@
             <p><label for="archivoKML">Seleccione un archivo KML:</label>
                 <input type="file" id="archivoKML" accept=".kml" onchange="viajes.readInputKML(this.files);" multiple></p>
             <article id="kml" data-type="mapa">
-                <h3> Ver mapa añadiendo archivos .kml </h3>
+                <h3> Planimetrías </h3>
             </article>
         </section>
 

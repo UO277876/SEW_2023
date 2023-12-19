@@ -82,8 +82,9 @@ class Pais{
                 });
             },
             error:function(){
-                $("section").html("¡Tenemos problemas! No puedo obtener JSON de <a href='http://openweathermap.org'>OpenWeatherMap</a>"); 
-                $("h2").remove();
+                var stringError = "<h3>Error</h3>"
+                stringError += "<p>¡Tenemos problemas! No puedo obtener JSON de <a href='http://openweathermap.org'>OpenWeatherMap</a></p>";
+                $("section").html(stringError);
             }
         });
     }

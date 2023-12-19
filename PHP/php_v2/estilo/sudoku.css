@@ -29,6 +29,7 @@ p[data-state='blocked']{
 }
 
 @media screen and (max-width: 600px) {
+    /* Me da un aviso el validador porque se redefine en la mediaquery width para moviles */
     /*Especificidad: 001*/
     main{
         width: 90%;

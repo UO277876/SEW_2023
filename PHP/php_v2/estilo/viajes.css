@@ -29,3 +29,21 @@ input {
     display: block;
     box-sizing: border-box;
 }
+
+/*Especificidad: 012*/
+article[data-type="xml"] img {
+    width: 50%;
+    height: 50%;
+}
+
+/* Hereda el color del fondo de su elemento padre, body */
+/* Especifidad: 02s2 */
+article[data-type="xml"] a:link {
+    color: #552525;
+}
+
+/* Hereda el color del fondo de su elemento padre, body */
+/* Especifidad: 022 */
+article[data-type="xml"] a:visited {
+    color: #382828;
+}

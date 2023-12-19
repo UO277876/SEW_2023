@@ -1,4 +1,9 @@
 "use strict";
+/**
+ * La herramienta Lighthouse me da diversos errores debido las imágenes.
+ * No los tuve en cuenta debido a que eran consejos sobre los formatos de imagen
+ * más modernos o de ahorro de espacio de imágenes. 
+ */
 class Viajes {
     constructor(){
         navigator.geolocation.getCurrentPosition(this.getPosicion.bind(this), this.verErrores.bind(this));

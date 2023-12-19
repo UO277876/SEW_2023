@@ -44,7 +44,9 @@ class Agenda{
                 },
                 error:function(){
                     agenda.last_api_result = new Date(); 
-                    $("section").html("¡Tenemos problemas! No puedo obtener XML de <a href='http://ergast.com'>Ergast</a>"); 
+                    var stringError = "<h3>Error</h3>"
+                    stringError += "<p>¡Tenemos problemas! No puedo obtener XML de <a href='http://ergast.com'>Ergast</a></p>";
+                    $("section").html(stringError);
                 }
             });
             
@@ -77,8 +79,8 @@ class Agenda{
                         
                 // Colocar los datos del XML en el HTML
                 var stringDatos = "<article>";
-                stringDatos += "<ul><li> Nombre de la carrera: " + nombre_carrera + "</li>";
-                stringDatos += "<li> Nombre del circuito: " + nombre_circuito + "</li>";
+                stringDatos += "<h4> " + nombre_carrera + "</h4>";
+                stringDatos += "<ul><li> Nombre del circuito: " + nombre_circuito + "</li>";
                 stringDatos += "<li> Coordenadas: " + coord_lat + "," + coord_long + "</li>";
                 stringDatos += "<li> Fecha: " + fecha + "</li>";
                 stringDatos += "<li> Hora: " + hora + "</li></ul>";
