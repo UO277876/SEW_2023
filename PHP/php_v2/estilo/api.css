@@ -2,10 +2,10 @@
 
 /*Especificidad: 001*/
 input {
-    margin: 0.5em 0;
+    width: 100%;
+    margin: 0.4em 0;
     padding: 0.75em 1.25em;
-    border: 0.2em solid black;
-    display: block;
+    display: inline-block;
     box-sizing: border-box;
 }
 
