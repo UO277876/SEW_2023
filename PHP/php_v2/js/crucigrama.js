@@ -339,7 +339,7 @@ class Crucigrama {
         stringDatos += "<input id='nivel' type='text' name='nivel' value=" + this.nivel +" readonly /></p>";
         stringDatos += "<p><label for='tiempo'>Tiempo (en segundos):</label>";
         stringDatos += "<input id='tiempo' type='number' name='tiempo' value=" + segundos +" readonly /></p>";
-        stringDatos += "<input type='submit' value='Aceptar'/>";
+        stringDatos += "<button type='submit' name='aceptar'>Aceptar</button>";
         stringDatos += "</form>"
 
         //stringDatos += "<button onclick="">Añadir</button>";

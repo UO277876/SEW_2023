@@ -28,11 +28,51 @@ p[data-state='blocked']{
     font-weight: bold;
 }
 
-@media screen and (max-width: 600px) {
+/* Me da un aviso el validador porque se redefine en la mediaquery display para moviles */
+/*Especificidad: 011*/
+section[data-type="botonera"]{
+    display: none;
+}
+
+@media screen and (max-width: 799px) {
     /* Me da un aviso el validador porque se redefine en la mediaquery width para moviles */
     /*Especificidad: 001*/
     main{
         width: 90%;
+    }
+
+    /* Me da un aviso el validador porque se redefine en la mediaquery display para moviles */
+    /*Especificidad: 011*/
+    section[data-type=botonera] {
+        display: flex;
+        gap: 1em;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    /*Especificidad: 012*/
+    section[data-type=botonera] h2 {
+        width: 100%;
+        text-align: center;
+    }
+
+    /*Especificidad: 012*/
+    section[data-type=botonera] button {
+        width: calc(15% - 1em);
+        height: 4em;
+        text-align: center;
+    }
+
+    /*Especificidad: 001*/
+    article{
+        width: 80%;
+    }
+
+    /*Especificidad: 012*/
+    section[data-type=botonera] p{
+        width: 100%;
+        text-align: center;
     }
 }
 

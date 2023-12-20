@@ -80,7 +80,7 @@
             </article>
         </section>
 
-        <section>
+        <section data-type="svg">
             <h2>Carga de archivos SVG</h2>
             <!-- Se cambia el atributo multiple a true, por lo que permite la carga de varios archivos -->
             <p><label for="archivoSVG">Seleccione un archivo SVG:</label>

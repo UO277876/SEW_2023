@@ -2,7 +2,7 @@
 
 /* Para el contenedor de los mapas dinamicos */
 /*Especificidad: 011*/
-article[data-type="mapa"]{
+article[data-type="mapa"] {
 	width:60vw; 
 	height:50vw;
 }
@@ -48,4 +48,10 @@ article[data-type="xml"] a:link {
 /* Especifidad: 022 */
 article[data-type="xml"] a:visited {
     color: #382828;
+}
+
+/*Especificidad: 012*/
+section[data-type="svg"] svg {
+	width:90vw; 
+	height:60vw;
 }

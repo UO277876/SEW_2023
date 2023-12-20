@@ -292,7 +292,7 @@ class Viajes {
         var lines = svg.split('\n').slice(2);
         var svgWithoutHeader = lines.join('\n');
 
-        var stringDatos = "<svg height='850' width='500'>"
+        var stringDatos = "<svg>"
         stringDatos += svgWithoutHeader;
         stringDatos += "</svg>"
         $(stringDatos).appendTo($("section:nth-child(5)"));  
